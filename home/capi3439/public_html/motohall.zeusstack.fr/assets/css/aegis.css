@@ -1,0 +1,617 @@
+/* ===========================================================================
+   MOTOHALL 2A — HABILLAGE
+   Refonte du 20/09/2026.
+
+   DIRECTION ARTISTIQUE — ce qui change par rapport à avril 2026 :
+     AVANT : halos néon partout, italiques, majuscules très espacées, textes de
+             8 px, formes « bulles » (rayons de 3 rem), ombres colorées.
+     APRÈS : une seule couleur d'accent utilisée avec parcimonie, des surfaces
+             discrètes, une hiérarchie typographique lisible, des formes
+             mesurées, des ombres douces. C'est le style de Novaya Suites :
+             sombre, dense, calme — ce que Frédéric appelle « pro ».
+
+   REPÈRES (identiques à Novaya, pour rester cohérent d'un site à l'autre) :
+     fond            #020617 (slate-950)
+     surfaces        #0f172a / #151e2e
+     accent          #38bdf8 (sky-400)
+     polices         Rajdhani (texte) + Orbitron (titres)
+   =========================================================================== */
+
+:root {
+    /* --- Fonds ---------------------------------------------------------- */
+    --fond:            #020617;
+    --fond-panneau:    #0f172a;
+    --fond-eleve:      #151e2e;
+    --surface:         rgba(15, 23, 42, 0.72);
+    --surface-forte:   rgba(21, 30, 46, 0.9);
+
+    /* --- Bordures -------------------------------------------------------
+       !! BLANCHES et semi-transparentes, jamais gris opaque : la bordure
+          laisse passer le fond, donc les cartes semblent posées sur la
+          lumière au lieu d'être découpées au trait. C'est le détail qui
+          fait le plus pour l'impression de finition (relevé sur Novaya). */
+    --bordure:         rgba(255, 255, 255, 0.08);
+    --bordure-forte:   rgba(255, 255, 255, 0.16);
+
+    /* --- Textes --------------------------------------------------------- */
+    --texte:           #e2e8f0;
+    --texte-doux:      #94a3b8;
+    --texte-faible:    #64748b;
+
+    /* --- Accent et états ------------------------------------------------ */
+    --accent:          #38bdf8;
+    --accent-fonce:    #0ea5e9;
+    --accent-doux:     rgba(56, 189, 248, 0.10);
+    --succes:          #34d399;
+    --succes-doux:     rgba(52, 211, 153, 0.10);
+    --alerte:          #fbbf24;
+    --alerte-doux:     rgba(251, 191, 36, 0.10);
+    --danger:          #f87171;
+    --danger-doux:     rgba(248, 113, 113, 0.10);
+
+    /* --- Formes --------------------------------------------------------- */
+    --r-petit:         8px;
+    --r:               12px;
+    --r-grand:         16px;
+    --ombre-1:         0 1px 2px rgba(2, 6, 23, 0.6);
+    --ombre-2:         0 12px 32px -16px rgba(2, 6, 23, 0.9);
+
+    /* --- Mouvement ------------------------------------------------------
+       !! 150 ms pour les micro-interactions, mais 500 ms pour les états du
+          menu : c'est délibérément lent, et c'est ce qui « fait cher ». */
+    --transition:      150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-lente: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* --- Largeurs ------------------------------------------------------- */
+    --largeur-menu:    280px;
+    --hauteur-entete:  64px;
+}
+
+/* ===========================================================================
+   1. BASE
+   =========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: 'Rajdhani', system-ui, -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    background-color: var(--fond);
+    color: var(--texte);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5 { margin: 0; font-weight: 600; line-height: 1.3; }
+
+a { color: inherit; text-decoration: none; }
+
+/* Titres : Orbitron, mais JAMAIS en italique et sans espacement forcé. */
+.font-display {
+    font-family: 'Orbitron', system-ui, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0.005em;
+}
+
+/* Chiffres alignés (compteurs, horloges, tableaux). */
+.tabulaire { font-variant-numeric: tabular-nums; }
+
+/* ===========================================================================
+   2. NORMALISATION DES ANCIENNES VUES
+   ---------------------------------------------------------------------------
+   Les vues d'avril 2026 empilent des effets décoratifs. Plutôt que de les
+   réécrire toutes (risqué : elles contiennent la logique Alpine.js), on calme
+   ces excès ICI. Le rendu devient homogène sur tout le site d'un coup.
+   =========================================================================== */
+
+/* Plus d'italique décoratif : c'est le premier signe de « gadget ». */
+[class*="italic"] { font-style: normal !important; }
+
+/* Lettres espacées à l'extrême : on ramène à une valeur lisible. */
+[class*="tracking-"] { letter-spacing: 0.045em !important; }
+.tracking-normal { letter-spacing: 0 !important; }
+
+/* Textes trop petits : plancher à 12 px (9 px était illisible). */
+[class*="text-[8px]"],
+[class*="text-[9px]"],
+[class*="text-[10px]"],
+[class*="text-[11px]"] { font-size: 0.78rem !important; }
+
+/* Graisses extrêmes : 900 partout tue la hiérarchie. */
+[class*="font-black"] { font-weight: 600 !important; }
+
+/* Halos néon : supprimés (c'est ce qui donnait l'aspect « arcade »). */
+[class*="shadow-[0_0_"] { box-shadow: none !important; }
+
+/* Taches de couleur en fond (dégradés radiaux) : supprimées. */
+[class*="bg-[radial-gradient"] { background-image: none !important; }
+
+/* Formes « bulles » : ramenées à des rayons mesurés. */
+[class*="rounded-[2rem]"],
+[class*="rounded-[2.5rem]"],
+[class*="rounded-[2.8rem]"],
+[class*="rounded-[3rem]"],
+[class*="rounded-[4rem]"],
+[class*="rounded-[15px]"] { border-radius: var(--r-grand) !important; }
+
+/* Ombres noires très dures : adoucies. */
+[class*="shadow-2xl"] { box-shadow: var(--ombre-2) !important; }
+
+/* Pastilles clignotantes : elles attirent l'œil pour rien. */
+[class*="animate-pulse"] { animation: none !important; }
+
+/* ===========================================================================
+   3. SURFACES ET CARTES
+   =========================================================================== */
+
+/* Ancienne classe conservée (utilisée par les vues et les fenêtres). */
+.glass {
+    background: var(--surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--bordure);
+    box-shadow: var(--ombre-1);
+}
+
+.glass-emerald {
+    background: var(--surface);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--bordure);
+}
+
+.carte {
+    background: var(--surface);
+    border: 1px solid var(--bordure);
+    border-radius: var(--r-grand);
+    box-shadow: var(--ombre-1);
+    padding: 20px;
+}
+
+.carte--plate { background: var(--fond-panneau); }
+
+.carte-entete {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 14px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--bordure);
+}
+
+.carte-titre {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--texte);
+}
+
+/* ===========================================================================
+   4. TYPOGRAPHIE DE PAGES
+   =========================================================================== */
+
+.titre-page {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0;
+}
+
+.sous-titre-page {
+    font-size: 0.85rem;
+    color: var(--texte-doux);
+}
+
+/* Petit intitulé de section (le seul endroit où les majuscules sont voulues). */
+.titre-section {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--texte-faible);
+}
+
+.meta {
+    font-size: 0.78rem;
+    color: var(--texte-faible);
+}
+
+.doux  { color: var(--texte-doux); }
+.faible { color: var(--texte-faible); }
+
+/* ===========================================================================
+   5. BOUTONS
+   =========================================================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border-radius: var(--r);
+    border: 1px solid transparent;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: background-color var(--transition), border-color var(--transition),
+                color var(--transition), transform var(--transition);
+    white-space: nowrap;
+}
+
+.btn:active { transform: translateY(1px); }
+
+.btn-accent {
+    background: var(--accent);
+    color: #04121c;
+    border-color: var(--accent);
+}
+.btn-accent:hover { background: #7dd3fc; border-color: #7dd3fc; }
+
+.btn-neutre {
+    background: rgba(148, 163, 184, 0.08);
+    color: var(--texte);
+    border-color: var(--bordure);
+}
+.btn-neutre:hover { background: rgba(148, 163, 184, 0.14); border-color: var(--bordure-forte); }
+
+.btn-danger {
+    background: var(--danger-doux);
+    color: var(--danger);
+    border-color: rgba(248, 113, 113, 0.28);
+}
+.btn-danger:hover { background: var(--danger); color: #1a0505; }
+
+.btn-large { padding: 12px 20px; font-size: 0.9rem; }
+.btn-bloc  { width: 100%; }
+
+/* ===========================================================================
+   6. CHAMPS DE SAISIE
+   =========================================================================== */
+
+.champ {
+    width: 100%;
+    padding: 11px 14px;
+    background: rgba(2, 6, 23, 0.6);
+    border: 1px solid var(--bordure);
+    border-radius: var(--r);
+    color: var(--texte);
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: border-color var(--transition), background-color var(--transition);
+}
+
+.champ::placeholder { color: var(--texte-faible); }
+
+.champ:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(2, 6, 23, 0.85);
+}
+
+.etiquette {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--texte-doux);
+}
+
+/* ===========================================================================
+   7. PASTILLES D'ÉTAT
+   =========================================================================== */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--bordure);
+    background: rgba(148, 163, 184, 0.08);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--texte-doux);
+}
+
+.badge-accent  { background: var(--accent-doux);  border-color: rgba(56, 189, 248, 0.28);  color: var(--accent); }
+.badge-succes  { background: var(--succes-doux);  border-color: rgba(52, 211, 153, 0.28);  color: var(--succes); }
+.badge-alerte  { background: var(--alerte-doux);  border-color: rgba(251, 191, 36, 0.28);  color: var(--alerte); }
+.badge-danger  { background: var(--danger-doux);  border-color: rgba(248, 113, 113, 0.28); color: var(--danger); }
+
+/* ===========================================================================
+   8. NAVIGATION LATÉRALE
+   =========================================================================== */
+
+.nav-groupe { margin-bottom: 22px; }
+
+.nav-lien {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    margin-bottom: 3px;
+    border-radius: var(--r);
+    border-left: 2px solid transparent;
+    color: var(--texte-doux);
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: background-color var(--transition-lente), color var(--transition-lente),
+                border-color var(--transition-lente);
+}
+
+.nav-lien:hover { background: rgba(255, 255, 255, 0.04); color: var(--texte); }
+
+/* Vignette de l'icône : carré arrondi discret, qui s'allume sur l'élément actif. */
+.nav-vignette {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: background-color var(--transition-lente), color var(--transition-lente);
+}
+
+.nav-vignette svg, .nav-vignette i { width: 16px; height: 16px; }
+
+.nav-lien:hover .nav-vignette { background: rgba(255, 255, 255, 0.09); }
+
+/* Élément actif : dégradé discret, filet d'accent à gauche, icône allumée.
+   !! 20/09/2026 : on a essayé la « barre à droite » de Novaya Suites, mais
+      Frédéric préfère la version d'origine de ce menu (« ton menu était très
+      beau »). On garde donc celle-ci, SANS effet de lumière. */
+.nav-lien--actif {
+    background: linear-gradient(to right, rgba(14, 165, 233, 0.14), rgba(2, 132, 199, 0.04));
+    border-left-color: var(--accent);
+    color: var(--accent);
+}
+
+.nav-lien--actif .nav-vignette {
+    background: linear-gradient(135deg, #38bdf8, #0284c7);
+    color: #04121c;
+}
+
+/* ===========================================================================
+   9. CHIFFRES CLÉS
+   =========================================================================== */
+
+.kpi-valeur {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+}
+
+.kpi-libelle {
+    margin-top: 4px;
+    font-size: 0.8rem;
+    color: var(--texte-doux);
+}
+
+/* ===========================================================================
+   10. TABLEAUX
+   =========================================================================== */
+
+.tableau { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+
+.tableau thead th {
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--texte-faible);
+    border-bottom: 1px solid var(--bordure);
+}
+
+.tableau tbody td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.07);
+    color: var(--texte-doux);
+}
+
+.tableau tbody tr:hover td { background: rgba(148, 163, 184, 0.04); }
+.tableau tbody tr:last-child td { border-bottom: none; }
+
+/* ===========================================================================
+   11. BARRES DE DÉFILEMENT
+   =========================================================================== */
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 116, 139, 0.45);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover { background-color: rgba(100, 116, 139, 0.7); }
+
+* { scrollbar-width: thin; scrollbar-color: rgba(100, 116, 139, 0.5) transparent; }
+
+/* ===========================================================================
+   12. ANIMATIONS (courtes et discrètes)
+   =========================================================================== */
+
+@keyframes apparition {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.apparition { animation: apparition 220ms ease-out both; }
+
+@keyframes fondu { from { opacity: 0; } to { opacity: 1; } }
+.fondu { animation: fondu 200ms ease-out both; }
+
+/* Ancienne classe conservée : les vues l'utilisent. */
+.animate-quantum { animation: apparition 220ms ease-out both; }
+
+/* Filet de séparation discret. */
+.filet { height: 1px; background: var(--bordure); border: 0; margin: 16px 0; }
+
+/* ===========================================================================
+   14. NOTIFICATIONS (structure reprise de Novaya Suites)
+   =========================================================================== */
+
+.notif {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: var(--r);
+    background: var(--surface-forte);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--bordure);
+    border-left-width: 3px;
+    box-shadow: var(--ombre-2);
+    max-width: 380px;
+}
+
+.notif--succes { border-left-color: var(--succes); }
+.notif--erreur { border-left-color: var(--danger); }
+
+.notif-pastille {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    flex-shrink: 0;
+}
+
+.notif--succes .notif-pastille { background: var(--succes-doux); color: var(--succes); }
+.notif--erreur .notif-pastille { background: var(--danger-doux); color: var(--danger); }
+
+.notif-titre { font-size: 0.82rem; font-weight: 600; line-height: 1.3; }
+.notif--succes .notif-titre { color: var(--succes); }
+.notif--erreur .notif-titre { color: var(--danger); }
+.notif-texte { font-size: 0.85rem; color: var(--texte); line-height: 1.4; }
+
+/* ===========================================================================
+   15. FENÊTRES MODALES (structure reprise de Novaya Suites)
+   =========================================================================== */
+
+.modale-voile {
+    position: fixed;
+    inset: 0;
+    z-index: 150;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: apparition-voile 200ms ease-out both;
+    overflow-y: auto;
+}
+
+.modale-panneau {
+    width: 100%;
+    max-width: 560px;
+    max-height: 92vh;
+    overflow-y: auto;
+    background: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--bordure);
+    border-radius: 28px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    padding: 24px;
+    animation: apparition-panneau 300ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes apparition-voile {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes apparition-panneau {
+    from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ===========================================================================
+   16. FIL D'ARIANE
+   =========================================================================== */
+
+.ariane {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--texte-faible);
+}
+
+.ariane a { transition: color var(--transition); }
+.ariane a:hover { color: var(--texte); }
+
+/* ===========================================================================
+   13. PETITS ÉCRANS (tablette et téléphone)
+   ---------------------------------------------------------------------------
+   Le menu fait 280 px : sur un écran étroit, il écrase le contenu (le portail
+   est justement utilisé sur borne tactile). Il devient donc un TIROIR qui
+   glisse depuis la gauche, ouvert par le bouton en haut à gauche.
+   =========================================================================== */
+
+/* Sur grand écran, le bouton n'existe pas. */
+.bouton-menu { display: none; }
+
+@media (max-width: 1023px) {
+
+    .menu-lateral {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 60;
+        transform: translateX(-100%);
+        transition: transform var(--transition-lente);
+        box-shadow: var(--ombre-2);
+    }
+
+    .menu-lateral--ouvert { transform: translateX(0); }
+
+    .voile-menu {
+        position: fixed;
+        inset: 0;
+        z-index: 55;
+        background: rgba(2, 6, 23, 0.72);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+    }
+
+    .bouton-menu { display: inline-flex; }
+
+    /* Le contenu respire moins sur petit écran. */
+    .contenu-page { padding: 16px !important; }
+}
+
+/* Sur les écrans très larges, on centre le contenu pour éviter des lignes
+   de texte interminables (règle reprise de Novaya : max 1280 px). */
+@media (min-width: 1600px) {
+    .contenu-page > * { max-width: 1400px; margin-left: auto; margin-right: auto; }
+}
+
+/* Respect de « réduire les animations » du système. */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

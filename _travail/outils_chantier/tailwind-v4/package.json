@@ -1,0 +1,12 @@
+{
+  "name": "motohall2a-tailwind-v4",
+  "private": true,
+  "description": "ATELIER D'ESSAI Tailwind v4 pour MotoHall 2A. Cree le 21/09/2026. Il vit A COTE de l'atelier v3 (../tailwind), qui reste intact : c'est lui qui sait refabriquer la feuille actuellement en ligne. NE PAS SUPPRIMER CE FICHIER : sans lui, npm cree un inventaire vide et ELAGUE tout le reste (lecon du 20/09/2026 : 447 paquets supprimes).",
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.3",
+    "tailwindcss": "4.3.3"
+  },
+  "scripts": {
+    "build": "node fabriquer.mjs"
+  }
+}

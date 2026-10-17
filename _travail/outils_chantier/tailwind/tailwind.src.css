@@ -1,0 +1,19 @@
+/* ===========================================================================
+   MOTOHALL 2A — FEUILLE D'ENTRÉE DE TAILWIND
+   Créée le 21/09/2026.
+
+   Ce fichier ne s'affiche PAS : il sert à FABRIQUER assets/css/tailwind.css.
+   Les trois directives ci-dessous sont remplacées, à la compilation, par :
+     base       : la remise à zéro du navigateur (marges, titres, listes...) ;
+     components : les briques réutilisables ;
+     utilities  : toutes les classes utilitaires RÉELLEMENT utilisées par le
+                  site (Tailwind lit les fichiers du projet et ne garde que
+                  celles qu'il trouve).
+
+   POUR REFAIRE LA FEUILLE, dans ce dossier :
+       C:\zeus_dev\zeus_env\node\npm.cmd run build
+   =========================================================================== */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

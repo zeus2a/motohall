@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="MotoHall 2A">
+  <!--
+    Favicon MotoHall 2A — créé le 20/09/2026.
+    Les lettres M et H sont DESSINÉES (traits), pas écrites avec une police :
+    un favicon ne peut pas compter sur une police chargée depuis Internet, et
+    un texte sans police s'affiche de travers.
+    Couleurs de la charte : accent #38bdf8, encre #04121c.
+  -->
+  <rect width="64" height="64" rx="14" fill="#38bdf8"/>
+  <g fill="none" stroke="#04121c" stroke-width="6"
+     stroke-linecap="round" stroke-linejoin="round">
+    <!-- M -->
+    <path d="M10 45 V20 L20 33 L30 20 V45"/>
+    <!-- H -->
+    <path d="M38 20 V45"/>
+    <path d="M54 20 V45"/>
+    <path d="M38 32.5 H54"/>
+  </g>
+</svg>

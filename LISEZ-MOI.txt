@@ -1,0 +1,66 @@
+=======================================================================
+ MOTO-HALL 2A — TOUT LE PROJET, AU MÊME ENDROIT
+ Rangement du 21/09/2026, aligné sur Novaya Suites.
+=======================================================================
+
+ CE QU'IL Y A ICI
+ ----------------
+
+   home\capi3439\public_html\motohall.zeusstack.fr\
+        LE SITE. C'est ici qu'on modifie les pages. C'est le dossier de
+        TRAVAIL, et c'est de lui que partent les envois vers le serveur.
+
+   home\capi3439\zeusstack\motohall\
+        LE MOTEUR : la configuration (donc le mot de passe de la base), les
+        gabarits, le cache. Il vit HORS du dossier web — c'est ce qui fait
+        qu'aucune adresse internet ne peut l'atteindre.
+
+   _travail\
+        L'ATELIER : les sauvegardes, les outils de compilation, le carnet
+        du projet (REPRISE.md), et les anciennes copies.
+
+-----------------------------------------------------------------------
+ POURQUOI CETTE DISPOSITION TOMBE JUSTE
+-----------------------------------------------------------------------
+
+ Le fichier amorce.php cherche le moteur DEUX NIVEAUX au-dessus du dossier
+ du site, dans « zeusstack\motohall\ ». Depuis
+     home\capi3439\public_html\motohall.zeusstack.fr\
+ cela donne bien
+     home\capi3439\zeusstack\motohall\
+
+ C'est EXACTEMENT la disposition du serveur. Le même code marche donc des
+ deux côtés, sans rien modifier.
+
+-----------------------------------------------------------------------
+ ⚠️⚠️  LES DEUX RÈGLES À NE PAS OUBLIER
+-----------------------------------------------------------------------
+
+ 1. LE FICHIER DE CONFIGURATION N'EST JAMAIS ENVOYÉ.
+    Celui d'ici pointe sur la base d'ESSAI (locale). Celui du serveur porte
+    le mot de passe de la base EN LIGNE, et il est le bon.
+    L'exemplaire de production est conservé à part, pour mémoire :
+        _travail\_prod_copie_20260921\zeusstack_motohall\includes\config.php
+    On ne l'envoie JAMAIS non plus.
+
+ 2. APRÈS AVOIR MODIFIÉ UNE PAGE, LA FEUILLE DE STYLE NE SE MET PAS À JOUR
+    TOUTE SEULE. Il faut la refabriquer (moins d'une seconde) :
+        cd _travail\outils_chantier\tailwind-v4
+        npm run build
+
+-----------------------------------------------------------------------
+ CE QUI A ÉTÉ VÉRIFIÉ APRÈS LE RANGEMENT (21/09/2026)
+-----------------------------------------------------------------------
+
+   - la feuille de style refabriquée ici est OCTET POUR OCTET identique à
+     celle qui tourne en ligne (empreinte d671dc02…, 68 402 octets) ;
+   - le moteur est bien trouvé à l'endroit attendu par amorce.php ;
+   - includes\ et templates\ ne sont PLUS dans le dossier du site ;
+   - les 42 fichiers de production ont tous été retrouvés, empreintes
+     comparées une par une.
+
+ LEÇON DU JOUR, À NE PAS OUBLIER : Tailwind lit DEUX dossiers, pas un seul.
+ Le site ET le moteur. Les gabarits portent la plupart des classes ; une
+ compilation qui ne lit que le site produit une feuille INCOMPLÈTE, sans
+ aucun message d'erreur. C'est la TAILLE du fichier produit qui le révèle :
+ 53 562 octets au lieu de 68 402.

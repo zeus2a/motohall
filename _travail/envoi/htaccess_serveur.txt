@@ -1,0 +1,42 @@
+# =====================================================================
+#  MotoHall 2A — Aegis Sentinel — VERSION SERVEUR
+#  Site : https://motohall.zeusstack.fr   (le site est a la RACINE du
+#  sous-domaine, d'ou les chemins « /error.php »)
+#  Prepare le 20/09/2026 par l'agent DSH pour Frederic.
+#
+#  DIFFERENCE AVEC LA VERSION LOCALE DU PROJET : celle-ci visait
+#  « /motohall2a/error.php » (le dossier du poste de Frederic).
+# =====================================================================
+
+# --- 1. PAGES D'ERREUR MAISON -----------------------------------------
+ErrorDocument 400 /error.php?code=400
+ErrorDocument 401 /error.php?code=401
+ErrorDocument 403 /error.php?code=403
+ErrorDocument 404 /error.php?code=404
+ErrorDocument 500 /error.php?code=500
+ErrorDocument 502 /error.php?code=502
+ErrorDocument 503 /error.php?code=503
+
+# --- 2. PAS DE LISTAGE DES DOSSIERS -----------------------------------
+#  Mesure du 20/09/2026 : le sous-domaine tout neuf repondait « Index of / ».
+Options -Indexes
+
+RewriteEngine On
+
+# --- 3. DOSSIERS INTERNES JAMAIS SERVIS PAR LE WEB --------------------
+#  includes\ contient la configuration (donc le mot de passe de la base),
+#  tmp\ le cache, backup\ une ancienne feuille de style, et templates\ les
+#  gabarits — qui sont INCLUS par PHP et ne doivent jamais être appelés
+#  directement par une adresse.
+#  (Ajout de « templates » le 20/09/2026 : ces fichiers étaient accessibles.)
+RewriteRule ^(includes|templates|tmp|backup)(/|$) - [F,L]
+
+# --- 4. FICHIERS QUI NE DOIVENT JAMAIS ETRE TELECHARGEABLES -----------
+RewriteRule \.(md|sql|log|sh|bak|old|ini|yml)$ - [F,L]
+
+# --- 5. HTTPS FORCE : ACTIF DEPUIS LE 20/09/2026 ----------------------
+#  Le certificat Let's Encrypt a ete emis pour motohall.zeusstack.fr et
+#  www.motohall.zeusstack.fr (mesure : valide jusqu'au 19/12/2026).
+#  Le site est donc redirige vers https:// en permanence.
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]

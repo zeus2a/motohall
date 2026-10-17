@@ -1,0 +1,11 @@
+{
+  "name": "motohall2a-tailwind",
+  "private": true,
+  "description": "Atelier de compilation de la feuille de style de MotoHall 2A. Cree le 21/09/2026. NE PAS SUPPRIMER CE FICHIER : sans lui, npm cree un inventaire vide et ELAGUE tout le reste (lecon du 20/09/2026 : 447 paquets supprimes). Le site n'a besoin NI de ce dossier NI de node_modules pour fonctionner : il ne sert qu'a FABRIQUER assets/css/tailwind.css.",
+  "devDependencies": {
+    "tailwindcss": "3.4.19"
+  },
+  "scripts": {
+    "build": "tailwindcss -c tailwind.config.js -i tailwind.src.css -o ../../../motohall2a/assets/css/tailwind.css --minify"
+  }
+}

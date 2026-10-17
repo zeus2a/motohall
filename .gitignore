@@ -1,0 +1,7 @@
+# On ignore les gros dossiers regenerables. Le code, les documents et les AGENTS.md
+# sont versionnes. ATTENTION : ce depot contient les identifiants de la base du site —
+# il ne doit JAMAIS partir sur un service en ligne.
+node_modules/
+_travail/_backups/
+_travail/_prod_copie_*/
+*.log
