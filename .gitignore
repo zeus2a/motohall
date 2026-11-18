@@ -5,3 +5,15 @@ node_modules/
 _travail/_backups/
 _travail/_prod_copie_*/
 *.log
+
+# --- Ajout du 18/11/2026 ---------------------------------------------------
+# Les dossiers d'audit contiennent des RAPPORTS ET DES SCRIPTS, qu'on versionne.
+# Mais on n'y met PAS les artefacts : apercus regenere par PHP, captures d'ecran,
+# et surtout les LIENS vers assets/ et le profil temporaire de Chrome (des
+# milliers de fichiers binaires qui n'ont rien a faire dans un depot).
+_travail/_audit_*/apercu/_chrome_tmp/
+_travail/_audit_*/apercu/sortie/
+_travail/_audit_*/apercu/sortie_site/
+_travail/_audit_*/apercu/captures/
+_travail/_audit_*/_corpus_relecture/
+_travail/_audit_*/phpstan/*.cache

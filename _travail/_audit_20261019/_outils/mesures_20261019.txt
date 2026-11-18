@@ -1,0 +1,319 @@
+﻿AUDIT STRUCTURE moto-hall - mesures - 2026-10-19 18:21:04
+== EMPREINTE AVANT ==
+BEA61EF894CD layout_secure.php
+98EC4C6F96F6 header_ui.php
+E575B0740D1D sidebar.php
+D5CB4664017D footer_ui.php
+9A8E757ED4C4 index_view.php
+F5FE7E9C1D02 dashboard_view.php
+28FEEC46D612 documents_view.php
+46B93820F7B1 admin_users_view.php
+314A2D2CF0C0 agenda_view.php
+5E7295B42871 comptoir_view.php
+1B7082182175 atelier_view.php
+12C98253753A profil_view.php
+7F42894F52F5 login.php
+F1BF0A3B8D00 error.php
+== OUTIL 1 : competence verifier-structure-html (structure_check.php v2, PHP) ==
+### layout_secure.php
+OK | div=10/10 diff=0 | transition=0/0
+### header_ui.php
+OK | div=10/10 diff=0 | transition=0/0
+### sidebar.php
+OK | div=8/8 diff=0 | transition=0/0
+### footer_ui.php
+OK | div=2/2 diff=0 | transition=0/0
+### index_view.php
+OK | div=20/20 diff=0 | transition=0/0
+### dashboard_view.php
+OK | div=13/13 diff=0 | transition=0/0
+### documents_view.php
+OK | div=27/27 diff=0 | transition=0/0
+### admin_users_view.php
+OK | div=37/37 diff=0 | transition=0/0
+### agenda_view.php
+OK | div=27/27 diff=0 | transition=0/0
+### comptoir_view.php
+OK | div=9/9 diff=0 | transition=0/0
+### atelier_view.php
+OK | div=7/7 diff=0 | transition=0/0
+### profil_view.php
+OK | div=18/18 diff=0 | transition=0/0
+### login.php
+OK | div=11/11 diff=0 | transition=0/0
+### error.php
+OK | div=6/6 diff=0 | transition=0/0
+== OUTIL 2 : audit_structure.py (pile LIFO + branches PHP) ==
+==============================================================================
+0. EMPREINTE DES OCTETS ANALYSES (sha256 tronque, ligne + octets)
+==============================================================================
+    bea61ef894cd   214L   12203o  layout_secure.php
+    98ec4c6f96f6   145L    7120o  header_ui.php
+    e575b0740d1d   151L    7433o  sidebar.php
+    d5cb4664017d    51L    2369o  footer_ui.php
+    9a8e757ed4c4   247L   13750o  index_view.php
+    f5fe7e9c1d02   176L    8910o  dashboard_view.php
+    28feec46d612   275L   16201o  documents_view.php
+    46b93820f7b1   294L   15644o  admin_users_view.php
+    314a2d2cf0c0   275L   13145o  agenda_view.php
+    5e7295b42871    75L    4141o  comptoir_view.php
+    1b7082182175    74L    4217o  atelier_view.php
+    12c98253753a   141L    7360o  profil_view.php
+    7f42894f52f5   211L   10635o  login.php
+    f1bf0a3b8d00   137L    8119o  error.php
+
+==============================================================================
+1. EQUILIBRE / IMBRICATION (HTML seul, PHP+script+style+commentaires masques)
+==============================================================================
+layout_secure.php      OK           -
+    div=10/10 span=1/1 main=1/1 a=1/1 button=3/3 p=3/3 template=2/2
+header_ui.php          OK           -
+    div=10/10 span=8/8 header=2/2 nav=1/1 a=2/2 button=1/1 p=3/3
+sidebar.php            OK           -
+    div=8/8 span=18/18 aside=1/1 nav=1/1 a=9/9 p=9/9
+footer_ui.php          OK           -
+    div=2/2 span=6/6 footer=1/1
+index_view.php         OK           -
+    div=20/20 span=9/9 section=1/1 form=1/1 a=1/1 button=1/1 p=9/9
+dashboard_view.php     OK           -
+    div=13/13 span=10/10 a=5/5 p=5/5
+documents_view.php     OK           -
+    div=27/27 span=3/3 a=3/3 button=4/4 p=8/8 template=10/10
+admin_users_view.php   OK           -
+    div=37/37 span=13/13 form=2/2 button=9/9 p=9/9 template=2/2
+agenda_view.php        OK           -
+    div=27/27 span=5/5 form=1/1 button=6/6 p=6/6 template=7/7
+comptoir_view.php      OK           -
+    div=9/9 span=3/3 a=1/1 p=5/5
+atelier_view.php       OK           -
+    div=7/7 span=3/3 a=2/2 p=5/5
+profil_view.php        OK           -
+    div=18/18 span=4/4 form=1/1 a=1/1 button=1/1 p=7/7
+login.php              OK           -
+    div=11/11 span=4/4 header=1/1 footer=1/1 main=1/1 form=1/1 button=2/2 p=6/6 h1=1/1
+error.php              OK           -
+    div=6/6 span=5/5 header=1/1 footer=1/1 main=1/1 a=2/2 p=2/2 h1=1/1
+
+==============================================================================
+2. EQUILIBRE PAR BRANCHE (blocs if/else/foreach en syntaxe alternative)
+==============================================================================
+layout_secure.php      blocs=3   branches=3   OK
+      detail : L133 if x1 | L134 if x1 | L186 if x1
+header_ui.php          blocs=1   branches=2   OK
+      detail : L68 if x2
+sidebar.php            blocs=3   branches=3   OK
+      detail : L73 if x1 | L84 if x1 | L111 if x1
+footer_ui.php          blocs=2   branches=2   OK
+      detail : L32 if x1 | L42 if x1
+index_view.php         blocs=9   branches=12  OK
+      detail : L92 if x1 | L110 if x2 | L118 if x1 | L132 foreach x1 | L150 if x1 | L163 foreach x1 | L164 if x2 | L198 if x1 | L238 if x2
+dashboard_view.php     blocs=4   branches=5   OK
+      detail : L57 foreach x1 | L86 if x2 | L107 foreach x1 | L121 if x1
+documents_view.php     blocs=1   branches=1   OK
+      detail : L103 foreach x1
+admin_users_view.php   blocs=4   branches=5   OK
+      detail : L59 if x1 | L66 if x1 | L221 foreach x1 | L257 if x2
+agenda_view.php        blocs=0   branches=0   OK
+comptoir_view.php      blocs=0   branches=0   OK
+atelier_view.php       blocs=0   branches=0   OK
+profil_view.php        blocs=4   branches=5   OK
+      detail : L22 if x1 | L29 if x1 | L83 if x2 | L92 if x1
+login.php              blocs=3   branches=3   OK
+      detail : L146 if x1 | L153 if x1 | L162 if x1
+error.php              blocs=0   branches=0   OK
+TOTAL blocs de controle analyses : 34
+
+==============================================================================
+3. CHAMPS SANS ETIQUETTE
+==============================================================================
+index_view.php         champs visibles=2  sans etiquette=0
+admin_users_view.php   champs visibles=12  sans etiquette=6
+    L171  <input type=text name=username id=None>
+    L177  <input type=text name=prenom id=None>
+    L181  <input type=text name=nom id=None>
+    L187  <input type=email name=email id=None>
+    L192  <input type=password name=password id=None>
+    L197  <select type=text name=role id=None>
+agenda_view.php        champs visibles=7  sans etiquette=0
+profil_view.php        champs visibles=3  sans etiquette=0
+login.php              champs visibles=2  sans etiquette=0
+
+==============================================================================
+4. IMG / BOUTONS / LIENS / CLIQUABLES NON NATIFS
+==============================================================================
+--- layout_secure.php
+    <div> @click non focalisable L187 ['@click']
+    & NON ECHAPPE L73 href=https://fonts.googleapis.com/css2?family=Orbitron:wght@500;6 (vraie URL/attribut)
+--- header_ui.php
+--- sidebar.php
+    & NON ECHAPPE L36 :class=menuOuvert && 'menu-lateral--ouvert' (&& (binding Alpine))
+    & NON ECHAPPE L59 :class=currentPage === 'index.php' && 'nav-lien--actif' (&& (binding Alpine))
+    & NON ECHAPPE L66 :class=currentPage === 'profil.php' && 'nav-lien--actif' (&& (binding Alpine))
+    & NON ECHAPPE L76 :class=currentPage === 'comptoir.php' && 'nav-lien--actif' (&& (binding Alpine))
+    & NON ECHAPPE L87 :class=currentPage === 'atelier.php' && 'nav-lien--actif' (&& (binding Alpine))
+    & NON ECHAPPE L94 :class=currentPage === 'agenda.php' && 'nav-lien--actif' (&& (binding Alpine))
+    & NON ECHAPPE L104 :class=currentPage === 'documents.php' && 'nav-lien--actif' (&& (binding Alpine))
+    & NON ECHAPPE L114 :class=currentPage === 'dashboard.php' && 'nav-lien--actif' (&& (binding Alpine))
+    & NON ECHAPPE L121 :class=currentPage === 'admin-users.php' && 'nav-lien--actif' (&& (binding Alpine))
+--- index_view.php
+--- documents_view.php
+    img: 1 (alt present: 1)
+    bouton sans type (hors form) : [236]
+    <div> @click non focalisable L133 ['@click']
+    <div> @click non focalisable L157 ['@click']
+    <div> @click non focalisable L175 ['@click']
+    (bouton-icone a nom dynamique L79 x-text=b.name : conforme)
+    & NON ECHAPPE L102 x-show=!currentPath && !loading (&& (binding Alpine))
+    & NON ECHAPPE L151 x-show=currentPath && !loading (&& (binding Alpine))
+    & NON ECHAPPE L193 x-if=folders.length === 0 && files.length === 0 (&& (binding Alpine))
+--- admin_users_view.php
+    bouton sans type (hors form) : [51, 83, 159]
+    BOUTON-ICONE SANS NOM L83 (texte='' x-text=None)
+    BOUTON-ICONE SANS NOM L159 (texte='' x-text=None)
+    <label> SANS for : L[170, 176, 180, 186, 191, 196]
+    & NON ECHAPPE L269 @click=showConfirm('                                                (vraie URL/attribut)
+--- agenda_view.php
+    BOUTON-ICONE SANS NOM L199 (texte='' x-text=None)
+    <style> dans le corps : L[266]
+    & NON ECHAPPE L9 x-data={
+         viewDate: new Date(),
+         events: [],
+       (vraie URL/attribut)
+--- profil_view.php
+--- login.php
+    & NON ECHAPPE L97 href=https://fonts.googleapis.com/css2?family=Orbitron:wght@500;6 (vraie URL/attribut)
+--- error.php
+    LIEN javascript: L118 href=javascript:history.back()
+    & NON ECHAPPE L76 href=https://fonts.googleapis.com/css2?family=Orbitron:wght@500;6 (vraie URL/attribut)
+
+==============================================================================
+5. TITRES / IDS / ATTRIBUTS DUPLIQUES
+==============================================================================
+layout_secure.php      h3(L173)
+    ids=2  dupliques=0
+header_ui.php          (aucun)
+    ids=0  dupliques=0
+sidebar.php            (aucun)
+    ids=0  dupliques=0
+footer_ui.php          (aucun)
+    ids=0  dupliques=0
+index_view.php         h2(L104) > h3(L143) > h2(L202)
+    ids=2  dupliques=0
+dashboard_view.php     h2(L78) > h2(L141)
+    ids=0  dupliques=0
+documents_view.php     h2(L14) > h3(L140) > h4(L226) > h3(L263)
+    ids=0  dupliques=0
+admin_users_view.php   h2(L43) > h3(L82) > h3(L158)
+    ids=6  dupliques=0
+agenda_view.php        h2(L114) > h3(L198)
+    ids=7  dupliques=0
+comptoir_view.php      h3(L30) > h3(L45) > h3(L61)
+    ids=0  dupliques=0
+atelier_view.php       h3(L28) > h3(L44) > h3(L59)
+    ids=0  dupliques=0
+profil_view.php        h2(L41) > h2(L103)
+    ids=3  dupliques=0
+login.php              h1(L139)
+    ids=2  dupliques=0
+error.php              h1(L105)
+    ids=0  dupliques=0
+
+==============================================================================
+6. PAGES COMPOSEES : titre + ids (layout_secure + header + sidebar + footer + vue)
+==============================================================================
+index.php        h1=0  suite=h2 > h3 > h2 > h3
+        !! premier titre = h2 (aucun h1, saut d'entree)
+        ids=4  dupliques=aucun
+dashboard.php    h1=0  suite=h2 > h2 > h3
+        !! premier titre = h2 (aucun h1, saut d'entree)
+        ids=2  dupliques=aucun
+documents.php    h1=0  suite=h2 > h3 > h4 > h3 > h3
+        !! premier titre = h2 (aucun h1, saut d'entree)
+        ids=2  dupliques=aucun
+admin-users.php  h1=0  suite=h2 > h3 > h3 > h3
+        !! premier titre = h2 (aucun h1, saut d'entree)
+        ids=8  dupliques=aucun
+agenda.php       h1=0  suite=h2 > h3 > h3
+        !! premier titre = h2 (aucun h1, saut d'entree)
+        ids=9  dupliques=aucun
+comptoir.php     h1=0  suite=h3 > h3 > h3 > h3
+        !! premier titre = h3 (aucun h1, saut d'entree)
+        ids=2  dupliques=aucun
+atelier.php      h1=0  suite=h3 > h3 > h3 > h3
+        !! premier titre = h3 (aucun h1, saut d'entree)
+        ids=2  dupliques=aucun
+profil.php       h1=0  suite=h2 > h2 > h3
+        !! premier titre = h2 (aucun h1, saut d'entree)
+        ids=5  dupliques=aucun
+login.php        h1=1  suite=h1
+error.php        h1=1  suite=h1
+
+==============================================================================
+7. INVENTAIRE aria-* / role / tabindex / autofocus
+==============================================================================
+layout_secure.php      {'role': [146, 166], 'aria-live': [146], 'aria-label': [155], 'aria-modal': [166], 'aria-labelledby': [166], 'aria-hidden': [187], 'tabindex': [202]}
+header_ui.php          {'aria-label': [100, 106], 'aria-hidden': [108, 122, 126]}
+sidebar.php            {'aria-label': [36, 55]}
+footer_ui.php          {'aria-hidden': [33, 46]}
+login.php              {'aria-pressed': [116], 'aria-label': [116], 'aria-hidden': [118, 126], 'autofocus': [172]}
+
+==============================================================================
+COMPTAGE FINAL
+==============================================================================
+champs_sans_etiquette              6
+click_non_natif                    4
+amp_vraie_url                      5
+amp_andand_alpine                  12
+boutons_sans_type_hors_form        4
+boutons_icone_sans_nom             3
+labels_sans_for                    6
+style_dans_le_corps                1
+liens_javascript                   1
+fichiers_sans_titre                3
+pages_sans_h1                      8
+pages_saut_entree                  8
+attributs_aria                     22
+fichiers analyses                  14
+champs visibles analyses           26
+boutons analyses                   27
+liens analyses                     27
+<label> analyses                   26
+JSON : C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\_travail\_audit_20261019\_outils\audit_structure.json
+== MESURES COMPLEMENTAIRES ==
+layout_secure.php    racines=html@L29 /html               <i>=3   lucide=3
+header_ui.php        racines=header@L70 /header header@L94 /header <i>=3   lucide=3
+sidebar.php          racines=aside@L36 /aside             <i>=9   lucide=9
+footer_ui.php        racines=footer@L28 /footer           <i>=0   lucide=0
+index_view.php       racines=div@L89 /div                 <i>=9   lucide=9
+      form: <form method="POST" action="login.php" class="space-y-3">
+dashboard_view.php   racines=div@L53 /div                 <i>=11  lucide=11
+documents_view.php   racines=div@L9 /div template@L205 /template <i>=15  lucide=15
+admin_users_view.php racines=div@L38 /div                 <i>=11  lucide=11
+      form: <form method="POST" class="space-y-4">
+      form: <form method="POST" class="space-y-4">
+agenda_view.php      racines=div@L9 /div                  <i>=7   lucide=7
+      form: <form @submit.prevent="submitEvent" class="space-y-4">
+comptoir_view.php    racines=div@L16 /div                 <i>=4   lucide=4
+atelier_view.php     racines=div@L14 /div                 <i>=5   lucide=5
+profil_view.php      racines=div@L19 /div                 <i>=3   lucide=3
+      form: <form method="POST" class="space-y-4">
+login.php            racines=html@L67 /html               <i>=4   lucide=4
+      form: <form method="POST" class="carte">
+error.php            racines=html@L49 /html               <i>=3   lucide=3
+TOTAL <i data-lucide> = 87
+== EMPREINTE APRES ==
+BEA61EF894CD layout_secure.php
+98EC4C6F96F6 header_ui.php
+E575B0740D1D sidebar.php
+D5CB4664017D footer_ui.php
+9A8E757ED4C4 index_view.php
+F5FE7E9C1D02 dashboard_view.php
+28FEEC46D612 documents_view.php
+46B93820F7B1 admin_users_view.php
+314A2D2CF0C0 agenda_view.php
+5E7295B42871 comptoir_view.php
+1B7082182175 atelier_view.php
+12C98253753A profil_view.php
+7F42894F52F5 login.php
+F1BF0A3B8D00 error.php
+FIN 2026-10-19 18:21:05

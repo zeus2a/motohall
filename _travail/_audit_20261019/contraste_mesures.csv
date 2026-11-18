@@ -1,0 +1,262 @@
+﻿fichier;ligne;balise;classes;couleur;origine_couleur;fond_compose;origine_fond;ratio;seuil_aa;seuil_aaa;taille_px;graisse;role;gravite;verdict;occurrences;texte
+documents_view.php;245;i;absolute w-64 h-64 text-white/[0.02] animate-pulse-slow pointer-events-none;#101728;text-white/[0.02];#0c1323;fond de page #020617;1.04;3.0;;15;400;decor;decor;ECHEC AA;1;(icone)
+index_view.php;185;span;block text-[0.74rem] text-slate-600 truncate;#2f3a4e;text-slate-600;#0d1426;fond de page #020617;1.60;4.5;7.0;11.1;400;information;bloquant;ECHEC AA;1;[dyn]
+index_view.php;187;i;w-3.5 h-3.5 text-slate-600 shrink-0;#2f3a4e;text-slate-600;#0d1426;fond de page #020617;1.60;3.0;;15;400;graphisme;genant;ECHEC AA;1;(icone)
+documents.php;191;i;w-4 h-4 ml-auto opacity-20 transition-transform text-white;#3f424f;text-white;#0f1223;fond de page #020617;1.86;3.0;;15;400;graphisme;genant;ECHEC AA;1;(icone)
+index_view.php;181;i;w-4 h-4 shrink-0 text-slate-500;#414d62;text-slate-500;#0d1426;fond de page #020617;2.15;3.0;;15;400;graphisme;genant;ECHEC AA;1;(icone)
+index_view.php;175;i;w-4 h-4 text-slate-600 shrink-0;#475569;text-slate-600;#101729;fond de page #020617;2.36;3.0;;15;400;graphisme;genant;ECHEC AA;1;(icone)
+admin_users_view.php;266;span;text-[0.72rem] text-slate-600;#475569;text-slate-600;#0b1225;fond de page #020617;2.46;4.5;7.0;10.8;400;secondaire;genant;ECHEC AA;1;Compte n° [dyn]
+agenda_view.php;183;p;text-center text-[0.75rem] text-slate-600 py-8;#475569;text-slate-600;#0b1225;fond de page #020617;2.46;4.5;7.0;11.25;400;secondaire;genant;ECHEC AA;1;Aucun rendez-vous
+dashboard_view.php;88;i;w-6 h-6 text-slate-600 mx-auto mb-3;#475569;text-slate-600;#0b1225;fond de page #020617;2.46;3.0;;15;400;graphisme;genant;ECHEC AA;1;(icone)
+documents_view.php;78;i;w-4 h-4 text-slate-600;#475569;text-slate-600;#0b1225;fond de page #020617;2.46;3.0;;15;400;graphisme;genant;ECHEC AA;1;(icone)
+documents_view.php;195;i;w-6 h-6 text-slate-600 mx-auto mb-3;#475569;text-slate-600;#0b1225;fond de page #020617;2.46;3.0;;15;400;graphisme;genant;ECHEC AA;1;(icone)
+documents.php;152;p;text-[10px] opacity-60 font-bold mt-1 uppercase tracking-tighter;#9a2e34;heritee (.body --texte);#1a0c1c;fond de page #020617;2.53;4.5;7.0;11.7;700;information;bloquant;ECHEC AA;1;Niveau de sécurité insuffisant pour le District Direction.
+documents_view.php;233;a;px-6 py-4 rounded-xl bg-white/5 hover:bg-emerald-500/20 border border-white/5 hover:border-emerald-500/40 text-emerald-500/50 hover:text-emerald-400 transition-all font-black uppercase tracking-widest text-[10px] flex items-center gap-3;#146c58;text-emerald-500/50;#181e2e;bg-white/5;2.62;4.5;7.0;11.7;600;information;bloquant;ECHEC AA;1;Exporter
+index_view.php;184;span;block text-[0.86rem] text-slate-400 truncate;#5d697d;text-slate-400;#0d1426;fond de page #020617;3.30;4.5;7.0;12.9;400;information;bloquant;ECHEC AA;1;[dyn]
+documents_view.php;229;p;text-[10px] text-cyan-400/50 uppercase tracking-[0.4em] font-bold mt-1;#177389;text-cyan-400/50;#0c1323;fond de page #020617;3.40;4.5;7.0;11.7;700;secondaire;genant;ECHEC AA;1;Visionneuse de documents
+index_view.php;173;span;block text-[0.74rem] text-slate-500 truncate;#64748b;text-slate-500;#101729;fond de page #020617;3.75;4.5;7.0;11.1;400;information;bloquant;ECHEC AA;1;[dyn]
+sidebar.php;47;p;text-[0.72rem] text-slate-500 leading-tight;#64748b;text-slate-500;#0f172a;fond de page #020617;3.75;4.5;7.0;10.8;400;secondaire;genant;ECHEC AA;1;Intranet du personnel
+sidebar.php;55;p;titre-section px-3 mb-2;#64748b;.titre-section;#0f172a;fond de page #020617;3.75;4.5;7.0;10.8;600;information;bloquant;ECHEC AA;1;Mon espace
+sidebar.php;70;p;titre-section px-3 mt-6 mb-2;#64748b;.titre-section;#0f172a;fond de page #020617;3.75;4.5;7.0;10.8;600;information;bloquant;ECHEC AA;1;Comptoir
+sidebar.php;80;p;titre-section px-3 mt-6 mb-2;#64748b;.titre-section;#0f172a;fond de page #020617;3.75;4.5;7.0;10.8;600;information;bloquant;ECHEC AA;1;Atelier
+sidebar.php;95;p;titre-section px-3 mt-6 mb-2;#64748b;.titre-section;#0f172a;fond de page #020617;3.75;4.5;7.0;10.8;600;information;bloquant;ECHEC AA;1;Ressources
+sidebar.php;104;p;titre-section px-3 mt-6 mb-2;#64748b;.titre-section;#0f172a;fond de page #020617;3.75;4.5;7.0;10.8;600;information;bloquant;ECHEC AA;1;Direction
+sidebar.php;131;p;text-[0.7rem] text-slate-500 truncate;#64748b;text-slate-500;#0f172a;fond de page #020617;3.75;4.5;7.0;10.5;400;secondaire;genant;ECHEC AA;1;[dyn]
+documents_view.php;264;p;text-[11px] text-white/40 leading-loose font-bold mb-10 w-4/5 mx-auto uppercase tracking-widest;#6a6d73;text-white/40;#070b15;fond de page #020617;3.79;4.5;7.0;11.7;700;information;bloquant;ECHEC AA;1;Le système interne ne dispose pas des décodeurs pour ce type
+admin_users_view.php;240;p;text-[0.78rem] text-slate-500 truncate;#64748b;text-slate-500;#0b1225;fond de page #020617;3.91;4.5;7.0;11.7;400;information;bloquant;ECHEC AA;1;[dyn]
+dashboard_view.php;68;p;mt-2 text-[0.75rem] text-slate-500;#64748b;text-slate-500;#0b1225;fond de page #020617;3.91;4.5;7.0;11.25;400;information;bloquant;ECHEC AA;1;[dyn]
+dashboard_view.php;90;p;text-[0.78rem] text-slate-500 mt-1;#64748b;text-slate-500;#0b1225;fond de page #020617;3.91;4.5;7.0;11.7;400;information;bloquant;ECHEC AA;1;Les rendez-vous se créent depuis l'agenda de l'atelier.
+dashboard_view.php;99;th;;#64748b;aegis (selecteur descendant);#0b1225;fond de page #020617;3.91;4.5;7.0;10.8;600;information;bloquant;ECHEC AA;1;Date
+dashboard_view.php;100;th;;#64748b;aegis (selecteur descendant);#0b1225;fond de page #020617;3.91;4.5;7.0;10.8;600;information;bloquant;ECHEC AA;1;Heure
+dashboard_view.php;101;th;;#64748b;aegis (selecteur descendant);#0b1225;fond de page #020617;3.91;4.5;7.0;10.8;600;information;bloquant;ECHEC AA;1;Titre
+dashboard_view.php;102;th;;#64748b;aegis (selecteur descendant);#0b1225;fond de page #020617;3.91;4.5;7.0;10.8;600;information;bloquant;ECHEC AA;1;Client
+dashboard_view.php;103;th;;#64748b;aegis (selecteur descendant);#0b1225;fond de page #020617;3.91;4.5;7.0;10.8;600;information;bloquant;ECHEC AA;1;État
+index_view.php;103;p;titre-section mb-2;#64748b;.titre-section;#0b1225;fond de page #020617;3.91;4.5;7.0;10.8;600;information;bloquant;ECHEC AA;1;Portail de l'intranet
+index_view.php;121;p;mt-2 text-[0.78rem] text-slate-500;#64748b;text-slate-500;#0b1225;fond de page #020617;3.91;4.5;7.0;11.7;400;information;bloquant;ECHEC AA;1;[dyn]
+index_view.php;146;p;text-[0.78rem] text-slate-500;#64748b;text-slate-500;#0b1225;fond de page #020617;3.91;4.5;7.0;11.7;400;information;bloquant;ECHEC AA;1;[dyn]
+index_view.php;228;p;mt-4 text-[0.78rem] text-slate-500;#64748b;text-slate-500;#0b1225;fond de page #020617;3.91;4.5;7.0;11.7;400;secondaire;genant;ECHEC AA;1;Identifiants oubliés ? Adressez-vous à la Direction.
+profil_view.php;53;p;text-[0.82rem] text-slate-500 truncate;#64748b;text-slate-500;#0b1225;fond de page #020617;3.91;4.5;7.0;12.3;400;secondaire;genant;ECHEC AA;1;[dyn]
+profil_view.php;61;dt;text-slate-500;#64748b;text-slate-500;#0b1225;fond de page #020617;3.91;4.5;7.0;13.2;400;information;bloquant;ECHEC AA;1;Profil
+profil_view.php;65;dt;text-slate-500;#64748b;text-slate-500;#0b1225;fond de page #020617;3.91;4.5;7.0;13.2;400;information;bloquant;ECHEC AA;1;Adresse e-mail
+profil_view.php;71;dt;text-slate-500;#64748b;text-slate-500;#0b1225;fond de page #020617;3.91;4.5;7.0;13.2;400;information;bloquant;ECHEC AA;1;Compte créé le
+profil_view.php;81;dt;text-slate-500;#64748b;text-slate-500;#0b1225;fond de page #020617;3.91;4.5;7.0;13.2;400;information;bloquant;ECHEC AA;1;État du compte
+profil_view.php;93;p;mt-5 text-[0.8rem] text-slate-500;#64748b;text-slate-500;#0b1225;fond de page #020617;3.91;4.5;7.0;12;400;information;bloquant;ECHEC AA;1;Pour modifier les informations d'un autre membre, utilisez .
+profil_view.php;119;p;mt-1.5 text-[0.75rem] text-slate-500;#64748b;text-slate-500;#0b1225;fond de page #020617;3.91;4.5;7.0;11.25;400;information;bloquant;ECHEC AA;1;Au moins 8 caractères.
+profil_view.php;134;p;mt-4 text-[0.78rem] text-slate-500;#64748b;text-slate-500;#0b1225;fond de page #020617;3.91;4.5;7.0;11.7;400;information;bloquant;ECHEC AA;1;Votre mot de passe est enregistré sous forme chiffrée : pers
+admin_users_view.php;110;span;faible;#64748b;.faible;#0b1120;fond de page #020617;3.96;4.5;7.0;11.7;600;information;bloquant;ECHEC AA;1;(facultatif)
+admin_users_view.php;118;p;mt-1.5 text-[0.75rem] text-slate-500;#64748b;text-slate-500;#0b1120;fond de page #020617;3.96;4.5;7.0;11.25;400;information;bloquant;ECHEC AA;1;Il sera enregistré sous forme chiffrée : personne ne pourra 
+admin_users_view.php;186;span;faible;#64748b;.faible;#0b1120;fond de page #020617;3.96;4.5;7.0;11.7;600;information;bloquant;ECHEC AA;1;(facultatif)
+admin_users_view.php;191;span;faible;#64748b;.faible;#0b1120;fond de page #020617;3.96;4.5;7.0;11.7;600;information;bloquant;ECHEC AA;1;(laisser vide pour ne pas changer)
+aegis.css;291;::placeholder;.champ::placeholder;#64748b;.champ::placeholder;#060b1c;.champ (rgba(2,6,23,0.6)) > .carte (rgba(15,23,42,0.72)) > #020617;4.11;4.5;7.0;13.5;400;information;bloquant;ECHEC AA;1;(texte de substitution d un champ)
+atelier_view.php;70;p;text-[0.78rem] text-slate-500 pt-2;#64748b;text-slate-500;#020617;fond de page #020617;4.24;4.5;7.0;11.7;400;information;bloquant;ECHEC AA;1;Les documents de l'atelier sont rangés par type : guides, ma
+comptoir_view.php;71;p;text-[0.78rem] text-slate-500 pt-2;#64748b;text-slate-500;#020617;fond de page #020617;4.24;4.5;7.0;11.7;400;information;bloquant;ECHEC AA;1;Les documents du magasin sont rangés par type : procédures, 
+error.php;119;div;max-w-6xl mx-auto px-6 h-12 flex items-center justify-between text-[0.72rem] text-slate-500;#64748b;text-slate-500;#020617;fond de page #020617;4.24;4.5;7.0;10.8;400;secondaire;genant;ECHEC AA;1;Intranet MotoHall 2A[dyn]
+footer_ui.php;28;footer;h-9 shrink-0 border-t border-white/10 flex items-center justify-between gap-4 px-6 text-[0.72rem] text-slate-500 bg-[#020617]/60;#64748b;text-slate-500;#020617;bg-[#020617]/60;4.24;4.5;7.0;10.8;400;secondaire;genant;ECHEC AA;1;Intranet [dyn] Connecté : [dyn] ([dyn]) Page : [dyn] Mo Accè
+header_ui.php;48;p;text-[0.72rem] text-slate-500 leading-tight truncate;#64748b;text-slate-500;#020617;fond de page #020617;4.24;4.5;7.0;10.8;400;secondaire;genant;ECHEC AA;1;Intranet du personnel — [dyn]
+header_ui.php;73;nav;ariane mb-0.5;#64748b;.ariane;#020617;fond de page #020617;4.24;4.5;7.0;12;400;information;bloquant;ECHEC AA;1;Intranet[dyn]
+header_ui.php;86;span;text-[0.7rem] text-slate-500;#64748b;text-slate-500;#020617;fond de page #020617;4.24;4.5;7.0;10.5;400;secondaire;genant;ECHEC AA;1;heure locale
+header_ui.php;97;span;text-[0.7rem] text-slate-500;#64748b;text-slate-500;#020617;fond de page #020617;4.24;4.5;7.0;10.5;400;secondaire;genant;ECHEC AA;1;[dyn]
+index_view.php;237;p;text-[0.78rem] text-slate-500;#64748b;text-slate-500;#020617;fond de page #020617;4.24;4.5;7.0;11.7;400;secondaire;genant;ECHEC AA;1;Espace réservé au personnel. Votre profil détermine les espa
+login.php;109;p;titre-section mb-2;#64748b;.titre-section;#020617;fond de page #020617;4.24;4.5;7.0;10.8;600;information;bloquant;ECHEC AA;1;Intranet du personnel
+login.php;165;p;mt-6 text-center text-[0.78rem] text-slate-500;#64748b;text-slate-500;#020617;fond de page #020617;4.24;4.5;7.0;11.7;400;secondaire;genant;ECHEC AA;1;Identifiants oubliés ? Adressez-vous à la Direction.
+login.php;172;div;max-w-6xl mx-auto px-6 h-12 flex items-center justify-between text-[0.72rem] text-slate-500;#64748b;text-slate-500;#020617;fond de page #020617;4.24;4.5;7.0;10.8;400;secondaire;genant;ECHEC AA;1;Intranet MotoHall 2A[dyn]
+documents.php;148;li;p-8 rounded-[2rem] bg-red-500/10 border border-red-500/20 text-red-500 flex flex-col items-center gap-4 animate-in zoom-in;#ef4444;text-red-500;#1a0c1c;bg-red-500/10;5.01;4.5;7.0;15;400;information;genant;AA ok / AAA non;1;Accès RefuséNiveau de sécurité insuffisant pour le District 
+documents.php;151;p;font-display font-black uppercase tracking-widest text-xs;#ef4444;heritee (.body --texte);#1a0c1c;fond de page #020617;5.01;4.5;7.0;11.25;600;information;genant;AA ok / AAA non;1;Accès Refusé
+admin_users_view.php;260;span;badge badge-danger;#f87171;.badge-danger;#2d2637;.badge > .badge-danger;5.26;4.5;7.0;10.8;600;information;genant;AA ok / AAA non;1;Désactivé
+profil_view.php;86;span;badge badge-danger;#f87171;.badge-danger;#2d2637;.badge > .badge-danger;5.26;4.5;7.0;10.8;600;information;genant;AA ok / AAA non;1;Désactivé
+documents.php;161;li;text-red-500 font-bold p-4 uppercase text-[10px];#ef4444;text-red-500;#020617;fond de page #020617;5.36;4.5;7.0;11.7;700;information;genant;AA ok / AAA non;1;Dossier introuvable
+documents_view.php;236;button;px-6 py-4 rounded-xl bg-red-500 hover:bg-red-400 text-black shadow-lg shadow-red-500/20 transition-all font-black uppercase tracking-widest text-[10px] flex items-center gap-3;#000000;text-black;#ef4444;bg-red-500;5.58;4.5;7.0;11.7;600;information;genant;AA ok / AAA non;1;Fermer
+layout_secure.php;172;button;btn btn-danger;#f87171;.btn-danger;#251f30;.btn-danger;5.76;4.5;7.0;12.75;600;information;genant;AA ok / AAA non;1;Confirmer
+layout_secure.php;166;i;w-5 h-5 text-red-400;#f87171;text-red-400;#241a2b;fond de page #020617;6.04;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+index_view.php;120;span;badge badge-accent;#38bdf8;.badge-accent;#1a2e44;.badge > .badge-accent;6.46;4.5;7.0;10.8;600;information;genant;AA ok / AAA non;1;[dyn]
+profil_view.php;62;span;badge badge-accent;#38bdf8;.badge-accent;#1a2e44;.badge > .badge-accent;6.46;4.5;7.0;10.8;600;information;genant;AA ok / AAA non;1;[dyn]
+admin_users_view.php;244;span;badge  shrink-0;#94a3b8;.badge;#161e30;.badge;6.49;4.5;7.0;10.8;600;information;genant;AA ok / AAA non;1;[dyn]
+agenda_view.php;154;span;badge;#94a3b8;.badge;#161e30;.badge;6.49;4.5;7.0;10.8;600;information;genant;AA ok / AAA non;1;Fermé
+atelier_view.php;49;span;badge;#94a3b8;.badge;#161e30;.badge;6.49;4.5;7.0;10.8;600;information;genant;AA ok / AAA non;1;Bientôt disponible
+comptoir_view.php;35;span;badge;#94a3b8;.badge;#161e30;.badge;6.49;4.5;7.0;10.8;600;information;genant;AA ok / AAA non;1;Bientôt disponible
+comptoir_view.php;66;span;badge;#94a3b8;.badge;#161e30;.badge;6.49;4.5;7.0;10.8;600;information;genant;AA ok / AAA non;1;Bientôt disponible
+dashboard_view.php;122;span;ml-2 badge;#94a3b8;.badge;#161e30;.badge;6.49;4.5;7.0;10.8;600;information;genant;AA ok / AAA non;1;[dyn]
+dashboard_view.php;126;span;badge ;#94a3b8;.badge;#161e30;.badge;6.49;4.5;7.0;10.8;600;information;genant;AA ok / AAA non;1;[dyn]
+index_view.php;151;span;badge shrink-0;#94a3b8;.badge;#161e30;.badge;6.49;4.5;7.0;10.8;600;information;genant;AA ok / AAA non;1;Réservé
+admin_users_view.php;68;i;w-5 h-5 text-red-400 shrink-0;#f87171;text-red-400;#0b1225;fond de page #020617;6.73;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+profil_view.php;31;i;w-5 h-5 text-red-400 shrink-0;#f87171;text-red-400;#0b1225;fond de page #020617;6.73;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+login.php;119;i;w-5 h-5 text-red-400 mt-0.5 shrink-0;#f87171;text-red-400;#1a0c1c;fond de page #020617;6.82;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+sidebar.php;57;a;nav-lien;#94a3b8;.nav-lien;#0f172a;fond de page #020617;6.96;4.5;7.0;13.2;500;information;genant;AA ok / AAA non;1;Portail
+sidebar.php;63;a;nav-lien;#94a3b8;.nav-lien;#0f172a;fond de page #020617;6.96;4.5;7.0;13.2;500;information;genant;AA ok / AAA non;1;Mon compte
+sidebar.php;72;a;nav-lien;#94a3b8;.nav-lien;#0f172a;fond de page #020617;6.96;4.5;7.0;13.2;500;information;genant;AA ok / AAA non;1;Espace de vente
+sidebar.php;82;a;nav-lien;#94a3b8;.nav-lien;#0f172a;fond de page #020617;6.96;4.5;7.0;13.2;500;information;genant;AA ok / AAA non;1;Espace technique
+sidebar.php;88;a;nav-lien;#94a3b8;.nav-lien;#0f172a;fond de page #020617;6.96;4.5;7.0;13.2;500;information;genant;AA ok / AAA non;1;Agenda
+sidebar.php;97;a;nav-lien;#94a3b8;.nav-lien;#0f172a;fond de page #020617;6.96;4.5;7.0;13.2;500;information;genant;AA ok / AAA non;1;Documentation
+sidebar.php;106;a;nav-lien;#94a3b8;.nav-lien;#0f172a;fond de page #020617;6.96;4.5;7.0;13.2;500;information;genant;AA ok / AAA non;1;Tableau de bord
+sidebar.php;112;a;nav-lien;#94a3b8;.nav-lien;#0f172a;fond de page #020617;6.96;4.5;7.0;13.2;500;information;genant;AA ok / AAA non;1;Membres du staff
+sidebar.php;135;a;nav-lien;#94a3b8;.nav-lien;#0f172a;fond de page #020617;6.96;4.5;7.0;13.2;500;information;genant;AA ok / AAA non;1;Déconnexion
+admin_users_view.php;258;span;badge badge-succes;#34d399;.badge-succes;#19303b;.badge > .badge-succes;7.15;4.5;7.0;10.8;600;information;conforme;AA et AAA ok;1;Actif
+profil_view.php;84;span;badge badge-succes;#34d399;.badge-succes;#19303b;.badge > .badge-succes;7.15;4.5;7.0;10.8;600;information;conforme;AA et AAA ok;1;Actif
+admin_users_view.php;50;span;badge;#94a3b8;.badge;#0e1324;.badge;7.20;4.5;7.0;10.8;600;information;conforme;AA et AAA ok;1;[dyn] compte[dyn]
+header_ui.php;54;span;badge shrink-0;#94a3b8;.badge;#0e1324;.badge;7.20;4.5;7.0;10.8;600;information;conforme;AA et AAA ok;1;Accès réservé
+documents.php;208;span;text-xs font-bold text-white/60 uppercase tracking-widest group-hover:text-cyan-400 transition-colors line-clamp-1;#9c9da4;text-white/60;#070b1c;fond de page #020617;7.24;4.5;7.0;11.25;700;information;conforme;AA et AAA ok;1;$entry
+admin_users_view.php;248;p;flex items-center gap-2 text-slate-400;#94a3b8;text-slate-400;#0b1225;fond de page #020617;7.26;4.5;7.0;12.3;400;information;conforme;AA et AAA ok;1;[dyn]
+admin_users_view.php;252;p;flex items-center gap-2 text-slate-400;#94a3b8;text-slate-400;#0b1225;fond de page #020617;7.26;4.5;7.0;12.3;400;information;conforme;AA et AAA ok;1;Compte créé le [dyn]
+agenda_view.php;115;p;text-[0.82rem] text-slate-400 mt-0.5;#94a3b8;text-slate-400;#0b1225;fond de page #020617;7.26;4.5;7.0;12.3;400;information;conforme;AA et AAA ok;1;Vue semaine — les rendez-vous se créent avec le bouton à dro
+atelier_view.php;29;p;text-[0.87rem] text-slate-400 leading-relaxed mb-5;#94a3b8;text-slate-400;#0b1225;fond de page #020617;7.26;4.5;7.0;13.05;400;information;conforme;AA et AAA ok;1;Rendez-vous de la semaine et charge de travail de l'équipe.
+atelier_view.php;45;p;text-[0.87rem] text-slate-400 leading-relaxed mb-5;#94a3b8;text-slate-400;#0b1225;fond de page #020617;7.26;4.5;7.0;13.05;400;information;conforme;AA et AAA ok;1;Création, suivi et clôture des O.R. des véhicules en interve
+atelier_view.php;60;p;text-[0.87rem] text-slate-400 leading-relaxed mb-5;#94a3b8;text-slate-400;#0b1225;fond de page #020617;7.26;4.5;7.0;13.05;400;information;conforme;AA et AAA ok;1;Éclatés moteur, manuels d'atelier et fiches fournisseurs.
+comptoir_view.php;31;p;text-[0.87rem] text-slate-400 leading-relaxed mb-5;#94a3b8;text-slate-400;#0b1225;fond de page #020617;7.26;4.5;7.0;13.05;400;information;conforme;AA et AAA ok;1;Facturation, stocks et commandes clients.
+comptoir_view.php;46;p;text-[0.87rem] text-slate-400 leading-relaxed mb-5;#94a3b8;text-slate-400;#0b1225;fond de page #020617;7.26;4.5;7.0;13.05;400;information;conforme;AA et AAA ok;1;Procédures, formulaires, tarifs et documents fournisseurs.
+comptoir_view.php;62;p;text-[0.87rem] text-slate-400 leading-relaxed mb-5;#94a3b8;text-slate-400;#0b1225;fond de page #020617;7.26;4.5;7.0;13.05;400;information;conforme;AA et AAA ok;1;Références, fournisseurs et éclatés de pièces de rechange.
+dashboard_view.php;67;p;kpi-libelle;#94a3b8;.kpi-libelle;#0b1225;fond de page #020617;7.26;4.5;7.0;12;400;information;conforme;AA et AAA ok;1;[dyn]
+dashboard_view.php;89;p;text-[0.85rem] text-slate-400;#94a3b8;text-slate-400;#0b1225;fond de page #020617;7.26;4.5;7.0;12.75;400;information;conforme;AA et AAA ok;1;Aucun rendez-vous à venir.
+dashboard_view.php;110;td;whitespace-nowrap text-slate-300;#94a3b8;aegis (selecteur descendant);#0b1225;fond de page #020617;7.26;4.5;7.0;13.2;400;information;conforme;AA et AAA ok;1;[dyn]
+dashboard_view.php;113;td;whitespace-nowrap tabulaire text-slate-300;#94a3b8;aegis (selecteur descendant);#0b1225;fond de page #020617;7.26;4.5;7.0;13.2;400;information;conforme;AA et AAA ok;1;[dyn]
+dashboard_view.php;116;td;text-slate-200;#94a3b8;aegis (selecteur descendant);#0b1225;fond de page #020617;7.26;4.5;7.0;13.2;400;information;conforme;AA et AAA ok;1;[dyn]
+dashboard_view.php;119;td;;#94a3b8;aegis (selecteur descendant);#0b1225;fond de page #020617;7.26;4.5;7.0;13.2;400;information;conforme;AA et AAA ok;1;[dyn]
+dashboard_view.php;125;td;;#94a3b8;aegis (selecteur descendant);#0b1225;fond de page #020617;7.26;4.5;7.0;13.2;400;information;conforme;AA et AAA ok;1;[dyn]
+dashboard_view.php;145;a;nav-lien;#94a3b8;.nav-lien;#0b1225;fond de page #020617;7.26;4.5;7.0;13.2;500;information;conforme;AA et AAA ok;1;Membres du staff
+dashboard_view.php;152;a;nav-lien;#94a3b8;.nav-lien;#0b1225;fond de page #020617;7.26;4.5;7.0;13.2;500;information;conforme;AA et AAA ok;1;Documentation
+dashboard_view.php;159;a;nav-lien;#94a3b8;.nav-lien;#0b1225;fond de page #020617;7.26;4.5;7.0;13.2;500;information;conforme;AA et AAA ok;1;Comptoir
+dashboard_view.php;166;a;nav-lien;#94a3b8;.nav-lien;#0b1225;fond de page #020617;7.26;4.5;7.0;13.2;500;information;conforme;AA et AAA ok;1;Atelier
+documents_view.php;143;p;text-[0.85rem] text-slate-400 leading-relaxed;#94a3b8;text-slate-400;#0b1225;fond de page #020617;7.26;4.5;7.0;12.75;400;information;conforme;AA et AAA ok;1;[dyn]
+documents_view.php;196;p;text-[0.88rem] text-slate-400;#94a3b8;text-slate-400;#0b1225;fond de page #020617;7.26;4.5;7.0;13.2;400;information;conforme;AA et AAA ok;1;Ce dossier ne contient aucun document.
+error.php;101;p;text-[0.88rem] text-slate-400 leading-relaxed mb-7;#94a3b8;text-slate-400;#0b1225;fond de page #020617;7.26;4.5;7.0;13.2;400;information;conforme;AA et AAA ok;1;[dyn]
+index_view.php;109;p;mt-2 text-[0.9rem] text-slate-400 max-w-2xl;#94a3b8;text-slate-400;#0b1225;fond de page #020617;7.26;4.5;7.0;13.5;400;information;conforme;AA et AAA ok;1;Choisissez un espace ci-dessous : vous voyez ceux que votre 
+index_view.php;158;p;text-[0.86rem] text-slate-400 leading-relaxed mb-5;#94a3b8;text-slate-400;#0b1225;fond de page #020617;7.26;4.5;7.0;12.9;400;information;conforme;AA et AAA ok;1;[dyn]
+index_view.php;206;p;text-[0.85rem] text-slate-400 mb-4;#94a3b8;text-slate-400;#0b1225;fond de page #020617;7.26;4.5;7.0;12.75;400;information;conforme;AA et AAA ok;1;Réservé au personnel de MotoHall 2A. Vos identifiants vous s
+index_view.php;213;label;etiquette;#94a3b8;.etiquette;#0b1225;fond de page #020617;7.26;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Identifiant
+index_view.php;218;label;etiquette;#94a3b8;.etiquette;#0b1225;fond de page #020617;7.26;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Mot de passe
+login.php;142;label;etiquette;#94a3b8;.etiquette;#0b1225;fond de page #020617;7.26;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Identifiant
+login.php;148;label;etiquette;#94a3b8;.etiquette;#0b1225;fond de page #020617;7.26;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Mot de passe
+profil_view.php;110;label;etiquette;#94a3b8;.etiquette;#0b1225;fond de page #020617;7.26;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Mot de passe actuel
+profil_view.php;116;label;etiquette;#94a3b8;.etiquette;#0b1225;fond de page #020617;7.26;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Nouveau mot de passe
+profil_view.php;123;label;etiquette;#94a3b8;.etiquette;#0b1225;fond de page #020617;7.26;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Confirmer le nouveau mot de passe
+admin_users_view.php;93;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Identifiant de connexion
+admin_users_view.php;100;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Prénom
+admin_users_view.php;104;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Nom
+admin_users_view.php;110;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Adresse e-mail
+admin_users_view.php;115;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Mot de passe
+admin_users_view.php;124;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Niveau d'accès
+admin_users_view.php;170;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Identifiant de connexion
+admin_users_view.php;176;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Prénom
+admin_users_view.php;180;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Nom
+admin_users_view.php;186;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Adresse e-mail
+admin_users_view.php;191;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Nouveau mot de passe
+admin_users_view.php;196;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Niveau d'accès
+agenda_view.php;207;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Objet de l'intervention
+agenda_view.php;214;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Nom du client
+agenda_view.php;218;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Immatriculation
+agenda_view.php;226;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Date prévue
+agenda_view.php;231;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Poste de travail
+agenda_view.php;243;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Heure de début
+agenda_view.php;247;label;etiquette;#94a3b8;.etiquette;#0b1120;fond de page #020617;7.34;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;Heure de fin
+error.php;90;i;w-6 h-6 text-[#38bdf8];#38bdf8;text-[#38bdf8];#10233a;fond de page #020617;7.41;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+login.php;126;i;w-5 h-5 text-slate-400 mt-0.5 shrink-0;#94a3b8;text-slate-400;#0a0d1e;fond de page #020617;7.52;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+agenda_view.php;111;i;w-5 h-5 text-[#38bdf8];#38bdf8;text-[#38bdf8];#181e30;fond de page #020617;7.74;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+atelier_view.php;26;i;w-5 h-5 text-[#38bdf8];#38bdf8;text-[#38bdf8];#181e30;fond de page #020617;7.74;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+atelier_view.php;42;i;w-5 h-5 text-[#38bdf8];#38bdf8;text-[#38bdf8];#181e30;fond de page #020617;7.74;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+atelier_view.php;57;i;w-5 h-5 text-[#38bdf8];#38bdf8;text-[#38bdf8];#181e30;fond de page #020617;7.74;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+comptoir_view.php;28;i;w-5 h-5 text-[#38bdf8];#38bdf8;text-[#38bdf8];#181e30;fond de page #020617;7.74;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+comptoir_view.php;43;i;w-5 h-5 text-[#38bdf8];#38bdf8;text-[#38bdf8];#181e30;fond de page #020617;7.74;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+comptoir_view.php;59;i;w-5 h-5 text-[#38bdf8];#38bdf8;text-[#38bdf8];#181e30;fond de page #020617;7.74;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+dashboard_view.php;62;i;w-4 h-4 text-[#38bdf8];#38bdf8;text-[#38bdf8];#181e30;fond de page #020617;7.74;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+documents_view.php;137;i;w-5 h-5 text-[#38bdf8];#38bdf8;text-[#38bdf8];#181e30;fond de page #020617;7.74;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+admin_users_view.php;44;p;text-[0.85rem] text-slate-400 mt-1;#94a3b8;text-slate-400;#020617;fond de page #020617;7.87;4.5;7.0;12.75;400;information;conforme;AA et AAA ok;1;Créez les comptes, ajustez les droits et activez ou désactiv
+atelier_view.php;16;p;text-[0.9rem] text-slate-400 max-w-2xl;#94a3b8;text-slate-400;#020617;fond de page #020617;7.87;4.5;7.0;13.5;400;information;conforme;AA et AAA ok;1;Espace technique : planning des interventions, ordres de rép
+comptoir_view.php;18;p;text-[0.9rem] text-slate-400 max-w-2xl;#94a3b8;text-slate-400;#020617;fond de page #020617;7.87;4.5;7.0;13.5;400;information;conforme;AA et AAA ok;1;Espace de vente et d'accueil client. Les accès ci-dessous s'
+documents_view.php;15;p;text-[0.85rem] text-slate-400 mt-1;#94a3b8;text-slate-400;#020617;fond de page #020617;7.87;4.5;7.0;12.75;400;information;conforme;AA et AAA ok;1;Manuels, procédures et formulaires, classés par service.
+documents_view.php;89;p;text-[0.85rem] text-slate-400;#94a3b8;text-slate-400;#020617;fond de page #020617;7.87;4.5;7.0;12.75;400;information;conforme;AA et AAA ok;1;Chargement du dossier…
+header_ui.php;76;span;text-slate-400 truncate;#94a3b8;text-slate-400;#020617;fond de page #020617;7.87;4.5;7.0;12;400;information;conforme;AA et AAA ok;1;[dyn]
+header_ui.php;78;p;sous-titre-page truncate;#94a3b8;.sous-titre-page;#020617;fond de page #020617;7.87;4.5;7.0;12.75;400;information;conforme;AA et AAA ok;1;[dyn]
+login.php;111;p;mt-2 text-[0.87rem] text-slate-400;#94a3b8;text-slate-400;#020617;fond de page #020617;7.87;4.5;7.0;13.05;400;information;conforme;AA et AAA ok;1;Identifiez-vous pour accéder à MotoHall 2A. Chaque page est 
+documents_view.php;161;i;w-5 h-5 text-[#38bdf8] shrink-0;#38bdf8;text-[#38bdf8];#101729;fond de page #020617;8.33;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+atelier_view.php;32;span;mt-auto inline-flex items-center gap-2 text-[0.83rem] font-semibold text-[#38bdf8];#38bdf8;text-[#38bdf8];#0b1225;fond de page #020617;8.69;4.5;7.0;12.45;600;information;conforme;AA et AAA ok;1;Ouvrir le planning
+atelier_view.php;63;span;mt-auto inline-flex items-center gap-2 text-[0.83rem] font-semibold text-[#38bdf8];#38bdf8;text-[#38bdf8];#0b1225;fond de page #020617;8.69;4.5;7.0;12.45;600;information;conforme;AA et AAA ok;1;Ouvrir la librairie
+comptoir_view.php;49;span;mt-auto inline-flex items-center gap-2 text-[0.83rem] font-semibold text-[#38bdf8];#38bdf8;text-[#38bdf8];#0b1225;fond de page #020617;8.69;4.5;7.0;12.45;600;information;conforme;AA et AAA ok;1;Ouvrir la documentation
+dashboard_view.php;79;a;text-[0.8rem] font-semibold text-[#38bdf8] inline-flex items-center gap-1.5;#38bdf8;text-[#38bdf8];#0b1225;fond de page #020617;8.69;4.5;7.0;12;600;information;conforme;AA et AAA ok;1;Ouvrir l'agenda
+index_view.php;203;i;w-4 h-4 text-[#38bdf8];#38bdf8;text-[#38bdf8];#0b1225;fond de page #020617;8.69;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+profil_view.php;95;a;text-[#38bdf8] hover:underline;#38bdf8;text-[#38bdf8];#0b1225;fond de page #020617;8.69;4.5;7.0;12;400;information;conforme;AA et AAA ok;1;Membres du staff
+admin_users_view.php;51;button;btn btn-accent;#04121c;.btn-accent;#38bdf8;.btn-accent;8.84;4.5;7.0;12.75;600;information;conforme;AA et AAA ok;1;Nouveau membre
+admin_users_view.php;137;button;btn btn-accent flex-1;#04121c;.btn-accent;#38bdf8;.btn-accent;8.84;4.5;7.0;12.75;600;information;conforme;AA et AAA ok;1;Créer le compte
+admin_users_view.php;209;button;btn btn-accent flex-1;#04121c;.btn-accent;#38bdf8;.btn-accent;8.84;4.5;7.0;12.75;600;information;conforme;AA et AAA ok;1;Enregistrer
+agenda_view.php;137;button;btn btn-accent shrink-0;#04121c;.btn-accent;#38bdf8;.btn-accent;8.84;4.5;7.0;12.75;600;information;conforme;AA et AAA ok;1;Nouveau rendez-vous
+agenda_view.php;256;button;btn btn-accent flex-1;#04121c;.btn-accent;#38bdf8;.btn-accent;8.84;4.5;7.0;12.75;600;information;conforme;AA et AAA ok;1;Inscrire au planning
+error.php;80;div;w-9 h-9 rounded-[10px] bg-[#38bdf8] flex items-center justify-center text-[#04121c] font-display font-bold text-sm;#04121c;text-[#04121c];#38bdf8;bg-[#38bdf8];8.84;4.5;7.0;13.12;600;information;conforme;AA et AAA ok;1;MH
+header_ui.php;42;div;w-9 h-9 rounded-[10px] bg-[#38bdf8] flex items-center justify-center text-[#04121c] font-display font-bold text-sm shrink-0;#04121c;text-[#04121c];#38bdf8;bg-[#38bdf8];8.84;4.5;7.0;13.12;600;information;conforme;AA et AAA ok;1;MH
+index_view.php;222;button;btn btn-accent btn-bloc;#04121c;.btn-accent;#38bdf8;.btn-accent;8.84;4.5;7.0;12.75;600;information;conforme;AA et AAA ok;1;Se connecter
+login.php;99;div;w-9 h-9 rounded-[10px] bg-[#38bdf8] flex items-center justify-center text-[#04121c] font-display font-bold text-sm;#04121c;text-[#04121c];#38bdf8;bg-[#38bdf8];8.84;4.5;7.0;13.12;600;information;conforme;AA et AAA ok;1;MH
+login.php;153;button;btn btn-accent btn-large btn-bloc;#04121c;.btn-accent;#38bdf8;.btn-accent;8.84;4.5;7.0;13.5;600;information;conforme;AA et AAA ok;1;Se connecter
+profil_view.php;128;button;btn btn-accent btn-bloc;#04121c;.btn-accent;#38bdf8;.btn-accent;8.84;4.5;7.0;12.75;600;information;conforme;AA et AAA ok;1;Enregistrer le nouveau mot de passe
+sidebar.php;41;div;w-9 h-9 rounded-[10px] bg-[#38bdf8] flex items-center justify-center text-[#04121c] font-display font-bold text-sm shrink-0;#04121c;text-[#04121c];#38bdf8;bg-[#38bdf8];8.84;4.5;7.0;13.12;600;information;conforme;AA et AAA ok;1;MH
+documents_view.php;223;i;w-6 h-6 text-cyan-400;#22d3ee;text-cyan-400;#0b2335;fond de page #020617;8.90;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+documents_view.php;88;i;w-6 h-6 animate-spin text-[#38bdf8] mx-auto mb-3;#38bdf8;text-[#38bdf8];#020617;fond de page #020617;9.42;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+login.php;135;i;w-5 h-5 text-emerald-400 mt-0.5 shrink-0;#34d399;text-emerald-400;#031822;fond de page #020617;9.44;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+admin_users_view.php;61;i;w-5 h-5 text-emerald-400 shrink-0;#34d399;text-emerald-400;#0b1225;fond de page #020617;9.69;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+profil_view.php;24;i;w-5 h-5 text-emerald-400 shrink-0;#34d399;text-emerald-400;#0b1225;fond de page #020617;9.69;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+admin_users_view.php;69;p;text-[0.88rem] text-red-300;#fca5a5;text-red-300;#0b1225;fond de page #020617;9.81;4.5;7.0;13.2;400;information;conforme;AA et AAA ok;1;[dyn]
+profil_view.php;32;p;text-[0.88rem] text-red-300;#fca5a5;text-red-300;#0b1225;fond de page #020617;9.81;4.5;7.0;13.2;400;information;conforme;AA et AAA ok;1;[dyn]
+login.php;120;p;text-[0.85rem] text-red-300;#fca5a5;text-red-300;#1a0c1c;fond de page #020617;9.94;4.5;7.0;12.75;400;information;conforme;AA et AAA ok;1;[dyn]
+documents.php;189;i;w-5 h-5 text-cyan-400 fill-cyan-400/10 group-hover:scale-110 transition-transform;#22d3ee;text-cyan-400;#0f1223;fond de page #020617;10.27;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+sidebar.php;123;div;w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[0.78rem] font-semibold text-slate-300 shrink-0;#cbd5e1;text-slate-300;#1b2335;bg-white/5;10.57;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;[dyn]
+admin_users_view.php;232;div;w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[0.85rem] font-semibold text-slate-300 shrink-0;#cbd5e1;text-slate-300;#181e30;bg-white/5;11.16;4.5;7.0;12.75;600;information;conforme;AA et AAA ok;1;[dyn]
+index_view.php;94;i;w-5 h-5 text-amber-400 shrink-0;#fbbf24;text-amber-400;#0b1225;fond de page #020617;11.16;3.0;;15;400;graphisme;conforme;AA et AAA ok;1;(icone)
+profil_view.php;45;div;w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[1rem] font-semibold text-slate-300 shrink-0;#cbd5e1;text-slate-300;#181e30;bg-white/5;11.16;4.5;7.0;15;600;information;conforme;AA et AAA ok;1;[dyn]
+login.php;136;p;text-[0.85rem] text-emerald-300;#6ee7b7;text-emerald-300;#031822;fond de page #020617;11.90;4.5;7.0;12.75;400;information;conforme;AA et AAA ok;1;Vous êtes bien déconnecté.
+documents.php;190;span;font-bold text-white/80 tracking-widest text-sm uppercase;#cfd0d3;text-white/80;#0f1223;fond de page #020617;12.04;4.5;7.0;13.12;700;information;conforme;AA et AAA ok;1;$entry
+admin_users_view.php;62;p;text-[0.88rem] text-emerald-300;#6ee7b7;text-emerald-300;#0b1225;fond de page #020617;12.22;4.5;7.0;13.2;400;information;conforme;AA et AAA ok;1;[dyn]
+profil_view.php;25;p;text-[0.88rem] text-emerald-300;#6ee7b7;text-emerald-300;#0b1225;fond de page #020617;12.22;4.5;7.0;13.2;400;information;conforme;AA et AAA ok;1;[dyn]
+header_ui.php;99;div;w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[0.78rem] font-semibold text-slate-300 shrink-0 group-hover:border-[#38bdf8]/50 transition-colors;#cbd5e1;text-slate-300;#0f1223;bg-white/5;12.50;4.5;7.0;11.7;600;information;conforme;AA et AAA ok;1;[dyn]
+profil_view.php;66;dd;text-slate-300 truncate;#cbd5e1;text-slate-300;#0b1225;fond de page #020617;12.55;4.5;7.0;13.2;400;information;conforme;AA et AAA ok;1;[dyn]
+profil_view.php;72;dd;text-slate-300;#cbd5e1;text-slate-300;#0b1225;fond de page #020617;12.55;4.5;7.0;13.2;400;information;conforme;AA et AAA ok;1;[dyn]
+index_view.php;95;p;text-[0.88rem] text-amber-300;#fcd34d;text-amber-300;#0b1225;fond de page #020617;12.92;4.5;7.0;13.2;400;information;conforme;AA et AAA ok;1;[dyn]
+login.php;127;p;text-[0.85rem] text-slate-300;#cbd5e1;text-slate-300;#0a0d1e;fond de page #020617;12.99;4.5;7.0;12.75;400;information;conforme;AA et AAA ok;1;Merci de vous identifier pour continuer.
+layout_secure.php;171;button;btn btn-neutre;#e2e8f0;.btn-neutre;#192134;.btn-neutre;13.02;4.5;7.0;12.75;600;information;conforme;AA et AAA ok;1;Annuler
+error.php;106;a;btn btn-neutre;#e2e8f0;.btn-neutre;#161e30;.btn-neutre;13.49;4.5;7.0;12.75;600;information;conforme;AA et AAA ok;1;Accueil
+error.php;110;a;btn btn-neutre;#e2e8f0;.btn-neutre;#161e30;.btn-neutre;13.49;4.5;7.0;12.75;600;information;conforme;AA et AAA ok;1;Retour
+admin_users_view.php;134;button;btn btn-neutre flex-1;#e2e8f0;.btn-neutre;#161d2c;.btn-neutre;13.67;4.5;7.0;12.75;600;information;conforme;AA et AAA ok;1;Annuler
+admin_users_view.php;206;button;btn btn-neutre flex-1;#e2e8f0;.btn-neutre;#161d2c;.btn-neutre;13.67;4.5;7.0;12.75;600;information;conforme;AA et AAA ok;1;Annuler
+agenda_view.php;253;button;btn btn-neutre flex-1;#e2e8f0;.btn-neutre;#161d2c;.btn-neutre;13.67;4.5;7.0;12.75;600;information;conforme;AA et AAA ok;1;Annuler
+index_view.php;172;span;block text-[0.86rem] text-slate-200 truncate;#e2e8f0;text-slate-200;#101729;fond de page #020617;14.48;4.5;7.0;12.9;400;information;conforme;AA et AAA ok;1;[dyn]
+sidebar.php;128;p;text-[0.82rem] text-slate-200 font-semibold truncate;#e2e8f0;text-slate-200;#0f172a;fond de page #020617;14.48;4.5;7.0;12.3;600;information;conforme;AA et AAA ok;1;[dyn]
+documents_view.php;265;a;inline-flex glass px-10 py-5 rounded-[2rem] border-white/10 hover:border-amber-500 hover:bg-amber-500 hover:text-black font-display font-black uppercase text-xs tracking-[0.3em] transition-all gap-4 shadow-xl hover:shadow-[0_0_50px_rgba(245,158,11,0.4)];#e2e8f0;heritee (.body --texte);#0d1424;.glass;14.91;4.5;7.0;11.25;600;information;conforme;AA et AAA ok;1;Extraire le Fichier
+documents_view.php;19;button;btn btn-neutre;#e2e8f0;.btn-neutre;#0e1324;.btn-neutre;14.98;4.5;7.0;12.75;600;information;conforme;AA et AAA ok;1;Actualiser
+admin_users_view.php;247;div;space-y-1.5 text-[0.82rem] mb-4;#e2e8f0;heritee (.body --texte);#0b1225;fond de page #020617;15.11;4.5;7.0;12.3;400;information;conforme;AA et AAA ok;1;[dyn] Compte créé le [dyn] ActifDésactivé
+dashboard_view.php;78;h2;carte-titre;#e2e8f0;.carte-titre;#0b1225;fond de page #020617;15.11;4.5;7.0;14.25;600;information;conforme;AA et AAA ok;1;Prochains rendez-vous
+dashboard_view.php;96;table;tableau;#e2e8f0;heritee (.body --texte);#0b1225;fond de page #020617;15.11;4.5;7.0;13.2;400;information;conforme;AA et AAA ok;1;DateHeureTitreClientÉtat [dyn] [dyn] [dyn] [dyn] [dyn] [dyn]
+dashboard_view.php;141;h2;carte-titre;#e2e8f0;.carte-titre;#0b1225;fond de page #020617;15.11;4.5;7.0;14.25;600;information;conforme;AA et AAA ok;1;Accès rapides
+index_view.php;202;h2;carte-titre;#e2e8f0;.carte-titre;#0b1225;fond de page #020617;15.11;4.5;7.0;14.25;600;information;conforme;AA et AAA ok;1;Identification
+profil_view.php;41;h2;carte-titre;#e2e8f0;.carte-titre;#0b1225;fond de page #020617;15.11;4.5;7.0;14.25;600;information;conforme;AA et AAA ok;1;Mes informations
+profil_view.php;59;dl;space-y-3 text-[0.88rem];#e2e8f0;heritee (.body --texte);#0b1225;fond de page #020617;15.11;4.5;7.0;13.2;400;information;conforme;AA et AAA ok;1;Profil[dyn] Adresse e-mail [dyn] Compte créé le [dyn] État d
+profil_view.php;103;h2;carte-titre;#e2e8f0;.carte-titre;#0b1225;fond de page #020617;15.11;4.5;7.0;14.25;600;information;conforme;AA et AAA ok;1;Changer mon mot de passe
+admin_users_view.php;82;h3;carte-titre;#e2e8f0;.carte-titre;#0b1120;fond de page #020617;15.27;4.5;7.0;14.25;600;information;conforme;AA et AAA ok;1;Nouveau membre
+admin_users_view.php;158;h3;carte-titre;#e2e8f0;.carte-titre;#0b1120;fond de page #020617;15.27;4.5;7.0;14.25;600;information;conforme;AA et AAA ok;1;Modifier le membre
+agenda_view.php;198;h3;carte-titre;#e2e8f0;.carte-titre;#0b1120;fond de page #020617;15.27;4.5;7.0;14.25;600;information;conforme;AA et AAA ok;1;Nouveau rendez-vous
+admin_users_view.php;125;select;champ;#e2e8f0;.champ;#060a1b;.champ;15.97;4.5;7.0;13.5;400;information;conforme;AA et AAA ok;1;Vendeur — magasinMécanicien — atelierDirectionAdministrateur
+admin_users_view.php;197;select;champ;#e2e8f0;.champ;#060a1b;.champ;15.97;4.5;7.0;13.5;400;information;conforme;AA et AAA ok;1;Vendeur — magasinMécanicien — atelierDirectionAdministrateur
+agenda_view.php;232;select;champ;#e2e8f0;.champ;#060a1b;.champ;15.97;4.5;7.0;13.5;400;information;conforme;AA et AAA ok;1;Non affectéPont 1 — service rapidePont 2 — interventions lou
+error.php;76;body;min-h-screen bg-[#020617] text-slate-200 font-sans flex flex-col;#e2e8f0;text-slate-200;#020617;bg-[#020617];16.36;4.5;7.0;15;400;information;conforme;AA et AAA ok;1;MHMotoHall 2A [dyn] [dyn] [dyn] Accueil Retour Intranet Moto
+header_ui.php;94;span;text-[0.85rem] font-medium text-slate-200 group-hover:text-white transition-colors truncate max-w-[160px];#e2e8f0;text-slate-200;#020617;fond de page #020617;16.36;4.5;7.0;12.75;500;information;conforme;AA et AAA ok;1;[dyn]
+layout_secure.php;85;body;flex h-screen overflow-hidden bg-[#020617] text-slate-200 font-sans;#e2e8f0;text-slate-200;#020617;bg-[#020617];16.36;4.5;7.0;15;400;information;conforme;AA et AAA ok;1;Confirmation AnnulerConfirmer
+login.php;95;body;min-h-screen bg-[#020617] text-slate-200 font-sans flex flex-col;#e2e8f0;text-slate-200;#020617;bg-[#020617];16.36;4.5;7.0;15;400;information;conforme;AA et AAA ok;1;MHMotoHall 2A Intranet du personnelConnexion Identifiez-vous
+sidebar.php;44;p;font-display text-[0.95rem] font-semibold text-white leading-tight truncate;#ffffff;text-white;#0f172a;fond de page #020617;17.85;4.5;7.0;14.25;600;information;conforme;AA et AAA ok;1;MotoHall 2A
+layout_secure.php;168;h3;font-display text-[1rem] text-white mb-2;#ffffff;text-white;#0e1628;fond de page #020617;18.04;4.5;7.0;15;600;information;conforme;AA et AAA ok;1;Confirmation
+admin_users_view.php;237;p;text-[0.95rem] font-semibold text-white truncate;#ffffff;text-white;#0b1225;fond de page #020617;18.63;4.5;7.0;14.25;600;information;conforme;AA et AAA ok;1;[dyn]
+agenda_view.php;114;h2;font-display text-[1.15rem] font-semibold text-white;#ffffff;text-white;#0b1225;fond de page #020617;18.63;4.5;7.0;17.25;600;information;conforme;AA et AAA ok;1;Planning de l'atelier
+atelier_view.php;28;h3;font-display text-[1rem] font-semibold text-white mb-2;#ffffff;text-white;#0b1225;fond de page #020617;18.63;4.5;7.0;15;600;information;conforme;AA et AAA ok;1;Agenda de l'atelier
+atelier_view.php;44;h3;font-display text-[1rem] font-semibold text-white mb-2;#ffffff;text-white;#0b1225;fond de page #020617;18.63;4.5;7.0;15;600;information;conforme;AA et AAA ok;1;Ordres de réparation
+atelier_view.php;59;h3;font-display text-[1rem] font-semibold text-white mb-2;#ffffff;text-white;#0b1225;fond de page #020617;18.63;4.5;7.0;15;600;information;conforme;AA et AAA ok;1;Documentation technique
+comptoir_view.php;30;h3;font-display text-[1rem] font-semibold text-white mb-2;#ffffff;text-white;#0b1225;fond de page #020617;18.63;4.5;7.0;15;600;information;conforme;AA et AAA ok;1;Logiciel de caisse
+comptoir_view.php;45;h3;font-display text-[1rem] font-semibold text-white mb-2;#ffffff;text-white;#0b1225;fond de page #020617;18.63;4.5;7.0;15;600;information;conforme;AA et AAA ok;1;Documentation commerciale
+comptoir_view.php;61;h3;font-display text-[1rem] font-semibold text-white mb-2;#ffffff;text-white;#0b1225;fond de page #020617;18.63;4.5;7.0;15;600;information;conforme;AA et AAA ok;1;Catalogue des pièces
+dashboard_view.php;66;p;kpi-valeur;#ffffff;.kpi-valeur;#0b1225;fond de page #020617;18.63;3.0;4.5;28.5;600;information;conforme;AA et AAA ok;1;[dyn]
+documents_view.php;140;h3;font-display text-[1rem] font-semibold text-white mb-1;#ffffff;text-white;#0b1225;fond de page #020617;18.63;4.5;7.0;15;600;information;conforme;AA et AAA ok;1;[dyn]
+error.php;93;p;font-display text-4xl font-semibold text-white mb-2;#ffffff;text-white;#0b1225;fond de page #020617;18.63;3.0;4.5;33.75;600;information;conforme;AA et AAA ok;1;[dyn]
+error.php;97;h1;font-display text-[1.05rem] font-semibold text-white mb-3;#ffffff;text-white;#0b1225;fond de page #020617;18.63;4.5;7.0;15.75;600;information;conforme;AA et AAA ok;1;[dyn]
+index_view.php;104;h2;font-display text-2xl font-semibold text-white;#ffffff;text-white;#0b1225;fond de page #020617;18.63;4.5;7.0;22.5;600;information;conforme;AA et AAA ok;1;[dyn]
+index_view.php;143;h3;font-display text-[1.05rem] font-semibold text-white leading-tight;#ffffff;text-white;#0b1225;fond de page #020617;18.63;4.5;7.0;15.75;600;information;conforme;AA et AAA ok;1;[dyn]
+profil_view.php;50;p;text-[1rem] font-semibold text-white truncate;#ffffff;text-white;#0b1225;fond de page #020617;18.63;4.5;7.0;15;600;information;conforme;AA et AAA ok;1;[dyn]
+documents_view.php;263;h3;text-3xl font-display font-black text-white uppercase tracking-widest mb-6;#ffffff;text-white;#070b15;fond de page #020617;19.67;3.0;4.5;28.12;600;information;conforme;AA et AAA ok;1;Format Non-Visualisable
+admin_users_view.php;43;h2;font-display text-[1.15rem] font-semibold text-white;#ffffff;text-white;#020617;fond de page #020617;20.17;4.5;7.0;17.25;600;information;conforme;AA et AAA ok;1;Comptes du personnel
+documents_view.php;14;h2;font-display text-[1.15rem] font-semibold text-white;#ffffff;text-white;#020617;fond de page #020617;20.17;4.5;7.0;17.25;600;information;conforme;AA et AAA ok;1;Documentation
+error.php;82;span;font-display text-[0.98rem] font-semibold text-white;#ffffff;text-white;#020617;fond de page #020617;20.17;4.5;7.0;14.7;600;information;conforme;AA et AAA ok;1;MotoHall 2A
+header_ui.php;45;p;font-display text-[0.95rem] font-semibold text-white leading-tight truncate;#ffffff;text-white;#020617;fond de page #020617;20.17;4.5;7.0;14.25;600;information;conforme;AA et AAA ok;1;MotoHall 2A
+header_ui.php;85;span;font-display text-[1.05rem] text-white tabulaire;#ffffff;text-white;#020617;fond de page #020617;20.17;4.5;7.0;15.75;600;information;conforme;AA et AAA ok;1;--:--:--
+login.php;101;span;font-display text-[0.98rem] font-semibold text-white;#ffffff;text-white;#020617;fond de page #020617;20.17;4.5;7.0;14.7;600;information;conforme;AA et AAA ok;1;MotoHall 2A
+login.php;110;h1;font-display text-2xl font-semibold text-white;#ffffff;text-white;#020617;fond de page #020617;20.17;4.5;7.0;22.5;600;information;conforme;AA et AAA ok;1;Connexion

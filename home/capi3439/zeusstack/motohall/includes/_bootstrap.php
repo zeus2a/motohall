@@ -45,7 +45,16 @@ try {
     $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
 } catch (PDOException $e) {
     error_log("DB_ERROR: " . $e->getMessage());
-    die("ALERTE SYSTÈME : Connexion BDD impossible. Contactez Zeus Admin.");
+    // !! CE TEXTE EST LU PAR LE PERSONNEL, PAS PAR UN TECHNICIEN (19/10/2026).
+    //    Il disait « ALERTE SYSTÈME : Connexion BDD impossible. Contactez Zeus
+    //    Admin. » — des majuscules qui font peur, « BDD » que personne ne
+    //    comprend, et un « Zeus Admin » qui n'existe pas dans l'entreprise.
+    //    On dit ce qui se passe, ce qu'il faut faire, et qui prévenir.
+    //    Le statut 503 est correct : le service est momentanément indisponible,
+    //    et ce n'est pas une erreur du visiteur.
+    http_response_code(503);
+    die("Le site ne parvient pas à joindre sa base de données pour le moment. "
+        . "Réessayez dans quelques instants. Si le problème dure, prévenez la Direction.");
 }
 
 /**

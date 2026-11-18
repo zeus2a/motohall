@@ -10,8 +10,8 @@ $role = strtoupper(getRole());
 $rolesLisibles = [
     'ADMIN'      => 'Administrateur',
     'DIRECTEUR'  => 'Direction',
-    'VENDEUR'    => 'Vendeur — magasin',
-    'MECANICIEN' => 'Mécanicien — atelier',
+    'VENDEUR'    => 'Vendeur',
+    'MECANICIEN' => 'Mécanicien',
 ];
 $nomComplet = trim((string)($monCompte['prenom'] ?? '') . ' ' . (string)($monCompte['nom'] ?? ''));
 ?>
@@ -58,7 +58,7 @@ $nomComplet = trim((string)($monCompte['prenom'] ?? '') . ' ' . (string)($monCom
 
             <dl class="space-y-3 text-[0.88rem]">
                 <div class="flex items-center justify-between gap-4 py-2 border-b border-white/5">
-                    <dt class="text-slate-500">Profil</dt>
+                    <dt class="text-slate-500">Rôle</dt>
                     <dd><span class="badge badge-accent"><?= htmlspecialchars($rolesLisibles[$role] ?? $role, ENT_QUOTES, 'UTF-8') ?></span></dd>
                 </div>
                 <div class="flex items-center justify-between gap-4 py-2 border-b border-white/5">
@@ -91,8 +91,8 @@ $nomComplet = trim((string)($monCompte['prenom'] ?? '') . ' ' . (string)($monCom
 
             <?php if (in_array($role, ['ADMIN', 'DIRECTEUR'], true)): ?>
             <p class="mt-5 text-[0.8rem] text-slate-500">
-                Pour modifier les informations d'un autre membre, utilisez
-                <a href="admin-users.php" class="text-[#38bdf8] hover:underline">Membres du staff</a>.
+                Pour modifier les informations d’un autre membre, utilisez
+                <a href="admin-users.php" class="text-[#38bdf8] hover:underline">Membres du personnel</a>.
             </p>
             <?php endif; ?>
         </div>
@@ -132,7 +132,7 @@ $nomComplet = trim((string)($monCompte['prenom'] ?? '') . ' ' . (string)($monCom
             </form>
 
             <p class="mt-4 text-[0.78rem] text-slate-500">
-                Votre mot de passe est enregistré sous forme chiffrée : personne — pas même la
+                Votre mot de passe est enregistré sous forme hachée&nbsp;: personne — pas même la
                 Direction — ne peut le relire.
             </p>
         </div>

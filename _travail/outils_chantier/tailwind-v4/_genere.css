@@ -1,11 +1,11 @@
 /* FICHIER FABRIQUÉ AUTOMATIQUEMENT — NE PAS MODIFIER À LA MAIN.
-   Produit par fabriquer.mjs le 2026-09-21T01:38:18.854Z.
+   Produit par fabriquer.mjs le 2026-10-19T16:15:43.316Z.
    Le chemin ci-dessous est calculé : c'est une obligation de Tailwind v4. */
 
 @import "tailwindcss";
 
-@source "C:/zeus_dev/zeus_projets/deepseek-harness/sites-web/moto-hall/home/capi3439/public_html/motohall.zeusstack.fr";
-@source "C:/zeus_dev/zeus_projets/deepseek-harness/sites-web/moto-hall/home/capi3439/zeusstack/motohall";
+@source "C:/zeus_dev/zeus_projets/deepseek-harness/sites-web/moto-hall_laravel/home/capi3439/public_html/motohall.zeusstack.fr";
+@source "C:/zeus_dev/zeus_projets/deepseek-harness/sites-web/moto-hall_laravel/home/capi3439/zeusstack/motohall";
 
 @theme {
     --color-slate-850: #151e2e;

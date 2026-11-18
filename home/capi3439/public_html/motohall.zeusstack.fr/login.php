@@ -64,12 +64,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $base = rtrim(str_replace('\\', '/', dirname((string)($_SERVER['SCRIPT_NAME'] ?? '/login.php'))), '/') . '/';
 ?>
 <!DOCTYPE html>
-<html lang="fr" class="dark">
+<html lang="fr" data-theme="sombre">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion — <?= htmlspecialchars(SITE_NAME, ENT_QUOTES, 'UTF-8') ?></title>
+
+    <!-- PAS D'INDEXATION (19/10/2026) : la page de connexion d'un intranet n'a
+         rien à faire dans un moteur de recherche. Voir le .htaccess et
+         robots.txt pour les deux autres verrous. -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate">
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="bingbot" content="noindex, nofollow">
+    <meta name="theme-color" content="#020617">
+
+    <!-- Thème posé AVANT le dessin de la page (voir layout_secure.php). -->
+    <script src="<?= htmlspecialchars($base, ENT_QUOTES, 'UTF-8') ?>assets/js/theme.js?v=20261019"></script>
 
     <!-- ─── FEUILLE COMPILÉE + LUCIDE, SERVIES PAR LE SITE (21/09/2026) ─────
          AVANT : le « Play CDN » de Tailwind et « lucide@latest » chez unpkg.com —
@@ -77,28 +88,51 @@ $base = rtrim(str_replace('\\', '/', dirname((string)($_SERVER['SCRIPT_NAME'] ??
          toute seule. MAINTENANT : deux fichiers du site, à versions figées.
          C'est la PREMIÈRE page que voit l'équipe : elle ne dépend plus de
          personne d'autre que nous.
-      -->
-    <link rel="stylesheet" href="<?= htmlspecialchars($base, ENT_QUOTES, 'UTF-8') ?>assets/css/tailwind.css?v=20260921">
-    <script src="<?= htmlspecialchars($base, ENT_QUOTES, 'UTF-8') ?>assets/js/lucide.min.js?v=20260921"></script>
 
+         !! Les feuilles de style passent AVANT les scripts (19/10/2026) : Lucide
+            pèse 442 Ko et bloque l'analyse du document ; déclarée après lui,
+            aegis.css n'était même pas demandée tant qu'il n'était pas arrivé, et
+            la page s'affichait sans style pendant ce temps.
+      -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="<?= htmlspecialchars($base, ENT_QUOTES, 'UTF-8') ?>assets/css/tailwind.css?v=20260921">
+    <link rel="stylesheet" href="<?= htmlspecialchars($base, ENT_QUOTES, 'UTF-8') ?>assets/css/aegis.css?v=20261019">
+
+    <script src="<?= htmlspecialchars($base, ENT_QUOTES, 'UTF-8') ?>assets/js/lucide.min.js?v=20260921"></script>
+
     <link rel="icon" href="<?= htmlspecialchars($base, ENT_QUOTES, 'UTF-8') ?>assets/img/favicon.svg" type="image/svg+xml">
     <link rel="icon" href="<?= htmlspecialchars($base, ENT_QUOTES, 'UTF-8') ?>assets/img/favicon-32.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="<?= htmlspecialchars($base, ENT_QUOTES, 'UTF-8') ?>assets/img/favicon-180.png">
-
-    <link rel="stylesheet" href="<?= htmlspecialchars($base, ENT_QUOTES, 'UTF-8') ?>assets/css/aegis.css?v=20260921">
 </head>
 
 <body class="min-h-screen bg-[#020617] text-slate-200 font-sans flex flex-col">
 
-    <header class="border-b border-white/10">
-        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center gap-3">
-            <div class="w-9 h-9 rounded-[10px] bg-[#38bdf8] flex items-center justify-center
-                        text-[#04121c] font-display font-bold text-sm">MH</div>
-            <span class="font-display text-[0.98rem] font-semibold text-white">MotoHall 2A</span>
+    <header class="panneau-haut">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+                <div class="marque w-9 h-9 text-[0.85rem]">MH</div>
+                <span class="font-display text-[1.05rem] font-semibold">MotoHall 2A</span>
+            </div>
+
+            <!-- Bascule de thème : même bouton que dans l'intranet, même script. -->
+            <button type="button" class="bascule-theme" data-theme-toggle
+                    aria-pressed="false" aria-label="Changer de thème" title="Changer de thème">
+                <svg class="icone-soleil" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2"></path><path d="M12 20v2"></path>
+                    <path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path>
+                    <path d="M2 12h2"></path><path d="M20 12h2"></path>
+                    <path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path>
+                </svg>
+                <svg class="icone-lune" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+            </button>
         </div>
     </header>
 
@@ -110,7 +144,7 @@ $base = rtrim(str_replace('\\', '/', dirname((string)($_SERVER['SCRIPT_NAME'] ??
                 <h1 class="font-display text-2xl font-semibold text-white">Connexion</h1>
                 <p class="mt-2 text-[0.87rem] text-slate-400">
                     Identifiez-vous pour accéder à MotoHall 2A. Chaque page est réservée au
-                    personnel : votre profil détermine ensuite les espaces que vous verrez.
+                    personnel&nbsp;: votre profil détermine ensuite les espaces que vous verrez.
                 </p>
             </div>
 
@@ -163,13 +197,13 @@ $base = rtrim(str_replace('\\', '/', dirname((string)($_SERVER['SCRIPT_NAME'] ??
                  Il a donc été retiré.
             -->
             <p class="mt-6 text-center text-[0.78rem] text-slate-500">
-                Identifiants oubliés ? Adressez-vous à la Direction.
+                Identifiants oubliés&nbsp;? Adressez-vous à la Direction.
             </p>
         </div>
     </main>
 
-    <footer class="border-t border-white/10">
-        <div class="max-w-6xl mx-auto px-6 h-12 flex items-center justify-between text-[0.72rem] text-slate-500">
+    <footer class="panneau-bas">
+        <div class="max-w-6xl mx-auto px-6 h-12 flex items-center justify-between">
             <span>Intranet MotoHall 2A</span>
             <span><?= date('Y') ?></span>
         </div>

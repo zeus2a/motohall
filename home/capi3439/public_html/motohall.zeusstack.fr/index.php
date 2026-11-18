@@ -28,7 +28,7 @@ $error = null;
 if (isset($_GET['connexion_requise'])) {
     $error = "Merci de vous identifier pour ouvrir cet espace.";
 } elseif (isset($_GET['error']) && $_GET['error'] === 'access_denied') {
-    $error = "Cet espace ne fait pas partie de votre profil.";
+    $error = "Votre profil ne donne pas accès à cet espace.";
 } elseif (isset($_GET['status']) && $_GET['status'] === 'logged_out') {
     $error = "Vous êtes bien déconnecté.";
 }

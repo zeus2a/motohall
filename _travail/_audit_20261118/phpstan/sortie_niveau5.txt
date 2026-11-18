@@ -1,0 +1,34 @@
+﻿C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\admin-users.php:42:Variable $pdo might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\admin-users.php:88:Variable $pdo might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\admin-users.php:105:Variable $pdo might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\admin-users.php:119:Variable $pdo might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\dashboard.php:31:Variable $pdo might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\dashboard.php:32:Variable $pdo might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\dashboard.php:38:Variable $pdo might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\dashboard.php:42:Variable $pdo might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\dashboard.php:46:Variable $pdo might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\login.php:30:Variable $pdo might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\profil.php:23:Variable $pdo might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\profil.php:47:Variable $pdo might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\includes\_auth.php:21:Strict comparison using !== between true and true will always evaluate to false.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\includes\_init.php:43:Function file_put_key_contents not found.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\layout_secure.php:20:Variable $pageView might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\layout_secure.php:217:Variable $pageView might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\admin_users_view.php:50:Variable $users might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\admin_users_view.php:50:Variable $users might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\admin_users_view.php:59:Variable $success might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\admin_users_view.php:66:Variable $error might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\admin_users_view.php:223:Variable $users might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\dashboard_view.php:16:Variable $docCount might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\dashboard_view.php:18:Variable $docsParService might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\dashboard_view.php:19:Variable $docsParService might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\dashboard_view.php:20:Variable $docsParService might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\dashboard_view.php:24:Variable $agentsActifs might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\dashboard_view.php:26:Variable $agentsActifs might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\dashboard_view.php:26:Variable $agentsTotal might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\dashboard_view.php:32:Variable $rdvAujourdhui might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\dashboard_view.php:38:Variable $rdvSemaine might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\dashboard_view.php:86:Variable $prochainsRdv might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\profil_view.php:22:Variable $message might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\profil_view.php:29:Variable $erreur might not be defined.
+C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\profil_view.php:67:Variable $monCompte might not be defined.

@@ -1,95 +1,250 @@
 /* ===========================================================================
    MOTOHALL 2A — HABILLAGE
-   Refonte du 20/09/2026.
+   Réécrit le 19/10/2026 (2e refonte).
 
-   DIRECTION ARTISTIQUE — ce qui change par rapport à avril 2026 :
-     AVANT : halos néon partout, italiques, majuscules très espacées, textes de
-             8 px, formes « bulles » (rayons de 3 rem), ombres colorées.
-     APRÈS : une seule couleur d'accent utilisée avec parcimonie, des surfaces
-             discrètes, une hiérarchie typographique lisible, des formes
-             mesurées, des ombres douces. C'est le style de Novaya Suites :
-             sombre, dense, calme — ce que Frédéric appelle « pro ».
+   CE QUI CHANGE, ET POURQUOI
+   --------------------------
+   La version du 20/09/2026 avait un seul thème, écrit en dur : tous les
+   fichiers de vue portaient des couleurs fixes (text-slate-500, bg-white/5…).
+   Résultat mesuré sur le site en ligne : du texte à 10,8 px en #64748b sur un
+   fond #020617, soit un contraste de 4,4:1 — sous le seuil de lisibilité — et
+   aucune possibilité de passer en clair.
 
-   REPÈRES (identiques à Novaya, pour rester cohérent d'un site à l'autre) :
-     fond            #020617 (slate-950)
-     surfaces        #0f172a / #151e2e
-     accent          #38bdf8 (sky-400)
-     polices         Rajdhani (texte) + Orbitron (titres)
+   Cette version pose trois choses :
+
+     1. DES COULEURS NOMMÉES PAR LEUR RÔLE, plus jamais par leur teinte.
+        On n'écrit plus « gris 500 », on écrit « texte faible ». Un rôle a deux
+        valeurs : une pour le thème sombre, une pour le thème clair.
+
+     2. UNE ÉCHELLE TYPOGRAPHIQUE DE CINQ MARCHES. Les vues utilisaient vingt-
+        cinq tailles de police différentes, dont la plupart sous 12 px. Le pont
+        de la section 4 les ramène toutes dans l'échelle, sans toucher aux vues.
+
+     3. UN PONT DE THÈME. Les vues gardent leurs classes d'origine (elles
+        contiennent la logique Alpine : on ne les réécrit pas à la légère).
+        Le pont traduit ces classes en rôles. C'est la même idée que la couche
+        de normalisation du 20/09/2026, en plus complet — et c'est elle qui
+        rend le mode clair possible sans réécrire huit vues.
+
+   MESURES — les contrastes ci-dessous ne sont pas estimés, ils sont calculés
+   par `_travail/_audit_20261019/valider_palette.py`, qui applique la formule
+   WCAG 2.2. Résultat au 19/10/2026 : 22 couples contrôlés en sombre, 22 en
+   clair, 0 échec. Les rapports sont écrits dans ce fichier, à côté de chaque
+   rôle, pour qu'une modification future se voie tout de suite.
+   =========================================================================== */
+
+/* ===========================================================================
+   1. LES RÔLES — THÈME SOMBRE (par défaut)
    =========================================================================== */
 
 :root {
-    /* --- Fonds ---------------------------------------------------------- */
+    color-scheme: dark;
+
+    /* --- Fonds ----------------------------------------------------------
+       Le fond général reste le bleu nuit de la charte. Les surfaces sont
+       éclaircies par rapport au fond : c'est ce qui fait qu'une carte se
+       détache sans avoir besoin d'une bordure épaisse. */
     --fond:            #020617;
-    --fond-panneau:    #0f172a;
-    --fond-eleve:      #151e2e;
-    --surface:         rgba(15, 23, 42, 0.72);
-    --surface-forte:   rgba(21, 30, 46, 0.9);
+    --fond-panneau:    #0b1424;
+    --fond-eleve:      #101c2f;
+    --surface:         #0f1a2b;
+    --surface-forte:   #14213a;
+
+    /* --- Couches translucides (remplacent bg-white/5, bg-white/10…) ----- */
+    --calque-1:        rgba(255, 255, 255, 0.035);
+    --calque-2:        rgba(255, 255, 255, 0.06);
+    --calque-3:        rgba(255, 255, 255, 0.10);
+    --voile:           rgba(2, 6, 23, 0.78);
 
     /* --- Bordures -------------------------------------------------------
-       !! BLANCHES et semi-transparentes, jamais gris opaque : la bordure
-          laisse passer le fond, donc les cartes semblent posées sur la
-          lumière au lieu d'être découpées au trait. C'est le détail qui
-          fait le plus pour l'impression de finition (relevé sur Novaya). */
-    --bordure:         rgba(255, 255, 255, 0.08);
-    --bordure-forte:   rgba(255, 255, 255, 0.16);
+       --bordure est DÉCORATIVE : aucune exigence de contraste, la différence
+       de surface suffit à délimiter la carte.
+       --bordure-controle est de CONTRÔLE : elle seule fait qu'on voit un
+       champ de saisie. Elle doit donc tenir 3:1 (WCAG 1.4.11). Mesuré :
+       3,33:1 sur une carte, 3,85:1 sur le fond. */
+    --bordure:           rgba(255, 255, 255, 0.09);
+    --bordure-forte:     rgba(255, 255, 255, 0.18);
+    --bordure-controle:  #5b6d8c;
 
-    /* --- Textes --------------------------------------------------------- */
-    --texte:           #e2e8f0;
-    --texte-doux:      #94a3b8;
-    --texte-faible:    #64748b;
+    /* --- Textes ---------------------------------------------------------
+       Mesuré sur le fond #020617 et sur une carte #0f1a2b :
+         --texte         17,61:1  / 15,24:1   (AAA, exigence 7:1)
+         --texte-doux    11,43:1  /  9,89:1   (AAA)
+         --texte-faible   7,89:1  /  6,83:1   (AA+, exigence 4,5:1) */
+    --texte:           #eaf0f9;
+    --texte-doux:      #b7c4d8;
+    --texte-faible:    #93a3bd;
+    --texte-inverse:   #04121c;
 
-    /* --- Accent et états ------------------------------------------------ */
-    --accent:          #38bdf8;
-    --accent-fonce:    #0ea5e9;
-    --accent-doux:     rgba(56, 189, 248, 0.10);
-    --succes:          #34d399;
-    --succes-doux:     rgba(52, 211, 153, 0.10);
-    --alerte:          #fbbf24;
-    --alerte-doux:     rgba(251, 191, 36, 0.10);
-    --danger:          #f87171;
-    --danger-doux:     rgba(248, 113, 113, 0.10);
+    /* --- Accent et états ------------------------------------------------- */
+    --accent:          #5cc8fb;   /* 10,67:1 sur le fond — liens, icônes */
+    --accent-plein:    #38bdf8;   /* aplat des boutons                     */
+    --accent-plein-texte: #04121c; /* 8,84:1 sur l'aplat                   */
+    --accent-doux:     rgba(92, 200, 251, 0.12);
+    --accent-bordure:  rgba(92, 200, 251, 0.32);
 
-    /* --- Formes --------------------------------------------------------- */
+    --succes:          #4ade80;   /* 10,02:1 sur une carte */
+    --succes-doux:     rgba(74, 222, 128, 0.12);
+    --succes-bordure:  rgba(74, 222, 128, 0.30);
+
+    --alerte:          #fcd34d;   /* 12,11:1 sur une carte */
+    --alerte-doux:     rgba(252, 211, 77, 0.12);
+    --alerte-bordure:  rgba(252, 211, 77, 0.30);
+
+    --danger:          #fca5a5;   /*  9,20:1 sur une carte */
+    --danger-doux:     rgba(252, 165, 165, 0.12);
+    --danger-bordure:  rgba(252, 165, 165, 0.30);
+
+    /* --- Champs de saisie ------------------------------------------------ */
+    --champ-fond:      rgba(2, 6, 23, 0.55);
+    --champ-fond-actif: rgba(2, 6, 23, 0.80);
+
+    /* --- En-tête et pied -------------------------------------------------
+       Ils sont posés sur le contenu qui défile : il leur faut un fond
+       légèrement translucide, sinon le texte se mélange au contenu. */
+    --entete-fond:     rgba(2, 6, 23, 0.86);
+    --pied-fond:       rgba(2, 6, 23, 0.60);
+
+    /* --- Anneau de focus -------------------------------------------------
+       Visible au clavier seulement (:focus-visible). 3:1 minimum sur le fond. */
+    --anneau:          #7dd3fc;
+
+    /* --- Formes ---------------------------------------------------------- */
     --r-petit:         8px;
     --r:               12px;
     --r-grand:         16px;
-    --ombre-1:         0 1px 2px rgba(2, 6, 23, 0.6);
-    --ombre-2:         0 12px 32px -16px rgba(2, 6, 23, 0.9);
+    --ombre-1:         0 1px 2px rgba(2, 6, 23, 0.5);
+    --ombre-2:         0 12px 32px -16px rgba(2, 6, 23, 0.85);
+    --ombre-3:         0 24px 60px -24px rgba(2, 6, 23, 0.9);
 
-    /* --- Mouvement ------------------------------------------------------
-       !! 150 ms pour les micro-interactions, mais 500 ms pour les états du
-          menu : c'est délibérément lent, et c'est ce qui « fait cher ». */
-    --transition:      150ms cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-lente: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    /* --- Mouvement -------------------------------------------------------
+       150 ms pour les micro-interactions, 400 ms pour les états du menu :
+       c'est délibérément lent, et c'est ce qui « fait cher ». */
+    --transition:       150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-lente: 400ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    /* --- Largeurs ------------------------------------------------------- */
-    --largeur-menu:    280px;
+    /* --- Largeurs -------------------------------------------------------- */
+    --largeur-menu:    272px;
     --hauteur-entete:  64px;
+    --hauteur-pied:    36px;
 }
 
 /* ===========================================================================
-   1. BASE
+   2. LES RÔLES — THÈME CLAIR
+   ---------------------------------------------------------------------------
+   Mêmes noms, autres valeurs : aucune règle de mise en page n'a besoin d'être
+   écrite deux fois. C'est tout l'intérêt de nommer par le rôle.
+
+   Le fond n'est pas blanc mais légèrement bleuté (#eef2f8), et les surfaces
+   sont blanches : une carte blanche sur un fond bleuté se détache, alors que
+   du blanc sur du blanc ne se voit pas du tout.
    =========================================================================== */
+
+[data-theme="clair"] {
+    color-scheme: light;
+
+    --fond:            #eef2f8;
+    --fond-panneau:    #ffffff;
+    --fond-eleve:      #f6f8fc;
+    --surface:         #ffffff;
+    --surface-forte:   #ffffff;
+
+    --calque-1:        rgba(12, 21, 38, 0.035);
+    --calque-2:        rgba(12, 21, 38, 0.060);
+    --calque-3:        rgba(12, 21, 38, 0.090);
+    --voile:           rgba(17, 28, 48, 0.55);
+
+    --bordure:           rgba(12, 21, 38, 0.10);
+    --bordure-forte:     rgba(12, 21, 38, 0.20);
+    --bordure-controle:  #64748b;   /* 4,76:1 sur une carte — exigence 3:1 */
+
+    /* Mesuré sur #eef2f8 et sur une carte blanche :
+         --texte         16,24:1 / 18,25:1
+         --texte-doux     8,25:1 /  9,27:1
+         --texte-faible   5,95:1 /  6,68:1 */
+    --texte:           #0c1526;
+    --texte-doux:      #39485f;
+    --texte-faible:    #4d5d76;
+    --texte-inverse:   #ffffff;
+
+    /* L'accent est nettement assombri : le bleu ciel de la charte, posé sur
+       du blanc, ne tient que 2,6:1 — illisible. Mesuré ici : 5,93:1. */
+    --accent:          #0369a1;
+    --accent-plein:    #0369a1;
+    --accent-plein-texte: #ffffff;   /* 5,93:1 sur l'aplat */
+    --accent-doux:     rgba(3, 105, 161, 0.10);
+    --accent-bordure:  rgba(3, 105, 161, 0.32);
+
+    --succes:          #166534;
+    --succes-doux:     rgba(22, 101, 52, 0.10);
+    --succes-bordure:  rgba(22, 101, 52, 0.30);
+
+    --alerte:          #92400e;
+    --alerte-doux:     rgba(146, 64, 14, 0.10);
+    --alerte-bordure:  rgba(146, 64, 14, 0.30);
+
+    --danger:          #b91c1c;
+    --danger-doux:     rgba(185, 28, 28, 0.10);
+    --danger-bordure:  rgba(185, 28, 28, 0.30);
+
+    --champ-fond:      #f8fafc;
+    --champ-fond-actif: #ffffff;
+
+    --entete-fond:     rgba(255, 255, 255, 0.88);
+    --pied-fond:       rgba(255, 255, 255, 0.60);
+
+    --anneau:          #0369a1;
+
+    --ombre-1:         0 1px 2px rgba(12, 21, 38, 0.06);
+    --ombre-2:         0 10px 28px -18px rgba(12, 21, 38, 0.35);
+    --ombre-3:         0 24px 60px -28px rgba(12, 21, 38, 0.40);
+}
+
+/* ===========================================================================
+   3. BASE ET ÉCHELLE TYPOGRAPHIQUE
+   ---------------------------------------------------------------------------
+   CINQ MARCHES, ET RIEN D'AUTRE :
+       --t-micro   0,85 rem  ≈ 14,4 px   étiquettes, pastilles, en-têtes
+       --t-petit   0,92 rem  ≈ 15,6 px   texte secondaire
+       --t-courant 1    rem  ≈ 17   px   texte de lecture
+       --t-sous-titre 1,12 rem ≈ 19 px   sous-titres
+       --t-titre   1,5  rem  ≈ 25,5 px   titres de page
+
+   La racine passe de 15 px à 17 px : c'est la demande « en plus gros », et
+   elle profite aussi aux espacements exprimés en rem (+6 %, mesuré).
+   =========================================================================== */
+
+:root {
+    --t-micro:      0.85rem;
+    --t-petit:      0.92rem;
+    --t-courant:    1rem;
+    --t-sous-titre: 1.12rem;
+    --t-titre:      1.5rem;
+}
+
+html {
+    font-size: 17px;
+    background-color: var(--fond);
+}
 
 *, *::before, *::after { box-sizing: border-box; }
 
 body {
     margin: 0;
-    font-family: 'Rajdhani', system-ui, -apple-system, sans-serif;
-    font-size: 15px;
+    font-family: 'Rajdhani', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-size: var(--t-courant);
     line-height: 1.55;
     background-color: var(--fond);
     color: var(--texte);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    scroll-behavior: smooth;
 }
 
-h1, h2, h3, h4, h5 { margin: 0; font-weight: 600; line-height: 1.3; }
+h1, h2, h3, h4, h5 { margin: 0; font-weight: 600; line-height: 1.28; }
 
 a { color: inherit; text-decoration: none; }
 
-/* Titres : Orbitron, mais JAMAIS en italique et sans espacement forcé. */
+/* Titres : Orbitron, jamais en italique, sans espacement forcé. */
 .font-display {
     font-family: 'Orbitron', system-ui, sans-serif;
     font-weight: 600;
@@ -97,81 +252,286 @@ a { color: inherit; text-decoration: none; }
     letter-spacing: 0.005em;
 }
 
-/* Chiffres alignés (compteurs, horloges, tableaux). */
 .tabulaire { font-variant-numeric: tabular-nums; }
 
+/* --- Accessibilité : le focus doit se voir, et seulement au clavier ------ */
+:focus-visible {
+    outline: 2px solid var(--anneau);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Un lien « sauter au contenu » pour ceux qui naviguent au clavier. */
+.lien-evitement {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 500;
+    padding: 12px 18px;
+    background: var(--accent-plein);
+    color: var(--accent-plein-texte);
+    font-weight: 700;
+    border-radius: 0 0 var(--r) 0;
+}
+.lien-evitement:focus {
+    left: 0;
+}
+
 /* ===========================================================================
-   2. NORMALISATION DES ANCIENNES VUES
+   4. PONT DE THÈME
    ---------------------------------------------------------------------------
-   Les vues d'avril 2026 empilent des effets décoratifs. Plutôt que de les
-   réécrire toutes (risqué : elles contiennent la logique Alpine.js), on calme
-   ces excès ICI. Le rendu devient homogène sur tout le site d'un coup.
+   Les vues (8 fichiers) et deux pages portent encore des classes écrites en
+   dur en septembre : text-slate-500, bg-white/5, border-white/10, et des
+   couleurs de Tailwind pour les états. On ne les réécrit pas une par une — le
+   risque de casser une expression Alpine serait plus grand que le gain.
+
+   On traduit donc la classe en rôle, ICI, une fois.
+
+   TECHNIQUE, ET ELLE COMPTE : les sélecteurs utilisent [class~="…"] et non
+   [class*="…"]. La différence est décisive :
+       [class*="bg-white/5"]  attrape AUSSI « hover:bg-white/5 »
+       [class~="bg-white/5"]  n'attrape QUE la classe exacte
+   Sans cela, poser une règle sur l'état normal écraserait l'effet de survol.
    =========================================================================== */
 
-/* Plus d'italique décoratif : c'est le premier signe de « gadget ». */
+/* --- 4.1 Couleurs de texte ---------------------------------------------- */
+
+body [class~="text-white"],
+body [class~="text-slate-100"],
+body [class~="text-slate-200"],
+body [class~="text-slate-300"] { color: var(--texte); }
+
+body [class~="text-slate-400"] { color: var(--texte-doux); }
+body [class~="text-slate-500"] { color: var(--texte-faible); }
+body [class~="text-slate-600"] { color: var(--texte-faible); }
+
+body [class~="text-white/80"] { color: var(--texte-doux); }
+body [class~="text-white/60"] { color: var(--texte-doux); }
+body [class~="text-white/40"] { color: var(--texte-faible); }
+body [class~="text-white/20"] { color: var(--texte-faible); }
+
+/* --- 4.2 Surfaces ------------------------------------------------------- */
+
+body [class~="bg-white/5"],
+body [class~="bg-white/[0.03]"] { background-color: var(--calque-1); }
+
+body [class~="bg-white/10"],
+body [class~="bg-white/[0.02]"],
+body [class~="bg-white/[0.01]"] { background-color: var(--calque-2); }
+
+/* Le fond de page est OPAQUE ; l'en-tête et le pied sont translucides parce
+   qu'ils laissent deviner le contenu qui défile dessous. Les confondre
+   donnerait un site dont le fond laisse passer la page suivante. */
+body [class~="bg-[#020617]"] { background-color: var(--fond); }
+body [class~="bg-[#020617]/85"] { background-color: var(--entete-fond); }
+body [class~="bg-[#020617]/60"] { background-color: var(--pied-fond); }
+
+body [class~="bg-[#0f172a]"],
+body [class~="bg-[#030712]/95"] { background-color: var(--fond-panneau); }
+
+body [class~="bg-black/70"],
+body [class~="bg-black/40"] { background-color: var(--voile); }
+
+/* --- 4.3 Bordures ------------------------------------------------------- */
+
+body [class~="border-white/5"],
+body [class~="border-white/10"] { border-color: var(--bordure); }
+body [class~="border-white/20"] { border-color: var(--bordure-forte); }
+
+/* --- 4.4 Accent --------------------------------------------------------- */
+
+body [class~="text-[#38bdf8]"] { color: var(--accent); }
+
+body [class~="bg-[#38bdf8]"] {
+    background-color: var(--accent-plein);
+    color: var(--accent-plein-texte);
+}
+body [class~="bg-[#38bdf8]/10"] { background-color: var(--accent-doux); }
+
+body [class~="border-[#38bdf8]/20"],
+body [class~="border-[#38bdf8]/40"],
+body [class~="border-[#38bdf8]/50"] { border-color: var(--accent-bordure); }
+
+/* Les trois univers du portail posent leur teinte en attribut style= (elles
+   viennent d'un tableau PHP, donc ce ne sont pas des classes).
+   En thème SOMBRE ces teintes vives conviennent. En thème CLAIR elles
+   deviennent presque invisibles sur du blanc : le vert #34d399 y tient 1,7:1.
+   On les assombrit, et seulement en clair. La couleur ne porte aucune
+   information seule : le nom de l'univers est écrit à côté. */
+[data-theme="clair"] [style*="#34d399"] { color: #047857; }
+[data-theme="clair"] [style*="#fbbf24"] { color: #a16207; }
+[data-theme="clair"] [style*="#38bdf8"] { color: #0369a1; }
+
+/* --- 4.5 États : succès, alerte, danger ---------------------------------
+   Les vues utilisent les couleurs de Tailwind (emerald, amber, red, cyan) qui
+   n'existent que pour un fond sombre. Elles sont ramenées aux quatre rôles. */
+
+body [class~="text-emerald-300"],
+body [class~="text-emerald-400"],
+body [class~="text-emerald-500"] { color: var(--succes); }
+body [class~="text-emerald-500/50"] { color: var(--succes); }
+
+body [class~="text-amber-300"],
+body [class~="text-amber-400"],
+body [class~="text-amber-500"] { color: var(--alerte); }
+
+body [class~="text-red-300"],
+body [class~="text-red-400"],
+body [class~="text-red-500"] { color: var(--danger); }
+
+body [class~="text-cyan-400"] { color: var(--accent); }
+body [class~="text-cyan-400/50"] { color: var(--accent); }
+
+body [class~="bg-emerald-500/10"],
+body [class~="bg-emerald-500/20"] { background-color: var(--succes-doux); }
+body [class~="bg-amber-500/10"] { background-color: var(--alerte-doux); }
+body [class~="bg-red-500/10"] { background-color: var(--danger-doux); }
+body [class~="bg-cyan-500/10"] { background-color: var(--accent-doux); }
+body [class~="bg-red-500"] { background-color: var(--danger); color: var(--texte-inverse); }
+
+body [class~="border-emerald-500/30"],
+body [class~="border-emerald-500/40"] { border-color: var(--succes-bordure); }
+body [class~="border-amber-500/20"],
+body [class~="border-amber-500/30"] { border-color: var(--alerte-bordure); }
+body [class~="border-red-500/20"],
+body [class~="border-red-500/30"] { border-color: var(--danger-bordure); }
+body [class~="border-cyan-500/20"],
+body [class~="border-cyan-500/30"] { border-color: var(--accent-bordure); }
+
+/* --- 4.6 États de survol ------------------------------------------------
+   Chacun est traité séparément : c'est le prix de la précision de [class~=]. */
+
+body [class~="hover:text-white"]:hover,
+body [class~="hover:text-slate-300"]:hover,
+body [class~="group"]:hover [class~="group-hover:text-white"] { color: var(--texte); }
+
+body [class~="hover:bg-white/5"]:hover,
+body [class~="hover:bg-white/[0.05]"]:hover { background-color: var(--calque-2); }
+
+body [class~="hover:bg-white"]:hover { background-color: var(--surface-forte); }
+body [class~="hover:text-black"]:hover { color: var(--texte-inverse); }
+
+body [class~="hover:text-emerald-400"]:hover,
+body [class~="group"]:hover [class~="group-hover:text-emerald-400"] { color: var(--succes); }
+body [class~="hover:bg-emerald-500/20"]:hover { background-color: var(--succes-doux); }
+body [class~="hover:border-emerald-500/40"]:hover { border-color: var(--succes-bordure); }
+
+body [class~="hover:text-cyan-400"]:hover,
+body [class~="group"]:hover [class~="group-hover:text-cyan-400"] { color: var(--accent); }
+body [class~="hover:bg-cyan-500/10"]:hover { background-color: var(--accent-doux); }
+
+body [class~="hover:bg-amber-500"]:hover {
+    background-color: var(--alerte);
+    color: var(--texte-inverse);
+}
+body [class~="hover:border-amber-500"]:hover { border-color: var(--alerte); }
+
+body [class~="hover:bg-red-400"]:hover { background-color: var(--danger); }
+body [class~="group"]:hover [class~="group-hover:border-[#38bdf8]/50"] { border-color: var(--accent); }
+
+/* --- 4.7 TAILLES DE TEXTE -----------------------------------------------
+   Vingt-cinq tailles différentes étaient utilisées dans les vues, dont
+   quatorze sous 13 px. Elles sont ramenées aux cinq marches de la section 3.
+   Aucune vue n'est modifiée : c'est le pont qui fait le travail. */
+
+/* marche « micro » : tout ce qui était sous 12,5 px */
+body [class~="text-[0.7rem]"],
+body [class~="text-[0.72rem]"],
+body [class~="text-[0.74rem]"],
+body [class~="text-[0.75rem]"],
+body [class~="text-[0.78rem]"],
+body [class~="text-[10px]"],
+body [class~="text-[11px]"],
+body [class~="text-xs"] { font-size: var(--t-micro); }
+
+/* marche « petit » */
+body [class~="text-[0.8rem]"],
+body [class~="text-[0.82rem]"],
+body [class~="text-[0.83rem]"],
+body [class~="text-[0.85rem]"],
+body [class~="text-[0.86rem]"],
+body [class~="text-[0.87rem]"],
+body [class~="text-[0.88rem]"],
+body [class~="text-sm"] { font-size: var(--t-petit); }
+
+/* marche « courant » */
+body [class~="text-[0.9rem]"],
+body [class~="text-[0.95rem]"],
+body [class~="text-[0.98rem]"],
+body [class~="text-[1rem]"] { font-size: var(--t-courant); }
+
+/* marche « sous-titre » */
+body [class~="text-[1.05rem]"],
+body [class~="text-[1.15rem]"] { font-size: var(--t-sous-titre); }
+
+/* texte à l'intérieur d'un bouton : jamais plus petit que la marche « petit » */
+body .btn [class~="text-[10px]"],
+body .btn [class~="text-[11px]"] { font-size: var(--t-petit); }
+
+/* --- 4.8 LE PLANCHER DE LA VERSION PRÉCÉDENTE, CONSERVÉ ------------------
+   Quelques vues d'avril utilisent encore des tailles en pixels. On garde un
+   filet de sécurité général, au cas où une taille échapperait à la liste. */
+body [class~="text-[8px]"],
+body [class~="text-[9px]"] { font-size: var(--t-micro); }
+
+/* --- 4.9 Atténuations décoratives --------------------------------------
+   Le portail pose opacity-60 sur les accès réservés aux visiteurs, et
+   plusieurs vues posent opacity-40 ou opacity-20 sur un chevron.
+
+   Ces valeurs ont été MESURÉES, pas choisies au goût. Le texte faible en
+   thème sombre (#93a3bd) composé sur une carte (#0f1a2b) donne :
+       à 60 %  -> 3,28:1   (sous le seuil de 4,5 — c'était le pire endroit
+                            du site avant cette reprise)
+       à 75 %  -> 4,41:1   (toujours juste en dessous)
+       à 85 %  -> 5,26:1   (conforme)
+   On retient donc 85 %. La hiérarchie visuelle reste : le bloc est moins
+   contrasté que le reste, mais il reste lisible. */
+body [class~="opacity-60"] { opacity: 0.85; }
+body [class~="opacity-40"] { opacity: 0.7; }
+body [class~="opacity-20"] { opacity: 0.5; }
+
+/* --- 4.10 Normalisation des excès d'avril (repris du 20/09/2026) -------- */
+
 [class*="italic"] { font-style: normal !important; }
-
-/* Lettres espacées à l'extrême : on ramène à une valeur lisible. */
-[class*="tracking-"] { letter-spacing: 0.045em !important; }
-.tracking-normal { letter-spacing: 0 !important; }
-
-/* Textes trop petits : plancher à 12 px (9 px était illisible). */
-[class*="text-[8px]"],
-[class*="text-[9px]"],
-[class*="text-[10px]"],
-[class*="text-[11px]"] { font-size: 0.78rem !important; }
-
-/* Graisses extrêmes : 900 partout tue la hiérarchie. */
+[class*="tracking-"] { letter-spacing: 0.03em !important; }
+[class~="tracking-normal"] { letter-spacing: 0 !important; }
 [class*="font-black"] { font-weight: 600 !important; }
-
-/* Halos néon : supprimés (c'est ce qui donnait l'aspect « arcade »). */
 [class*="shadow-[0_0_"] { box-shadow: none !important; }
-
-/* Taches de couleur en fond (dégradés radiaux) : supprimées. */
 [class*="bg-[radial-gradient"] { background-image: none !important; }
-
-/* Formes « bulles » : ramenées à des rayons mesurés. */
 [class*="rounded-[2rem]"],
 [class*="rounded-[2.5rem]"],
 [class*="rounded-[2.8rem]"],
 [class*="rounded-[3rem]"],
 [class*="rounded-[4rem]"],
 [class*="rounded-[15px]"] { border-radius: var(--r-grand) !important; }
-
-/* Ombres noires très dures : adoucies. */
 [class*="shadow-2xl"] { box-shadow: var(--ombre-2) !important; }
-
-/* Pastilles clignotantes : elles attirent l'œil pour rien. */
-[class*="animate-pulse"] { animation: none !important; }
+[class~="animate-pulse"] { animation: none !important; }
 
 /* ===========================================================================
-   3. SURFACES ET CARTES
+   5. SURFACES ET CARTES
    =========================================================================== */
 
-/* Ancienne classe conservée (utilisée par les vues et les fenêtres). */
-.glass {
-    background: var(--surface);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--bordure);
-    box-shadow: var(--ombre-1);
-}
-
-.glass-emerald {
-    background: var(--surface);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--bordure);
-}
-
+.glass,
 .carte {
     background: var(--surface);
     border: 1px solid var(--bordure);
     border-radius: var(--r-grand);
     box-shadow: var(--ombre-1);
-    padding: 20px;
 }
 
+.carte { padding: 20px; }
+
 .carte--plate { background: var(--fond-panneau); }
+
+/* Une carte qui est un lien : elle doit réagir au survol ET au clavier. */
+a.carte {
+    transition: border-color var(--transition), box-shadow var(--transition),
+                transform var(--transition);
+}
+a.carte:hover {
+    border-color: var(--accent-bordure);
+    box-shadow: var(--ombre-2);
+}
 
 .carte-entete {
     display: flex;
@@ -185,47 +545,62 @@ a { color: inherit; text-decoration: none; }
 
 .carte-titre {
     font-family: 'Orbitron', sans-serif;
-    font-size: 0.95rem;
+    font-size: var(--t-sous-titre);
     font-weight: 600;
     color: var(--texte);
 }
 
 /* ===========================================================================
-   4. TYPOGRAPHIE DE PAGES
+   6. TYPOGRAPHIE DE PAGES
    =========================================================================== */
 
 .titre-page {
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.5rem;
+    font-size: var(--t-titre);
     font-weight: 600;
-    color: #fff;
+    color: var(--texte);
     letter-spacing: 0;
+    line-height: 1.2;
 }
 
 .sous-titre-page {
-    font-size: 0.85rem;
+    font-size: var(--t-petit);
     color: var(--texte-doux);
 }
 
-/* Petit intitulé de section (le seul endroit où les majuscules sont voulues). */
+/* Petit intitulé de section : le seul endroit où les majuscules sont voulues.
+   Était à 10,8 px en #64748b — c'est l'un des pires défauts de la version
+   précédente. Désormais 14,4 px en --texte-faible (7,89:1). */
 .titre-section {
-    font-size: 0.72rem;
-    font-weight: 600;
+    font-size: var(--t-micro);
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
     color: var(--texte-faible);
 }
 
 .meta {
-    font-size: 0.78rem;
+    font-size: var(--t-micro);
     color: var(--texte-faible);
 }
 
-.doux  { color: var(--texte-doux); }
+.doux   { color: var(--texte-doux); }
 .faible { color: var(--texte-faible); }
+.accent { color: var(--accent); }
+
+/* Lien d'accent, utilisé « ici et là » : il doit se distinguer d'un texte. */
+.lien-accent {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--accent-bordure);
+}
+.lien-accent:hover { text-decoration-color: var(--accent); }
 
 /* ===========================================================================
-   5. BOUTONS
+   7. BOUTONS
    =========================================================================== */
 
 .btn {
@@ -233,13 +608,14 @@ a { color: inherit; text-decoration: none; }
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 9px 16px;
+    padding: 10px 18px;
     border-radius: var(--r);
     border: 1px solid transparent;
     font-family: inherit;
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: var(--t-petit);
+    font-weight: 700;
     letter-spacing: 0.01em;
+    line-height: 1.2;
     cursor: pointer;
     transition: background-color var(--transition), border-color var(--transition),
                 color var(--transition), transform var(--transition);
@@ -247,65 +623,79 @@ a { color: inherit; text-decoration: none; }
 }
 
 .btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .btn-accent {
-    background: var(--accent);
-    color: #04121c;
-    border-color: var(--accent);
+    background: var(--accent-plein);
+    color: var(--accent-plein-texte);
+    border-color: var(--accent-plein);
 }
-.btn-accent:hover { background: #7dd3fc; border-color: #7dd3fc; }
+.btn-accent:hover { filter: brightness(1.12); }
 
 .btn-neutre {
-    background: rgba(148, 163, 184, 0.08);
+    background: var(--calque-1);
     color: var(--texte);
     border-color: var(--bordure);
 }
-.btn-neutre:hover { background: rgba(148, 163, 184, 0.14); border-color: var(--bordure-forte); }
+.btn-neutre:hover {
+    background: var(--calque-2);
+    border-color: var(--bordure-forte);
+}
 
 .btn-danger {
     background: var(--danger-doux);
     color: var(--danger);
-    border-color: rgba(248, 113, 113, 0.28);
+    border-color: var(--danger-bordure);
 }
-.btn-danger:hover { background: var(--danger); color: #1a0505; }
+.btn-danger:hover {
+    background: var(--danger);
+    color: var(--texte-inverse);
+}
 
-.btn-large { padding: 12px 20px; font-size: 0.9rem; }
+.btn-large { padding: 12px 22px; font-size: var(--t-courant); }
 .btn-bloc  { width: 100%; }
 
 /* ===========================================================================
-   6. CHAMPS DE SAISIE
+   8. CHAMPS DE SAISIE
+   ---------------------------------------------------------------------------
+   La bordure des champs est --bordure-controle et non --bordure : c'est la
+   seule chose qui dit « ici on peut écrire », et elle tient 3:1 (mesuré).
    =========================================================================== */
 
 .champ {
     width: 100%;
     padding: 11px 14px;
-    background: rgba(2, 6, 23, 0.6);
-    border: 1px solid var(--bordure);
+    background: var(--champ-fond);
+    border: 1px solid var(--bordure-controle);
     border-radius: var(--r);
     color: var(--texte);
     font-family: inherit;
-    font-size: 0.9rem;
-    transition: border-color var(--transition), background-color var(--transition);
+    font-size: var(--t-courant);
+    transition: border-color var(--transition), background-color var(--transition),
+                box-shadow var(--transition);
 }
 
-.champ::placeholder { color: var(--texte-faible); }
+.champ::placeholder { color: var(--texte-faible); opacity: 1; }
+
+.champ:hover { border-color: var(--texte-faible); }
 
 .champ:focus {
     outline: none;
     border-color: var(--accent);
-    background: rgba(2, 6, 23, 0.85);
+    background: var(--champ-fond-actif);
+    box-shadow: 0 0 0 3px var(--accent-doux);
 }
 
 .etiquette {
     display: block;
     margin-bottom: 6px;
-    font-size: 0.78rem;
+    font-size: var(--t-petit);
     font-weight: 600;
     color: var(--texte-doux);
 }
 
 /* ===========================================================================
-   7. PASTILLES D'ÉTAT
+   9. PASTILLES D'ÉTAT
    =========================================================================== */
 
 .badge {
@@ -315,20 +705,27 @@ a { color: inherit; text-decoration: none; }
     padding: 3px 10px;
     border-radius: 999px;
     border: 1px solid var(--bordure);
-    background: rgba(148, 163, 184, 0.08);
-    font-size: 0.72rem;
-    font-weight: 600;
+    background: var(--calque-2);
+    font-size: var(--t-micro);
+    font-weight: 700;
+    line-height: 1.5;
     color: var(--texte-doux);
+    white-space: nowrap;
 }
 
-.badge-accent  { background: var(--accent-doux);  border-color: rgba(56, 189, 248, 0.28);  color: var(--accent); }
-.badge-succes  { background: var(--succes-doux);  border-color: rgba(52, 211, 153, 0.28);  color: var(--succes); }
-.badge-alerte  { background: var(--alerte-doux);  border-color: rgba(251, 191, 36, 0.28);  color: var(--alerte); }
-.badge-danger  { background: var(--danger-doux);  border-color: rgba(248, 113, 113, 0.28); color: var(--danger); }
+.badge-accent  { background: var(--accent-doux);  border-color: var(--accent-bordure);  color: var(--accent); }
+.badge-succes  { background: var(--succes-doux);  border-color: var(--succes-bordure);  color: var(--succes); }
+.badge-alerte  { background: var(--alerte-doux);  border-color: var(--alerte-bordure);  color: var(--alerte); }
+.badge-danger  { background: var(--danger-doux);  border-color: var(--danger-bordure);  color: var(--danger); }
 
 /* ===========================================================================
-   8. NAVIGATION LATÉRALE
+   10. NAVIGATION LATÉRALE
    =========================================================================== */
+
+.menu-lateral {
+    background: var(--fond-panneau);
+    border-right: 1px solid var(--bordure);
+}
 
 .nav-groupe { margin-bottom: 22px; }
 
@@ -336,20 +733,19 @@ a { color: inherit; text-decoration: none; }
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 8px 12px;
+    padding: 9px 12px;
     margin-bottom: 3px;
     border-radius: var(--r);
     border-left: 2px solid transparent;
     color: var(--texte-doux);
-    font-size: 0.88rem;
+    font-size: var(--t-petit);
     font-weight: 500;
     transition: background-color var(--transition-lente), color var(--transition-lente),
                 border-color var(--transition-lente);
 }
 
-.nav-lien:hover { background: rgba(255, 255, 255, 0.04); color: var(--texte); }
+.nav-lien:hover { background: var(--calque-1); color: var(--texte); }
 
-/* Vignette de l'icône : carré arrondi discret, qui s'allume sur l'élément actif. */
 .nav-vignette {
     display: flex;
     align-items: center;
@@ -358,92 +754,105 @@ a { color: inherit; text-decoration: none; }
     height: 30px;
     flex-shrink: 0;
     border-radius: 9px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--calque-1);
     transition: background-color var(--transition-lente), color var(--transition-lente);
 }
 
-.nav-vignette svg, .nav-vignette i { width: 16px; height: 16px; }
+.nav-vignette svg, .nav-vignette i { width: 17px; height: 17px; }
 
-.nav-lien:hover .nav-vignette { background: rgba(255, 255, 255, 0.09); }
+.nav-lien:hover .nav-vignette { background: var(--calque-2); }
 
-/* Élément actif : dégradé discret, filet d'accent à gauche, icône allumée.
-   !! 20/09/2026 : on a essayé la « barre à droite » de Novaya Suites, mais
-      Frédéric préfère la version d'origine de ce menu (« ton menu était très
-      beau »). On garde donc celle-ci, SANS effet de lumière. */
+/* Élément actif : filet d'accent à gauche, fond teinté, icône allumée.
+   Le contraste du texte actif sur son propre fond est mesuré : --accent tient
+   10,67:1 en sombre et 5,93:1 en clair. */
 .nav-lien--actif {
-    background: linear-gradient(to right, rgba(14, 165, 233, 0.14), rgba(2, 132, 199, 0.04));
+    background: var(--accent-doux);
     border-left-color: var(--accent);
     color: var(--accent);
+    font-weight: 600;
 }
 
 .nav-lien--actif .nav-vignette {
-    background: linear-gradient(135deg, #38bdf8, #0284c7);
-    color: #04121c;
+    background: var(--accent-plein);
+    color: var(--accent-plein-texte);
 }
 
 /* ===========================================================================
-   9. CHIFFRES CLÉS
+   11. CHIFFRES CLÉS
    =========================================================================== */
 
 .kpi-valeur {
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.9rem;
+    font-size: 2rem;
     font-weight: 600;
-    color: #fff;
+    color: var(--texte);
     font-variant-numeric: tabular-nums;
     line-height: 1.1;
 }
 
 .kpi-libelle {
     margin-top: 4px;
-    font-size: 0.8rem;
+    font-size: var(--t-petit);
+    font-weight: 600;
     color: var(--texte-doux);
 }
 
 /* ===========================================================================
-   10. TABLEAUX
+   12. TABLEAUX
    =========================================================================== */
 
-.tableau { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.tableau {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--t-petit);
+}
 
 .tableau thead th {
     padding: 10px 12px;
     text-align: left;
-    font-size: 0.72rem;
-    font-weight: 600;
+    font-size: var(--t-micro);
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     color: var(--texte-faible);
     border-bottom: 1px solid var(--bordure);
+    white-space: nowrap;
 }
 
 .tableau tbody td {
     padding: 12px;
-    border-bottom: 1px solid rgba(148, 163, 184, 0.07);
+    border-bottom: 1px solid var(--bordure);
     color: var(--texte-doux);
+    vertical-align: middle;
 }
 
-.tableau tbody tr:hover td { background: rgba(148, 163, 184, 0.04); }
+.tableau tbody tr:hover td { background: var(--calque-1); }
 .tableau tbody tr:last-child td { border-bottom: none; }
 
+/* En thème clair, une ligne sur deux très légèrement teintée : sur une grande
+   surface blanche, l'œil perd la ligne sans ce repère. */
+[data-theme="clair"] .tableau tbody tr:nth-child(even) td {
+    background: rgba(12, 21, 38, 0.022);
+}
+
 /* ===========================================================================
-   11. BARRES DE DÉFILEMENT
+   13. BARRES DE DÉFILEMENT
    =========================================================================== */
 
-::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(100, 116, 139, 0.45);
+    background-color: var(--calque-3);
     border-radius: 999px;
     border: 2px solid transparent;
     background-clip: padding-box;
 }
-::-webkit-scrollbar-thumb:hover { background-color: rgba(100, 116, 139, 0.7); }
+::-webkit-scrollbar-thumb:hover { background-color: var(--bordure-forte); }
 
-* { scrollbar-width: thin; scrollbar-color: rgba(100, 116, 139, 0.5) transparent; }
+* { scrollbar-width: thin; scrollbar-color: var(--calque-3) transparent; }
 
 /* ===========================================================================
-   12. ANIMATIONS (courtes et discrètes)
+   14. ANIMATIONS (courtes et discrètes)
    =========================================================================== */
 
 @keyframes apparition {
@@ -456,14 +865,12 @@ a { color: inherit; text-decoration: none; }
 @keyframes fondu { from { opacity: 0; } to { opacity: 1; } }
 .fondu { animation: fondu 200ms ease-out both; }
 
-/* Ancienne classe conservée : les vues l'utilisent. */
 .animate-quantum { animation: apparition 220ms ease-out both; }
 
-/* Filet de séparation discret. */
 .filet { height: 1px; background: var(--bordure); border: 0; margin: 16px 0; }
 
 /* ===========================================================================
-   14. NOTIFICATIONS (structure reprise de Novaya Suites)
+   15. NOTIFICATIONS
    =========================================================================== */
 
 .notif {
@@ -473,12 +880,10 @@ a { color: inherit; text-decoration: none; }
     padding: 12px 16px;
     border-radius: var(--r);
     background: var(--surface-forte);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--bordure);
     border-left-width: 3px;
     box-shadow: var(--ombre-2);
-    max-width: 380px;
+    max-width: 400px;
 }
 
 .notif--succes { border-left-color: var(--succes); }
@@ -497,13 +902,13 @@ a { color: inherit; text-decoration: none; }
 .notif--succes .notif-pastille { background: var(--succes-doux); color: var(--succes); }
 .notif--erreur .notif-pastille { background: var(--danger-doux); color: var(--danger); }
 
-.notif-titre { font-size: 0.82rem; font-weight: 600; line-height: 1.3; }
+.notif-titre { font-size: var(--t-petit); font-weight: 700; line-height: 1.3; }
 .notif--succes .notif-titre { color: var(--succes); }
 .notif--erreur .notif-titre { color: var(--danger); }
-.notif-texte { font-size: 0.85rem; color: var(--texte); line-height: 1.4; }
+.notif-texte { font-size: var(--t-petit); color: var(--texte); line-height: 1.4; }
 
 /* ===========================================================================
-   15. FENÊTRES MODALES (structure reprise de Novaya Suites)
+   16. FENÊTRES MODALES
    =========================================================================== */
 
 .modale-voile {
@@ -514,9 +919,9 @@ a { color: inherit; text-decoration: none; }
     align-items: center;
     justify-content: center;
     padding: 24px;
-    background: rgba(2, 6, 23, 0.8);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: var(--voile);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     animation: apparition-voile 200ms ease-out both;
     overflow-y: auto;
 }
@@ -526,14 +931,12 @@ a { color: inherit; text-decoration: none; }
     max-width: 560px;
     max-height: 92vh;
     overflow-y: auto;
-    background: rgba(15, 23, 42, 0.92);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: var(--surface-forte);
     border: 1px solid var(--bordure);
-    border-radius: 28px;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    border-radius: var(--r-grand);
+    box-shadow: var(--ombre-3);
     padding: 24px;
-    animation: apparition-panneau 300ms cubic-bezier(0.4, 0, 0.2, 1) both;
+    animation: apparition-panneau 240ms cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 @keyframes apparition-voile {
@@ -547,29 +950,107 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ===========================================================================
-   16. FIL D'ARIANE
+   17. FIL D'ARIANE
    =========================================================================== */
 
 .ariane {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.8rem;
+    font-size: var(--t-micro);
     color: var(--texte-faible);
+    min-width: 0;
 }
 
 .ariane a { transition: color var(--transition); }
-.ariane a:hover { color: var(--texte); }
+.ariane a:hover { color: var(--texte); text-decoration: underline; }
+.ariane .actuel { color: var(--texte-doux); }
+
+/* Le titre de la page est un <h1> ; il reprend exactement la mise en forme du
+   fil d'Ariane, pour que rien ne change à l'écran. */
+.ariane h1 {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 600;
+    line-height: inherit;
+    letter-spacing: inherit;
+    color: var(--texte-doux);
+}
 
 /* ===========================================================================
-   13. PETITS ÉCRANS (tablette et téléphone)
-   ---------------------------------------------------------------------------
-   Le menu fait 280 px : sur un écran étroit, il écrase le contenu (le portail
-   est justement utilisé sur borne tactile). Il devient donc un TIROIR qui
-   glisse depuis la gauche, ouvert par le bouton en haut à gauche.
+   18. EN-TÊTE, PIED, BASCULE DE THÈME
    =========================================================================== */
 
-/* Sur grand écran, le bouton n'existe pas. */
+.panneau-haut {
+    background: var(--entete-fond);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--bordure);
+}
+
+.panneau-bas {
+    background: var(--pied-fond);
+    border-top: 1px solid var(--bordure);
+    color: var(--texte-faible);
+    font-size: var(--t-micro);
+}
+
+/* La marque « MH » : un carré d'accent, texte foncé dessus. */
+.marque {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: var(--accent-plein);
+    color: var(--accent-plein-texte);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+}
+
+/* --- LA BASCULE DE THÈME ------------------------------------------------
+   Un seul bouton, deux icônes : celle qui est affichée dépend de l'attribut
+   data-theme posé sur <html>. Aucun JavaScript n'est nécessaire pour
+   l'affichage de l'icône, seulement pour la bascule. */
+.bascule-theme {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    padding: 0;
+    border-radius: var(--r);
+    border: 1px solid var(--bordure);
+    background: var(--calque-1);
+    color: var(--texte-doux);
+    cursor: pointer;
+    transition: background-color var(--transition), border-color var(--transition),
+                color var(--transition);
+}
+
+.bascule-theme:hover {
+    background: var(--calque-2);
+    border-color: var(--bordure-forte);
+    color: var(--texte);
+}
+
+.bascule-theme svg { width: 19px; height: 19px; }
+
+/* En sombre, la bascule propose le soleil (donc « passer en clair ») ;
+   en clair, elle propose la lune. */
+.bascule-theme .icone-lune { display: none; }
+[data-theme="clair"] .bascule-theme .icone-lune { display: block; }
+[data-theme="clair"] .bascule-theme .icone-soleil { display: none; }
+
+/* ===========================================================================
+   19. PETITS ÉCRANS (tablette et téléphone)
+   ---------------------------------------------------------------------------
+   Le site s'utilise sur borne tactile : en dessous de 1024 px le menu devient
+   un tiroir qui glisse depuis la gauche. */
+   =========================================================================== */
+
 .bouton-menu { display: none; }
 
 @media (max-width: 1023px) {
@@ -591,27 +1072,51 @@ a { color: inherit; text-decoration: none; }
         position: fixed;
         inset: 0;
         z-index: 55;
-        background: rgba(2, 6, 23, 0.72);
+        background: var(--voile);
         backdrop-filter: blur(3px);
         -webkit-backdrop-filter: blur(3px);
     }
 
     .bouton-menu { display: inline-flex; }
 
-    /* Le contenu respire moins sur petit écran. */
     .contenu-page { padding: 16px !important; }
 }
 
-/* Sur les écrans très larges, on centre le contenu pour éviter des lignes
-   de texte interminables (règle reprise de Novaya : max 1280 px). */
+@media (max-width: 640px) {
+    .carte { padding: 16px; }
+    .titre-page { font-size: 1.3rem; }
+}
+
+/* Sur les écrans très larges, on borne la longueur des lignes de texte. */
 @media (min-width: 1600px) {
     .contenu-page > * { max-width: 1400px; margin-left: auto; margin-right: auto; }
 }
 
-/* Respect de « réduire les animations » du système. */
+/* ===========================================================================
+   20. RESPECT DES PRÉFÉRENCES SYSTÈME
+   =========================================================================== */
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
+}
+
+/* Mode « contraste élevé » de Windows : on renforce les traits. */
+@media (prefers-contrast: more) {
+    :root,
+    [data-theme="clair"] {
+        --bordure: var(--bordure-controle);
+        --bordure-forte: var(--texte-doux);
+    }
+    .badge { border-width: 2px; }
+}
+
+/* Impression : on retire les fonds, on garde le texte lisible. */
+@media print {
+    .menu-lateral, .panneau-haut, .panneau-bas, .bascule-theme, .bouton-menu { display: none !important; }
+    body { background: #fff !important; color: #000 !important; }
+    .carte { border: 1px solid #999 !important; box-shadow: none !important; }
 }

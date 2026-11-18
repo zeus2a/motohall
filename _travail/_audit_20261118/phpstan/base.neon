@@ -1,0 +1,11 @@
+# Base commune PHPStan 2.2.16 — audit statique MotoHall 2A du 18/11/2026.
+# Aucun bootstrap.php : le code n'a pas d'autoloader. Les 30 fichiers sont
+# analysés ensemble pour que les fonctions/constantes définies dans un fichier
+# inclus (amorce.php, _auth.php...) soient connues des autres.
+parameters:
+    paths:
+        - C:/zeus_dev/zeus_projets/deepseek-harness/sites-web/moto-hall_laravel/home/capi3439/public_html/motohall.zeusstack.fr
+        - C:/zeus_dev/zeus_projets/deepseek-harness/sites-web/moto-hall_laravel/home/capi3439/zeusstack/motohall/includes
+        - C:/zeus_dev/zeus_projets/deepseek-harness/sites-web/moto-hall_laravel/home/capi3439/zeusstack/motohall/templates
+    tmpDir: C:/zeus_dev/zeus_projets/deepseek-harness/sites-web/moto-hall_laravel/_travail/_audit_20261118/phpstan/tmp
+    reportUnmatchedIgnoredErrors: false

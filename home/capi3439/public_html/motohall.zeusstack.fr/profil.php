@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } elseif ($nouveau !== $confirme) {
             $erreur = "Les deux saisies du nouveau mot de passe ne sont pas identiques.";
         } elseif ($nouveau === $actuel) {
-            $erreur = "Le nouveau mot de passe est identique à l'ancien.";
+            $erreur = "Le nouveau mot de passe est identique à l’ancien.";
         } else {
             try {
                 $maj = $pdo->prepare("UPDATE users SET password = ? WHERE id = ?");
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $monCompte['password'] = '';
             } catch (Exception $e) {
                 error_log('PROFIL_PASSWORD: ' . $e->getMessage());
-                $erreur = "Le changement n'a pas pu être enregistré. Réessayez dans un instant.";
+                $erreur = "Le changement n’a pas pu être enregistré. Réessayez dans un instant.";
             }
         }
     }

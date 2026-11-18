@@ -27,8 +27,8 @@ $nomAffiche = $prenom !== '' ? $prenom : (string)($_SESSION['username'] ?? '');
 $rolesLisibles = [
     'ADMIN'      => 'Administrateur',
     'DIRECTEUR'  => 'Direction',
-    'VENDEUR'    => 'Vendeur — magasin',
-    'MECANICIEN' => 'Mécanicien — atelier',
+    'VENDEUR'    => 'Vendeur',
+    'MECANICIEN' => 'Mécanicien',
 ];
 $libelleRole = $rolesLisibles[$role] ?? $role;
 
@@ -44,10 +44,10 @@ if ($estComptoir || !$connecte) {
         'sousTitre' => 'Vente et accueil client',
         'icone'     => 'monitor',
         'teinte'    => '#34d399',
-        'texte'     => 'Les outils du magasin : vente, commandes et documentation commerciale.',
+        'texte'     => "Les outils du magasin\xC2\xA0: vente, commandes et documentation commerciale.",
         'autorise'  => $estComptoir,
         'acces'     => [
-            ['titre' => 'Espace de vente', 'texte' => 'Vue d\'ensemble du comptoir', 'icone' => 'layout-grid', 'lien' => 'comptoir.php'],
+            ['titre' => 'Comptoir', 'texte' => 'Vue d’ensemble du comptoir', 'icone' => 'layout-grid', 'lien' => 'comptoir.php'],
             ['titre' => 'Documentation commerciale', 'texte' => 'Procédures, tarifs et formulaires', 'icone' => 'file-text', 'lien' => 'documents.php'],
         ],
     ];
@@ -62,8 +62,8 @@ if ($estAtelier || !$connecte) {
         'texte'     => 'Le suivi des interventions et la documentation technique.',
         'autorise'  => $estAtelier,
         'acces'     => [
-            ['titre' => 'Espace technique', 'texte' => 'Vue d\'ensemble de l\'atelier', 'icone' => 'layout-grid', 'lien' => 'atelier.php'],
-            ['titre' => 'Agenda des interventions', 'texte' => 'Rendez-vous de la semaine', 'icone' => 'calendar-days', 'lien' => 'agenda.php'],
+            ['titre' => 'Atelier', 'texte' => 'Vue d’ensemble de l’atelier', 'icone' => 'layout-grid', 'lien' => 'atelier.php'],
+            ['titre' => 'Agenda', 'texte' => 'Rendez-vous de la semaine', 'icone' => 'calendar-days', 'lien' => 'agenda.php'],
             ['titre' => 'Documentation technique', 'texte' => 'Manuels, éclatés moteur et fiches', 'icone' => 'folder-open', 'lien' => 'documents.php?dir=atelier'],
         ],
     ];
@@ -75,11 +75,11 @@ if ($estDirection || !$connecte) {
         'sousTitre' => 'Pilotage et personnel',
         'icone'     => 'shield-check',
         'teinte'    => '#38bdf8',
-        'texte'     => 'Les indicateurs de l\'entreprise, la gestion du personnel et les documents réservés.',
+        'texte'     => 'Les indicateurs de l’entreprise, la gestion du personnel et les documents réservés.',
         'autorise'  => $estDirection,
         'acces'     => [
             ['titre' => 'Tableau de bord', 'texte' => 'Indicateurs et prochains rendez-vous', 'icone' => 'layout-grid', 'lien' => 'dashboard.php'],
-            ['titre' => 'Membres du staff', 'texte' => 'Comptes, droits et activations', 'icone' => 'users', 'lien' => 'admin-users.php'],
+            ['titre' => 'Membres du personnel', 'texte' => 'Comptes, droits et activations', 'icone' => 'users', 'lien' => 'admin-users.php'],
             ['titre' => 'Documentation', 'texte' => 'Documents stratégiques et RH', 'icone' => 'folder-open', 'lien' => 'documents.php'],
         ],
     ];
@@ -100,7 +100,7 @@ if ($estDirection || !$connecte) {
     <div class="carte">
         <div class="flex flex-wrap items-start justify-between gap-4">
             <div class="min-w-0">
-                <p class="titre-section mb-2">Portail de l'intranet</p>
+                <p class="titre-section mb-2">Portail de l’intranet</p>
                 <h2 class="font-display text-2xl font-semibold text-white">
                     <?= $connecte
                         ? 'Bonjour ' . htmlspecialchars($nomAffiche, ENT_QUOTES, 'UTF-8')
@@ -108,9 +108,9 @@ if ($estDirection || !$connecte) {
                 </h2>
                 <p class="mt-2 text-[0.9rem] text-slate-400 max-w-2xl">
                     <?php if ($connecte): ?>
-                        Choisissez un espace ci-dessous : vous voyez ceux que votre profil vous ouvre.
+                        Choisissez un espace ci-dessous&nbsp;: vous voyez ceux que votre profil vous ouvre.
                     <?php else: ?>
-                        Voici les trois espaces de l'entreprise. Identifiez-vous pour ouvrir celui
+                        Voici les trois espaces de l’entreprise. Identifiez-vous pour ouvrir celui
                         qui correspond à votre poste.
                     <?php endif; ?>
                 </p>
@@ -118,7 +118,6 @@ if ($estDirection || !$connecte) {
             <?php if ($connecte): ?>
             <div class="text-right shrink-0">
                 <span class="badge badge-accent"><?= htmlspecialchars($libelleRole, ENT_QUOTES, 'UTF-8') ?></span>
-                <p class="mt-2 text-[0.78rem] text-slate-500"><?= htmlspecialchars(date('d/m/Y'), ENT_QUOTES, 'UTF-8') ?></p>
             </div>
             <?php endif; ?>
         </div>
@@ -212,7 +211,7 @@ if ($estDirection || !$connecte) {
                     <div>
                         <label class="etiquette" for="username">Identifiant</label>
                         <input type="text" id="username" name="username" required autocomplete="username"
-                               class="champ" placeholder="votre identifiant">
+                               class="champ" placeholder="Votre identifiant">
                     </div>
                     <div>
                         <label class="etiquette" for="password">Mot de passe</label>
@@ -226,7 +225,7 @@ if ($estDirection || !$connecte) {
                 </form>
 
                 <p class="mt-4 text-[0.78rem] text-slate-500">
-                    Identifiants oubliés ? Adressez-vous à la Direction.
+                    Identifiants oubliés&nbsp;? Adressez-vous à la Direction.
                 </p>
             </div>
         </div>
@@ -237,9 +236,9 @@ if ($estDirection || !$connecte) {
     <p class="text-[0.78rem] text-slate-500">
         <?php if ($connecte): ?>
             Espace réservé au personnel. Votre profil détermine les espaces auxquels vous avez
-            accès ; pour un droit supplémentaire, adressez-vous à la Direction.
+            accès&nbsp;; pour un droit supplémentaire, adressez-vous à la Direction.
         <?php else: ?>
-            Aucun document, aucun rendez-vous et aucune donnée client n'est visible sans
+            Aucun document, aucun rendez-vous et aucune donnée client n’est visible sans
             identification.
         <?php endif; ?>
     </p>

@@ -16,7 +16,7 @@
 <div class="apparition space-y-6">
 
     <p class="text-[0.9rem] text-slate-400 max-w-2xl">
-        Espace de vente et d'accueil client. Les accès ci-dessous s'ouvrent sans mot de passe.
+        Comptoir&nbsp;: vente et accueil client. Les accès ci-dessous s'ouvrent sans mot de passe.
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -69,6 +69,6 @@
     </div>
 
     <p class="text-[0.78rem] text-slate-500 pt-2">
-        Les documents du magasin sont rangés par type : procédures, formulaires, images et inventaires.
+        Les documents du magasin sont rangés par type&nbsp;: procédures, formulaires, images et inventaires.
     </p>
 </div>

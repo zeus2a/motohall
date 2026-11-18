@@ -22,15 +22,15 @@ $indicateurs = [
     ],
     [
         'valeur'  => (string)$agentsActifs,
-        'libelle' => 'Agents actifs',
+        'libelle' => 'Membres actifs',
         'detail'  => $agentsTotal > $agentsActifs
-                     ? ($agentsTotal - $agentsActifs) . ' compte(s) désactivé(s)'
+                     ? ($agentsTotal - $agentsActifs) . ' compte' . (($agentsTotal - $agentsActifs) > 1 ? 's' : '') . ' désactivé' . (($agentsTotal - $agentsActifs) > 1 ? 's' : '')
                      : 'Tous les comptes sont actifs',
         'icone'   => 'users',
     ],
     [
         'valeur'  => (string)$rdvAujourdhui,
-        'libelle' => "Rendez-vous aujourd'hui",
+        'libelle' => "Rendez-vous aujourd’hui",
         'detail'  => 'Atelier et comptoir',
         'icone'   => 'calendar-clock',
     ],
@@ -78,7 +78,7 @@ $etats = [
                 <h2 class="carte-titre">Prochains rendez-vous</h2>
                 <a href="agenda.php" @click.prevent="navigate('agenda.php')"
                    class="text-[0.8rem] font-semibold text-[#38bdf8] inline-flex items-center gap-1.5">
-                    Ouvrir l'agenda
+                    Ouvrir l’agenda
                     <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
                 </a>
             </div>
@@ -88,7 +88,7 @@ $etats = [
                     <i data-lucide="calendar-off" class="w-6 h-6 text-slate-600 mx-auto mb-3"></i>
                     <p class="text-[0.85rem] text-slate-400">Aucun rendez-vous à venir.</p>
                     <p class="text-[0.78rem] text-slate-500 mt-1">
-                        Les rendez-vous se créent depuis l'agenda de l'atelier.
+                        Les rendez-vous se créent depuis l’agenda de l’atelier.
                     </p>
                 </div>
             <?php else: ?>
@@ -100,7 +100,7 @@ $etats = [
                                 <th>Heure</th>
                                 <th>Titre</th>
                                 <th>Client</th>
-                                <th>État</th>
+                                <th>Statut</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -145,7 +145,7 @@ $etats = [
                 <a href="admin-users.php" @click.prevent="navigate('admin-users.php')"
                    class="nav-lien">
                     <span class="nav-vignette"><i data-lucide="users"></i></span>
-                    <span>Membres du staff</span>
+                    <span>Membres du personnel</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 ml-auto opacity-40"></i>
                 </a>
 

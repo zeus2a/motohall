@@ -1,11 +1,134 @@
-# Aegis Sentinel - Error Routing
-ErrorDocument 400 /motohall2a/error.php?code=400
-ErrorDocument 401 /motohall2a/error.php?code=401
-ErrorDocument 403 /motohall2a/error.php?code=403
-ErrorDocument 404 /motohall2a/error.php?code=404
-ErrorDocument 500 /motohall2a/error.php?code=500
-ErrorDocument 502 /motohall2a/error.php?code=502
-ErrorDocument 503 /motohall2a/error.php?code=503
+# =====================================================================
+#  MotoHall 2A — Aegis Sentinel — VERSION SERVEUR
+#  Site : https://motohall.zeusstack.fr   (le site est a la RACINE du
+#  sous-domaine, d'ou les chemins « /error.php »)
+#  Prepare le 20/09/2026 par l'agent DSH pour Frederic.
+#  Revu le 19/10/2026 : ce fichier est desormais IDENTIQUE en local et en
+#  production. Il ne doit plus jamais y avoir deux versions.
+#
+#  ⚠️  La copie locale de ce fichier visait « /motohall2a/error.php » (le
+#      dossier du poste de Frederic) et n'avait ni le blocage des dossiers
+#      internes, ni le forcage HTTPS. Un envoi de cette copie aurait casse
+#      toutes les pages d'erreur ET retire le HTTPS. Mesure du 19/10/2026 :
+#      423 octets en local contre 1 988 en production.
+# =====================================================================
 
-# Basic Directory Protection
+# --- 1. PAGES D'ERREUR MAISON -----------------------------------------
+ErrorDocument 400 /error.php?code=400
+ErrorDocument 401 /error.php?code=401
+ErrorDocument 403 /error.php?code=403
+ErrorDocument 404 /error.php?code=404
+ErrorDocument 500 /error.php?code=500
+ErrorDocument 502 /error.php?code=502
+ErrorDocument 503 /error.php?code=503
+
+# --- 2. PAS DE LISTAGE DES DOSSIERS -----------------------------------
 Options -Indexes
+
+RewriteEngine On
+
+# --- 3. LE SITE N'EST PAS INDEXABLE (19/10/2026) ----------------------
+#  MotoHall 2A est l'outil de travail interne d'une concession : il n'a
+#  rien a faire dans un moteur de recherche. Trois verrous, et il en faut
+#  trois car chacun peut etre contourne seul :
+#     - la balise <meta name="robots"> dans les pages (voir les gabarits) ;
+#     - l'en-tete ci-dessous, qui couvre TOUTE reponse, y compris les
+#       fichiers qui ne sont pas du HTML : feuilles de style, images, et
+#       surtout les documents deposes dans documents/ ;
+#     - le fichier robots.txt a la racine.
+#  « always » et non « set » : l'en-tete doit partir aussi sur les pages
+#  d'erreur, sinon une 404 indexerait son adresse.
+<IfModule mod_headers.c>
+    Header always set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, noimageindex"
+
+    # --- 3 bis. EN-TETES DE SECURITE ----------------------------------
+    #  Ils etaient emis par PHP (includes/_init.php), donc absents des pages
+    #  servies par Apache sans passer par PHP — error.php et les 404
+    #  notamment (mesure du 19/10/2026). Les poser ici les rend
+    #  systematiques, quel que soit le chemin d'execution.
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()"
+    Header always set Cross-Origin-Opener-Policy "same-origin"
+
+    # HSTS : le site est en HTTPS depuis le 20/09/2026 (certificat Let's
+    # Encrypt). On demande au navigateur de ne plus jamais repasser en
+    # clair pendant un an. Volontairement SANS « preload ».
+    Header always set Strict-Transport-Security "max-age=31536000"
+
+    # ---- CSP : CE QU'ELLE PROTEGE, ET CE QU'ELLE CONCEDE (19/10/2026) ----
+    #
+    #  POURQUOI ELLE N'A PAS ETE MISE PLUS TOT. Alpine.js evalue les
+    #  expressions ecrites dans les attributs x-data / @click avec
+    #  new Function(). Sans « 'unsafe-eval' », TOUTE la navigation, les
+    #  fenetres et les notifications du site cessent de fonctionner.
+    #
+    #  LA DECISION, PLUTOT QUE DE NE RIEN FAIRE : on concede 'unsafe-eval'
+    #  (indispensable a l'outil) ET RIEN D'AUTRE. Ce qui reste bloque, et ce
+    #  n'est pas rien :
+    #    - default-src 'self'  : aucun script, style, image ou police ne peut
+    #      venir d'un autre domaine. C'est le vecteur numero un d'une injection
+    #      par <script src=…> ; il est ferme.
+    #    - object-src 'none'   : aucun greffon (Flash, applet, PDF embarque
+    #      comme objet).
+    #    - base-uri 'self'     : empeche de detourner toutes les adresses
+    #      relatives de la page avec une balise <base>.
+    #    - form-action 'self'  : un formulaire ne peut pas envoyer vos saisies
+    #      vers un autre domaine.
+    #    - frame-ancestors 'self' : le site ne peut pas etre place dans un
+    #      cadre chez quelqu'un d'autre (ferme le detournement de clic).
+    #    - connect-src 'self'  : les fetch() ne sortent pas du site.
+    #
+    #  CE QUI RESTE OUVERT, DIT FRANCHEMENT : un code deja present dans la page
+    #  peut s'executer. La protection porte donc sur l'ENTREE de code exterieur,
+    #  pas sur ce qui est deja rentre. Pour la retirer completement, il faudrait
+    #  reecrire les expressions Alpine en version « CSP build » — chantier lourd,
+    #  a decider separement.
+    #
+    #  !! TESTEE AVANT ENVOI : la page de connexion et le portail ont ete
+    #     rendus dans un vrai navigateur avec cette politique active, et
+    #     l'horloge d'Alpine (x-text="time") affichait bien l'heure — c'est le
+    #     temoin qui prouve qu'Alpine tourne. Voir REPRISE.md §14 undecies.
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
+</IfModule>
+
+# --- 4. DOSSIERS INTERNES JAMAIS SERVIS PAR LE WEB --------------------
+#  includes/ contient la configuration (donc le mot de passe de la base),
+#  tmp/ le cache, backup/ une ancienne feuille de style, et templates/ les
+#  gabarits — qui sont INCLUS par PHP et ne doivent jamais etre appeles
+#  directement par une adresse.
+RewriteRule ^(includes|templates|tmp|backup|api)(/|$) - [F,L]
+
+# --- 4 bis. LES DOCUMENTS NE SONT PLUS SERVIS DIRECTEMENT (19/10/2026) ---
+#  MESURE DU 19/10/2026, faite depuis le serveur lui-meme :
+#      /documents/direction/Finances/Bilan_Mars_2026.csv  ->  200  text/csv
+#  C'est-a-dire : le dossier DIRECTION etait telechargeable SANS AUCUNE
+#  CONNEXION. Les liens etaient des adresses directes, donc servies par le
+#  serveur web : aucun code PHP ne s'executait, aucun controle de role ne
+#  pouvait s'appliquer.
+#  Tout passe desormais par /fichier.php, qui verifie l'identification ET le
+#  profil avant de servir le fichier. Cette regle ferme l'ancien chemin.
+RewriteRule ^documents(/|$) - [F,L]
+
+# --- 5. FICHIERS QUI NE DOIVENT JAMAIS ETRE TELECHARGEABLES -----------
+RewriteRule \.(md|sql|log|sh|bak|old|orig|ini|yml|env)$ - [F,L]
+
+#  ⚠️ « error_log » n'a PAS de point : la regle ci-dessus ne l'attrape donc
+#     pas. Il etait protege par une protection O2switch, pas par le projet.
+#     Il est nomme explicitement ici, et il est supprime a chaque envoi.
+RewriteRule ^(error_log|php_errorlog)$ - [F,L]
+
+# --- 6. UN SEUL NOM POUR LE SITE : PAS DE WWW -------------------------
+#  Mesure du 19/10/2026 : https://www.motohall.zeusstack.fr repondait 200
+#  et servait EXACTEMENT le meme contenu (meme empreinte SHA-256) que sans
+#  www. Deux adresses pour une page, c'est ce qu'un moteur appelle du
+#  contenu duplique. On renvoie donc www vers le nom officiel.
+RewriteCond %{HTTP_HOST} ^www\.motohall\.zeusstack\.fr$ [NC]
+RewriteRule ^(.*)$ https://motohall.zeusstack.fr/$1 [R=301,L]
+
+# --- 7. HTTPS FORCE : ACTIF DEPUIS LE 20/09/2026 ----------------------
+#  Le certificat Let's Encrypt a ete emis pour motohall.zeusstack.fr et
+#  www.motohall.zeusstack.fr (mesure : valide jusqu'au 19/12/2026).
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]

@@ -1,0 +1,2784 @@
+[
+ {
+  "file": "layout_secure.php",
+  "lines": 214,
+  "counts": {
+   "div": [
+    10,
+    10
+   ],
+   "span": [
+    1,
+    1
+   ],
+   "main": [
+    1,
+    1
+   ],
+   "a": [
+    1,
+    1
+   ],
+   "button": [
+    3,
+    3
+   ],
+   "p": [
+    3,
+    3
+   ],
+   "template": [
+    2,
+    2
+   ],
+   "h3": [
+    1,
+    1
+   ]
+  },
+  "unbalanced": {},
+  "crossing": [],
+  "orphan": [],
+  "unclosed": [],
+  "ctrl_blocks": 3,
+  "ctrl_branches": 3,
+  "ctrl_unbalanced": [],
+  "ctrl_detail": [
+   {
+    "line": 133,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     0
+    ]
+   },
+   {
+    "line": 134,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     0
+    ]
+   },
+   {
+    "line": 186,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     1
+    ]
+   }
+  ],
+  "fields": [],
+  "unlabelled": [],
+  "img": [],
+  "img_noalt": [],
+  "buttons": [
+   {
+    "line": 155,
+    "type": "button",
+    "text": "",
+    "name": "Fermer la notification",
+    "xtext": null,
+    "dyn": false
+   },
+   {
+    "line": 176,
+    "type": "button",
+    "text": "Annuler",
+    "name": null,
+    "xtext": null,
+    "dyn": false
+   },
+   {
+    "line": 177,
+    "type": "button",
+    "text": "Confirmer",
+    "name": null,
+    "xtext": null,
+    "dyn": false
+   }
+  ],
+  "buttons_no_type": [],
+  "buttons_icon_only_no_name": [],
+  "buttons_icon_only_dynamic": [],
+  "buttons_in_form": [
+   {
+    "line": 155,
+    "in_form": false,
+    "type": "button"
+   },
+   {
+    "line": 176,
+    "in_form": false,
+    "type": "button"
+   },
+   {
+    "line": 177,
+    "in_form": false,
+    "type": "button"
+   }
+  ],
+  "buttons_no_type_in_form": [],
+  "buttons_no_type_outside_form": [],
+  "links": [
+   {
+    "line": 136,
+    "text": "Aller au contenu",
+    "href": "#contenu",
+    "name": null,
+    "dyn": false
+   }
+  ],
+  "links_no_text_no_name": [],
+  "links_javascript": [],
+  "div_click": [
+   {
+    "line": 187,
+    "tag": "div",
+    "attrs": [
+     "@click"
+    ]
+   }
+  ],
+  "headings": [
+   {
+    "line": 173,
+    "level": 3,
+    "text": "Confirmation",
+    "dyn": false
+   }
+  ],
+  "ids": {
+   "confirmation-titre": [
+    173
+   ],
+   "contenu": [
+    202
+   ]
+  },
+  "dup_ids": {},
+  "dup_attrs": [],
+  "labels_no_for": [],
+  "labels_broken_for": [],
+  "labels_total": 0,
+  "ids_total": 2,
+  "aria": {
+   "role": [
+    146,
+    166
+   ],
+   "aria-live": [
+    146
+   ],
+   "aria-label": [
+    155
+   ],
+   "aria-modal": [
+    166
+   ],
+   "aria-labelledby": [
+    166
+   ],
+   "aria-hidden": [
+    187
+   ],
+   "tabindex": [
+    202
+   ]
+  },
+  "style_in_body": [],
+  "script_in_body": [
+   56,
+   67,
+   68,
+   210
+  ],
+  "bad_nesting": [],
+  "amp_unencoded": [
+   {
+    "line": 73,
+    "tag": "link",
+    "attr": "href",
+    "n": 2,
+    "andand": 0,
+    "val": "https://fonts.googleapis.com/css2?family=Orbitron:wght@500;6"
+   }
+  ],
+  "php_blocks": 25,
+  "sha": "bea61ef894cd",
+  "bytes": 12203
+ },
+ {
+  "file": "header_ui.php",
+  "lines": 145,
+  "counts": {
+   "div": [
+    10,
+    10
+   ],
+   "span": [
+    8,
+    8
+   ],
+   "header": [
+    2,
+    2
+   ],
+   "nav": [
+    1,
+    1
+   ],
+   "a": [
+    2,
+    2
+   ],
+   "button": [
+    1,
+    1
+   ],
+   "p": [
+    3,
+    3
+   ]
+  },
+  "unbalanced": {},
+  "crossing": [],
+  "orphan": [],
+  "unclosed": [],
+  "ctrl_blocks": 1,
+  "ctrl_branches": 2,
+  "ctrl_unbalanced": [],
+  "ctrl_detail": [
+   {
+    "line": 68,
+    "name": "if",
+    "branches": 2,
+    "sizes": [
+     5,
+     8
+    ]
+   }
+  ],
+  "fields": [],
+  "unlabelled": [],
+  "img": [],
+  "img_noalt": [],
+  "buttons": [
+   {
+    "line": 100,
+    "type": "button",
+    "text": "",
+    "name": "Ouvrir le menu",
+    "xtext": null,
+    "dyn": false
+   }
+  ],
+  "buttons_no_type": [],
+  "buttons_icon_only_no_name": [],
+  "buttons_icon_only_dynamic": [],
+  "buttons_in_form": [
+   {
+    "line": 100,
+    "in_form": false,
+    "type": "button"
+   }
+  ],
+  "buttons_no_type_in_form": [],
+  "buttons_no_type_outside_form": [],
+  "links": [
+   {
+    "line": 107,
+    "text": "Intranet",
+    "href": "index.php",
+    "name": null,
+    "dyn": false
+   },
+   {
+    "line": 128,
+    "text": "",
+    "href": "profil.php",
+    "name": "Mon compte",
+    "dyn": true
+   }
+  ],
+  "links_no_text_no_name": [],
+  "links_javascript": [],
+  "div_click": [],
+  "headings": [],
+  "ids": {},
+  "dup_ids": {},
+  "dup_attrs": [],
+  "labels_no_for": [],
+  "labels_broken_for": [],
+  "labels_total": 0,
+  "ids_total": 0,
+  "aria": {
+   "aria-label": [
+    100,
+    106
+   ],
+   "aria-hidden": [
+    108,
+    122,
+    126
+   ]
+  },
+  "style_in_body": [],
+  "script_in_body": [],
+  "bad_nesting": [],
+  "amp_unencoded": [],
+  "php_blocks": 13,
+  "sha": "98ec4c6f96f6",
+  "bytes": 7120
+ },
+ {
+  "file": "sidebar.php",
+  "lines": 151,
+  "counts": {
+   "div": [
+    8,
+    8
+   ],
+   "span": [
+    18,
+    18
+   ],
+   "aside": [
+    1,
+    1
+   ],
+   "nav": [
+    1,
+    1
+   ],
+   "a": [
+    9,
+    9
+   ],
+   "p": [
+    9,
+    9
+   ]
+  },
+  "unbalanced": {},
+  "crossing": [],
+  "orphan": [],
+  "unclosed": [],
+  "ctrl_blocks": 3,
+  "ctrl_branches": 3,
+  "ctrl_unbalanced": [],
+  "ctrl_detail": [
+   {
+    "line": 73,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     4
+    ]
+   },
+   {
+    "line": 84,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     4
+    ]
+   },
+   {
+    "line": 111,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     4
+    ]
+   }
+  ],
+  "fields": [],
+  "unlabelled": [],
+  "img": [],
+  "img_noalt": [],
+  "buttons": [],
+  "buttons_no_type": [],
+  "buttons_icon_only_no_name": [],
+  "buttons_icon_only_dynamic": [],
+  "buttons_in_form": [],
+  "buttons_no_type_in_form": [],
+  "buttons_no_type_outside_form": [],
+  "links": [
+   {
+    "line": 59,
+    "text": "Portail",
+    "href": "index.php",
+    "name": null,
+    "dyn": false
+   },
+   {
+    "line": 66,
+    "text": "Mon compte",
+    "href": "profil.php",
+    "name": null,
+    "dyn": false
+   },
+   {
+    "line": 76,
+    "text": "Espace de vente",
+    "href": "comptoir.php",
+    "name": null,
+    "dyn": false
+   },
+   {
+    "line": 87,
+    "text": "Espace technique",
+    "href": "atelier.php",
+    "name": null,
+    "dyn": false
+   },
+   {
+    "line": 94,
+    "text": "Agenda",
+    "href": "agenda.php",
+    "name": null,
+    "dyn": false
+   },
+   {
+    "line": 104,
+    "text": "Documentation",
+    "href": "documents.php",
+    "name": null,
+    "dyn": false
+   },
+   {
+    "line": 114,
+    "text": "Tableau de bord",
+    "href": "dashboard.php",
+    "name": null,
+    "dyn": false
+   },
+   {
+    "line": 121,
+    "text": "Membres du staff",
+    "href": "admin-users.php",
+    "name": null,
+    "dyn": false
+   },
+   {
+    "line": 145,
+    "text": "Déconnexion",
+    "href": "logout.php",
+    "name": null,
+    "dyn": false
+   }
+  ],
+  "links_no_text_no_name": [],
+  "links_javascript": [],
+  "div_click": [],
+  "headings": [],
+  "ids": {},
+  "dup_ids": {},
+  "dup_attrs": [],
+  "labels_no_for": [],
+  "labels_broken_for": [],
+  "labels_total": 0,
+  "ids_total": 0,
+  "aria": {
+   "aria-label": [
+    36,
+    55
+   ]
+  },
+  "style_in_body": [],
+  "script_in_body": [],
+  "bad_nesting": [],
+  "amp_unencoded": [
+   {
+    "line": 36,
+    "tag": "aside",
+    "attr": ":class",
+    "n": 2,
+    "andand": 1,
+    "val": "menuOuvert && 'menu-lateral--ouvert'"
+   },
+   {
+    "line": 59,
+    "tag": "a",
+    "attr": ":class",
+    "n": 2,
+    "andand": 1,
+    "val": "currentPage === 'index.php' && 'nav-lien--actif'"
+   },
+   {
+    "line": 66,
+    "tag": "a",
+    "attr": ":class",
+    "n": 2,
+    "andand": 1,
+    "val": "currentPage === 'profil.php' && 'nav-lien--actif'"
+   },
+   {
+    "line": 76,
+    "tag": "a",
+    "attr": ":class",
+    "n": 2,
+    "andand": 1,
+    "val": "currentPage === 'comptoir.php' && 'nav-lien--actif'"
+   },
+   {
+    "line": 87,
+    "tag": "a",
+    "attr": ":class",
+    "n": 2,
+    "andand": 1,
+    "val": "currentPage === 'atelier.php' && 'nav-lien--actif'"
+   },
+   {
+    "line": 94,
+    "tag": "a",
+    "attr": ":class",
+    "n": 2,
+    "andand": 1,
+    "val": "currentPage === 'agenda.php' && 'nav-lien--actif'"
+   },
+   {
+    "line": 104,
+    "tag": "a",
+    "attr": ":class",
+    "n": 2,
+    "andand": 1,
+    "val": "currentPage === 'documents.php' && 'nav-lien--actif'"
+   },
+   {
+    "line": 114,
+    "tag": "a",
+    "attr": ":class",
+    "n": 2,
+    "andand": 1,
+    "val": "currentPage === 'dashboard.php' && 'nav-lien--actif'"
+   },
+   {
+    "line": 121,
+    "tag": "a",
+    "attr": ":class",
+    "n": 2,
+    "andand": 1,
+    "val": "currentPage === 'admin-users.php' && 'nav-lien--actif'"
+   }
+  ],
+  "php_blocks": 10,
+  "sha": "e575b0740d1d",
+  "bytes": 7433
+ },
+ {
+  "file": "footer_ui.php",
+  "lines": 51,
+  "counts": {
+   "div": [
+    2,
+    2
+   ],
+   "span": [
+    6,
+    6
+   ],
+   "footer": [
+    1,
+    1
+   ]
+  },
+  "unbalanced": {},
+  "crossing": [],
+  "orphan": [],
+  "unclosed": [],
+  "ctrl_blocks": 2,
+  "ctrl_branches": 2,
+  "ctrl_unbalanced": [],
+  "ctrl_detail": [
+   {
+    "line": 32,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     1
+    ]
+   },
+   {
+    "line": 42,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     1
+    ]
+   }
+  ],
+  "fields": [],
+  "unlabelled": [],
+  "img": [],
+  "img_noalt": [],
+  "buttons": [],
+  "buttons_no_type": [],
+  "buttons_icon_only_no_name": [],
+  "buttons_icon_only_dynamic": [],
+  "buttons_in_form": [],
+  "buttons_no_type_in_form": [],
+  "buttons_no_type_outside_form": [],
+  "links": [],
+  "links_no_text_no_name": [],
+  "links_javascript": [],
+  "div_click": [],
+  "headings": [],
+  "ids": {},
+  "dup_ids": {},
+  "dup_attrs": [],
+  "labels_no_for": [],
+  "labels_broken_for": [],
+  "labels_total": 0,
+  "ids_total": 0,
+  "aria": {
+   "aria-hidden": [
+    33,
+    46
+   ]
+  },
+  "style_in_body": [],
+  "script_in_body": [],
+  "bad_nesting": [],
+  "amp_unencoded": [],
+  "php_blocks": 9,
+  "sha": "d5cb4664017d",
+  "bytes": 2369
+ },
+ {
+  "file": "index_view.php",
+  "lines": 247,
+  "counts": {
+   "div": [
+    20,
+    20
+   ],
+   "span": [
+    9,
+    9
+   ],
+   "section": [
+    1,
+    1
+   ],
+   "form": [
+    1,
+    1
+   ],
+   "a": [
+    1,
+    1
+   ],
+   "button": [
+    1,
+    1
+   ],
+   "p": [
+    9,
+    9
+   ],
+   "h2": [
+    2,
+    2
+   ],
+   "h3": [
+    1,
+    1
+   ],
+   "label": [
+    2,
+    2
+   ],
+   "input": [
+    2,
+    0
+   ]
+  },
+  "unbalanced": {},
+  "crossing": [],
+  "orphan": [],
+  "unclosed": [],
+  "ctrl_blocks": 9,
+  "ctrl_branches": 12,
+  "ctrl_unbalanced": [],
+  "ctrl_detail": [
+   {
+    "line": 92,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     3
+    ]
+   },
+   {
+    "line": 110,
+    "name": "if",
+    "branches": 2,
+    "sizes": [
+     0,
+     0
+    ]
+   },
+   {
+    "line": 118,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     3
+    ]
+   },
+   {
+    "line": 132,
+    "name": "foreach",
+    "branches": 1,
+    "sizes": [
+     7
+    ]
+   },
+   {
+    "line": 150,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     2
+    ]
+   },
+   {
+    "line": 163,
+    "name": "foreach",
+    "branches": 1,
+    "sizes": [
+     4
+    ]
+   },
+   {
+    "line": 164,
+    "name": "if",
+    "branches": 2,
+    "sizes": [
+     3,
+     3
+    ]
+   },
+   {
+    "line": 198,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     8
+    ]
+   },
+   {
+    "line": 238,
+    "name": "if",
+    "branches": 2,
+    "sizes": [
+     0,
+     0
+    ]
+   }
+  ],
+  "fields": [
+   {
+    "line": 214,
+    "tag": "input",
+    "type": "text",
+    "name": "username",
+    "id": "username",
+    "labelled": true
+   },
+   {
+    "line": 219,
+    "tag": "input",
+    "type": "password",
+    "name": "password",
+    "id": "password",
+    "labelled": true
+   }
+  ],
+  "unlabelled": [],
+  "img": [],
+  "img_noalt": [],
+  "buttons": [
+   {
+    "line": 222,
+    "type": "submit",
+    "text": "Se connecter",
+    "name": null,
+    "xtext": null,
+    "dyn": false
+   }
+  ],
+  "buttons_no_type": [],
+  "buttons_icon_only_no_name": [],
+  "buttons_icon_only_dynamic": [],
+  "buttons_in_form": [
+   {
+    "line": 222,
+    "in_form": true,
+    "type": "submit"
+   }
+  ],
+  "buttons_no_type_in_form": [],
+  "buttons_no_type_outside_form": [],
+  "links": [
+   {
+    "line": 165,
+    "text": "",
+    "href": "                                                            ",
+    "name": null,
+    "dyn": true
+   }
+  ],
+  "links_no_text_no_name": [],
+  "links_javascript": [],
+  "div_click": [],
+  "headings": [
+   {
+    "line": 104,
+    "level": 2,
+    "text": "",
+    "dyn": true
+   },
+   {
+    "line": 143,
+    "level": 3,
+    "text": "",
+    "dyn": true
+   },
+   {
+    "line": 202,
+    "level": 2,
+    "text": "Identification",
+    "dyn": false
+   }
+  ],
+  "ids": {
+   "username": [
+    214
+   ],
+   "password": [
+    219
+   ]
+  },
+  "dup_ids": {},
+  "dup_attrs": [],
+  "labels_no_for": [],
+  "labels_broken_for": [],
+  "labels_total": 2,
+  "ids_total": 2,
+  "aria": {},
+  "style_in_body": [],
+  "script_in_body": [],
+  "bad_nesting": [],
+  "amp_unencoded": [],
+  "php_blocks": 45,
+  "sha": "9a8e757ed4c4",
+  "bytes": 13750
+ },
+ {
+  "file": "dashboard_view.php",
+  "lines": 176,
+  "counts": {
+   "div": [
+    13,
+    13
+   ],
+   "span": [
+    10,
+    10
+   ],
+   "a": [
+    5,
+    5
+   ],
+   "p": [
+    5,
+    5
+   ],
+   "h2": [
+    2,
+    2
+   ],
+   "table": [
+    1,
+    1
+   ],
+   "thead": [
+    1,
+    1
+   ],
+   "tbody": [
+    1,
+    1
+   ],
+   "tr": [
+    2,
+    2
+   ],
+   "td": [
+    5,
+    5
+   ],
+   "th": [
+    5,
+    5
+   ]
+  },
+  "unbalanced": {},
+  "crossing": [],
+  "orphan": [],
+  "unclosed": [],
+  "ctrl_blocks": 4,
+  "ctrl_branches": 5,
+  "ctrl_unbalanced": [],
+  "ctrl_detail": [
+   {
+    "line": 57,
+    "name": "foreach",
+    "branches": 1,
+    "sizes": [
+     3
+    ]
+   },
+   {
+    "line": 86,
+    "name": "if",
+    "branches": 2,
+    "sizes": [
+     3,
+     8
+    ]
+   },
+   {
+    "line": 107,
+    "name": "foreach",
+    "branches": 1,
+    "sizes": [
+     3
+    ]
+   },
+   {
+    "line": 121,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     1
+    ]
+   }
+  ],
+  "fields": [],
+  "unlabelled": [],
+  "img": [],
+  "img_noalt": [],
+  "buttons": [],
+  "buttons_no_type": [],
+  "buttons_icon_only_no_name": [],
+  "buttons_icon_only_dynamic": [],
+  "buttons_in_form": [],
+  "buttons_no_type_in_form": [],
+  "buttons_no_type_outside_form": [],
+  "links": [
+   {
+    "line": 79,
+    "text": "Ouvrir l'agenda",
+    "href": "agenda.php",
+    "name": null,
+    "dyn": false
+   },
+   {
+    "line": 145,
+    "text": "Membres du staff",
+    "href": "admin-users.php",
+    "name": null,
+    "dyn": false
+   },
+   {
+    "line": 152,
+    "text": "Documentation",
+    "href": "documents.php",
+    "name": null,
+    "dyn": false
+   },
+   {
+    "line": 159,
+    "text": "Comptoir",
+    "href": "comptoir.php",
+    "name": null,
+    "dyn": false
+   },
+   {
+    "line": 166,
+    "text": "Atelier",
+    "href": "atelier.php",
+    "name": null,
+    "dyn": false
+   }
+  ],
+  "links_no_text_no_name": [],
+  "links_javascript": [],
+  "div_click": [],
+  "headings": [
+   {
+    "line": 78,
+    "level": 2,
+    "text": "Prochains rendez-vous",
+    "dyn": false
+   },
+   {
+    "line": 141,
+    "level": 2,
+    "text": "Accès rapides",
+    "dyn": false
+   }
+  ],
+  "ids": {},
+  "dup_ids": {},
+  "dup_attrs": [],
+  "labels_no_for": [],
+  "labels_broken_for": [],
+  "labels_total": 0,
+  "ids_total": 0,
+  "aria": {},
+  "style_in_body": [],
+  "script_in_body": [],
+  "bad_nesting": [],
+  "amp_unencoded": [],
+  "php_blocks": 22,
+  "sha": "f5fe7e9c1d02",
+  "bytes": 8910
+ },
+ {
+  "file": "documents_view.php",
+  "lines": 275,
+  "counts": {
+   "div": [
+    27,
+    27
+   ],
+   "span": [
+    3,
+    3
+   ],
+   "a": [
+    3,
+    3
+   ],
+   "button": [
+    4,
+    4
+   ],
+   "p": [
+    8,
+    8
+   ],
+   "template": [
+    10,
+    10
+   ],
+   "h2": [
+    1,
+    1
+   ],
+   "h3": [
+    2,
+    2
+   ],
+   "h4": [
+    1,
+    1
+   ],
+   "iframe": [
+    1,
+    1
+   ],
+   "img": [
+    1,
+    0
+   ]
+  },
+  "unbalanced": {},
+  "crossing": [],
+  "orphan": [],
+  "unclosed": [],
+  "ctrl_blocks": 1,
+  "ctrl_branches": 1,
+  "ctrl_unbalanced": [],
+  "ctrl_detail": [
+   {
+    "line": 103,
+    "name": "foreach",
+    "branches": 1,
+    "sizes": [
+     4
+    ]
+   }
+  ],
+  "fields": [],
+  "unlabelled": [],
+  "img": [
+   {
+    "line": 254,
+    "alt": "Visuel Sécurisé"
+   }
+  ],
+  "img_noalt": [],
+  "buttons": [
+   {
+    "line": 19,
+    "type": "button",
+    "text": "Actualiser",
+    "name": "Recharger la liste",
+    "xtext": null,
+    "dyn": false
+   },
+   {
+    "line": 71,
+    "type": "button",
+    "text": "",
+    "name": "Revenir à la racine",
+    "xtext": null,
+    "dyn": false
+   },
+   {
+    "line": 79,
+    "type": "button",
+    "text": "",
+    "name": null,
+    "xtext": "b.name",
+    "dyn": false
+   },
+   {
+    "line": 236,
+    "type": null,
+    "text": "Fermer",
+    "name": null,
+    "xtext": null,
+    "dyn": false
+   }
+  ],
+  "buttons_no_type": [
+   236
+  ],
+  "buttons_icon_only_no_name": [],
+  "buttons_icon_only_dynamic": [
+   {
+    "line": 79,
+    "xtext": "b.name"
+   }
+  ],
+  "buttons_in_form": [
+   {
+    "line": 19,
+    "in_form": false,
+    "type": "button"
+   },
+   {
+    "line": 71,
+    "in_form": false,
+    "type": "button"
+   },
+   {
+    "line": 79,
+    "in_form": false,
+    "type": "button"
+   },
+   {
+    "line": 236,
+    "in_form": false,
+    "type": null
+   }
+  ],
+  "buttons_no_type_in_form": [],
+  "buttons_no_type_outside_form": [
+   236
+  ],
+  "links": [
+   {
+    "line": 183,
+    "text": "",
+    "href": ":href",
+    "name": "Télécharger ce fichier",
+    "dyn": false
+   },
+   {
+    "line": 233,
+    "text": "Exporter",
+    "href": ":href",
+    "name": null,
+    "dyn": false
+   },
+   {
+    "line": 265,
+    "text": "Extraire le Fichier",
+    "href": ":href",
+    "name": null,
+    "dyn": false
+   }
+  ],
+  "links_no_text_no_name": [],
+  "links_javascript": [],
+  "div_click": [
+   {
+    "line": 133,
+    "tag": "div",
+    "attrs": [
+     "@click"
+    ]
+   },
+   {
+    "line": 157,
+    "tag": "div",
+    "attrs": [
+     "@click"
+    ]
+   },
+   {
+    "line": 175,
+    "tag": "div",
+    "attrs": [
+     "@click"
+    ]
+   }
+  ],
+  "headings": [
+   {
+    "line": 14,
+    "level": 2,
+    "text": "Documentation",
+    "dyn": false
+   },
+   {
+    "line": 140,
+    "level": 3,
+    "text": "",
+    "dyn": true
+   },
+   {
+    "line": 226,
+    "level": 4,
+    "text": "",
+    "dyn": true
+   },
+   {
+    "line": 263,
+    "level": 3,
+    "text": "Format Non-Visualisable",
+    "dyn": false
+   }
+  ],
+  "ids": {},
+  "dup_ids": {},
+  "dup_attrs": [],
+  "labels_no_for": [],
+  "labels_broken_for": [],
+  "labels_total": 0,
+  "ids_total": 0,
+  "aria": {},
+  "style_in_body": [],
+  "script_in_body": [],
+  "bad_nesting": [],
+  "amp_unencoded": [
+   {
+    "line": 102,
+    "tag": "div",
+    "attr": "x-show",
+    "n": 2,
+    "andand": 1,
+    "val": "!currentPath && !loading"
+   },
+   {
+    "line": 151,
+    "tag": "div",
+    "attr": "x-show",
+    "n": 2,
+    "andand": 1,
+    "val": "currentPath && !loading"
+   },
+   {
+    "line": 193,
+    "tag": "template",
+    "attr": "x-if",
+    "n": 2,
+    "andand": 1,
+    "val": "folders.length === 0 && files.length === 0"
+   }
+  ],
+  "php_blocks": 8,
+  "sha": "28feec46d612",
+  "bytes": 16201
+ },
+ {
+  "file": "admin_users_view.php",
+  "lines": 294,
+  "counts": {
+   "div": [
+    37,
+    37
+   ],
+   "span": [
+    13,
+    13
+   ],
+   "form": [
+    2,
+    2
+   ],
+   "button": [
+    9,
+    9
+   ],
+   "p": [
+    9,
+    9
+   ],
+   "template": [
+    2,
+    2
+   ],
+   "h2": [
+    1,
+    1
+   ],
+   "h3": [
+    2,
+    2
+   ],
+   "label": [
+    12,
+    12
+   ],
+   "input": [
+    15,
+    0
+   ],
+   "select": [
+    2,
+    2
+   ],
+   "option": [
+    8,
+    8
+   ]
+  },
+  "unbalanced": {},
+  "crossing": [],
+  "orphan": [],
+  "unclosed": [],
+  "ctrl_blocks": 4,
+  "ctrl_branches": 5,
+  "ctrl_unbalanced": [],
+  "ctrl_detail": [
+   {
+    "line": 59,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     3
+    ]
+   },
+   {
+    "line": 66,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     3
+    ]
+   },
+   {
+    "line": 221,
+    "name": "foreach",
+    "branches": 1,
+    "sizes": [
+     5
+    ]
+   },
+   {
+    "line": 257,
+    "name": "if",
+    "branches": 2,
+    "sizes": [
+     1,
+     1
+    ]
+   }
+  ],
+  "fields": [
+   {
+    "line": 94,
+    "tag": "input",
+    "type": "text",
+    "name": "username",
+    "id": "add-username",
+    "labelled": true
+   },
+   {
+    "line": 101,
+    "tag": "input",
+    "type": "text",
+    "name": "prenom",
+    "id": "add-prenom",
+    "labelled": true
+   },
+   {
+    "line": 105,
+    "tag": "input",
+    "type": "text",
+    "name": "nom",
+    "id": "add-nom",
+    "labelled": true
+   },
+   {
+    "line": 111,
+    "tag": "input",
+    "type": "email",
+    "name": "email",
+    "id": "add-email",
+    "labelled": true
+   },
+   {
+    "line": 116,
+    "tag": "input",
+    "type": "password",
+    "name": "password",
+    "id": "add-password",
+    "labelled": true
+   },
+   {
+    "line": 125,
+    "tag": "select",
+    "type": "text",
+    "name": "role",
+    "id": "add-role",
+    "labelled": true
+   },
+   {
+    "line": 171,
+    "tag": "input",
+    "type": "text",
+    "name": "username",
+    "id": null,
+    "labelled": false
+   },
+   {
+    "line": 177,
+    "tag": "input",
+    "type": "text",
+    "name": "prenom",
+    "id": null,
+    "labelled": false
+   },
+   {
+    "line": 181,
+    "tag": "input",
+    "type": "text",
+    "name": "nom",
+    "id": null,
+    "labelled": false
+   },
+   {
+    "line": 187,
+    "tag": "input",
+    "type": "email",
+    "name": "email",
+    "id": null,
+    "labelled": false
+   },
+   {
+    "line": 192,
+    "tag": "input",
+    "type": "password",
+    "name": "password",
+    "id": null,
+    "labelled": false
+   },
+   {
+    "line": 197,
+    "tag": "select",
+    "type": "text",
+    "name": "role",
+    "id": null,
+    "labelled": false
+   }
+  ],
+  "unlabelled": [
+   {
+    "line": 171,
+    "tag": "input",
+    "type": "text",
+    "name": "username",
+    "id": null,
+    "labelled": false
+   },
+   {
+    "line": 177,
+    "tag": "input",
+    "type": "text",
+    "name": "prenom",
+    "id": null,
+    "labelled": false
+   },
+   {
+    "line": 181,
+    "tag": "input",
+    "type": "text",
+    "name": "nom",
+    "id": null,
+    "labelled": false
+   },
+   {
+    "line": 187,
+    "tag": "input",
+    "type": "email",
+    "name": "email",
+    "id": null,
+    "labelled": false
+   },
+   {
+    "line": 192,
+    "tag": "input",
+    "type": "password",
+    "name": "password",
+    "id": null,
+    "labelled": false
+   },
+   {
+    "line": 197,
+    "tag": "select",
+    "type": "text",
+    "name": "role",
+    "id": null,
+    "labelled": false
+   }
+  ],
+  "img": [],
+  "img_noalt": [],
+  "buttons": [
+   {
+    "line": 51,
+    "type": null,
+    "text": "Nouveau membre",
+    "name": null,
+    "xtext": null,
+    "dyn": false
+   },
+   {
+    "line": 83,
+    "type": null,
+    "text": "",
+    "name": null,
+    "xtext": null,
+    "dyn": false
+   },
+   {
+    "line": 134,
+    "type": "button",
+    "text": "Annuler",
+    "name": null,
+    "xtext": null,
+    "dyn": false
+   },
+   {
+    "line": 137,
+    "type": "submit",
+    "text": "Créer le compte",
+    "name": null,
+    "xtext": null,
+    "dyn": false
+   },
+   {
+    "line": 159,
+    "type": null,
+    "text": "",
+    "name": null,
+    "xtext": null,
+    "dyn": false
+   },
+   {
+    "line": 206,
+    "type": "button",
+    "text": "Annuler",
+    "name": null,
+    "xtext": null,
+    "dyn": false
+   },
+   {
+    "line": 209,
+    "type": "submit",
+    "text": "Enregistrer",
+    "name": null,
+    "xtext": null,
+    "dyn": false
+   },
+   {
+    "line": 269,
+    "type": "button",
+    "text": "",
+    "name": "                                                                   ",
+    "xtext": null,
+    "dyn": true
+   },
+   {
+    "line": 276,
+    "type": "button",
+    "text": "",
+    "name": "Modifier ce compte",
+    "xtext": null,
+    "dyn": false
+   }
+  ],
+  "buttons_no_type": [
+   51,
+   83,
+   159
+  ],
+  "buttons_icon_only_no_name": [
+   {
+    "line": 83,
+    "text": "",
+    "xtext": null,
+    "dyn": false
+   },
+   {
+    "line": 159,
+    "text": "",
+    "xtext": null,
+    "dyn": false
+   }
+  ],
+  "buttons_icon_only_dynamic": [],
+  "buttons_in_form": [
+   {
+    "line": 51,
+    "in_form": false,
+    "type": null
+   },
+   {
+    "line": 83,
+    "in_form": false,
+    "type": null
+   },
+   {
+    "line": 134,
+    "in_form": true,
+    "type": "button"
+   },
+   {
+    "line": 137,
+    "in_form": true,
+    "type": "submit"
+   },
+   {
+    "line": 159,
+    "in_form": false,
+    "type": null
+   },
+   {
+    "line": 206,
+    "in_form": true,
+    "type": "button"
+   },
+   {
+    "line": 209,
+    "in_form": true,
+    "type": "submit"
+   },
+   {
+    "line": 269,
+    "in_form": false,
+    "type": "button"
+   },
+   {
+    "line": 276,
+    "in_form": false,
+    "type": "button"
+   }
+  ],
+  "buttons_no_type_in_form": [],
+  "buttons_no_type_outside_form": [
+   51,
+   83,
+   159
+  ],
+  "links": [],
+  "links_no_text_no_name": [],
+  "links_javascript": [],
+  "div_click": [],
+  "headings": [
+   {
+    "line": 43,
+    "level": 2,
+    "text": "Comptes du personnel",
+    "dyn": false
+   },
+   {
+    "line": 82,
+    "level": 3,
+    "text": "Nouveau membre",
+    "dyn": false
+   },
+   {
+    "line": 158,
+    "level": 3,
+    "text": "Modifier le membre",
+    "dyn": false
+   }
+  ],
+  "ids": {
+   "add-username": [
+    94
+   ],
+   "add-prenom": [
+    101
+   ],
+   "add-nom": [
+    105
+   ],
+   "add-email": [
+    111
+   ],
+   "add-password": [
+    116
+   ],
+   "add-role": [
+    125
+   ]
+  },
+  "dup_ids": {},
+  "dup_attrs": [],
+  "labels_no_for": [
+   {
+    "line": 170
+   },
+   {
+    "line": 176
+   },
+   {
+    "line": 180
+   },
+   {
+    "line": 186
+   },
+   {
+    "line": 191
+   },
+   {
+    "line": 196
+   }
+  ],
+  "labels_broken_for": [],
+  "labels_total": 12,
+  "ids_total": 6,
+  "aria": {},
+  "style_in_body": [],
+  "script_in_body": [],
+  "bad_nesting": [],
+  "amp_unencoded": [
+   {
+    "line": 269,
+    "tag": "button",
+    "attr": "@click",
+    "n": 1,
+    "andand": 0,
+    "val": "showConfirm('                                               "
+   }
+  ],
+  "php_blocks": 37,
+  "sha": "46b93820f7b1",
+  "bytes": 15644
+ },
+ {
+  "file": "agenda_view.php",
+  "lines": 275,
+  "counts": {
+   "div": [
+    27,
+    27
+   ],
+   "span": [
+    5,
+    5
+   ],
+   "form": [
+    1,
+    1
+   ],
+   "button": [
+    6,
+    6
+   ],
+   "p": [
+    6,
+    6
+   ],
+   "template": [
+    7,
+    7
+   ],
+   "h2": [
+    1,
+    1
+   ],
+   "h3": [
+    1,
+    1
+   ],
+   "label": [
+    7,
+    7
+   ],
+   "input": [
+    6,
+    0
+   ],
+   "select": [
+    1,
+    1
+   ],
+   "option": [
+    4,
+    4
+   ]
+  },
+  "unbalanced": {},
+  "crossing": [],
+  "orphan": [],
+  "unclosed": [],
+  "ctrl_blocks": 0,
+  "ctrl_branches": 0,
+  "ctrl_unbalanced": [],
+  "ctrl_detail": [],
+  "fields": [
+   {
+    "line": 208,
+    "tag": "input",
+    "type": "text",
+    "name": "",
+    "id": "evt-title",
+    "labelled": true
+   },
+   {
+    "line": 215,
+    "tag": "input",
+    "type": "text",
+    "name": "",
+    "id": "evt-client",
+    "labelled": true
+   },
+   {
+    "line": 219,
+    "tag": "input",
+    "type": "text",
+    "name": "",
+    "id": "evt-plate",
+    "labelled": true
+   },
+   {
+    "line": 227,
+    "tag": "input",
+    "type": "date",
+    "name": "",
+    "id": "evt-date",
+    "labelled": true
+   },
+   {
+    "line": 232,
+    "tag": "select",
+    "type": "text",
+    "name": "",
+    "id": "evt-pont",
+    "labelled": true
+   },
+   {
+    "line": 244,
+    "tag": "input",
+    "type": "time",
+    "name": "",
+    "id": "evt-debut",
+    "labelled": true
+   },
+   {
+    "line": 248,
+    "tag": "input",
+    "type": "time",
+    "name": "",
+    "id": "evt-fin",
+    "labelled": true
+   }
+  ],
+  "unlabelled": [],
+  "img": [],
+  "img_noalt": [],
+  "buttons": [
+   {
+    "line": 123,
+    "type": "button",
+    "text": "",
+    "name": "Semaine précédente",
+    "xtext": null,
+    "dyn": false
+   },
+   {
+    "line": 130,
+    "type": "button",
+    "text": "",
+    "name": "Semaine suivante",
+    "xtext": null,
+    "dyn": false
+   },
+   {
+    "line": 137,
+    "type": "button",
+    "text": "Nouveau rendez-vous",
+    "name": null,
+    "xtext": null,
+    "dyn": false
+   },
+   {
+    "line": 199,
+    "type": "button",
+    "text": "",
+    "name": null,
+    "xtext": null,
+    "dyn": false
+   },
+   {
+    "line": 253,
+    "type": "button",
+    "text": "Annuler",
+    "name": null,
+    "xtext": null,
+    "dyn": false
+   },
+   {
+    "line": 256,
+    "type": "submit",
+    "text": "Inscrire au planning",
+    "name": null,
+    "xtext": null,
+    "dyn": false
+   }
+  ],
+  "buttons_no_type": [],
+  "buttons_icon_only_no_name": [
+   {
+    "line": 199,
+    "text": "",
+    "xtext": null,
+    "dyn": false
+   }
+  ],
+  "buttons_icon_only_dynamic": [],
+  "buttons_in_form": [
+   {
+    "line": 123,
+    "in_form": false,
+    "type": "button"
+   },
+   {
+    "line": 130,
+    "in_form": false,
+    "type": "button"
+   },
+   {
+    "line": 137,
+    "in_form": false,
+    "type": "button"
+   },
+   {
+    "line": 199,
+    "in_form": false,
+    "type": "button"
+   },
+   {
+    "line": 253,
+    "in_form": true,
+    "type": "button"
+   },
+   {
+    "line": 256,
+    "in_form": true,
+    "type": "submit"
+   }
+  ],
+  "buttons_no_type_in_form": [],
+  "buttons_no_type_outside_form": [],
+  "links": [],
+  "links_no_text_no_name": [],
+  "links_javascript": [],
+  "div_click": [],
+  "headings": [
+   {
+    "line": 114,
+    "level": 2,
+    "text": "Planning de l'atelier",
+    "dyn": false
+   },
+   {
+    "line": 198,
+    "level": 3,
+    "text": "Nouveau rendez-vous",
+    "dyn": false
+   }
+  ],
+  "ids": {
+   "evt-title": [
+    208
+   ],
+   "evt-client": [
+    215
+   ],
+   "evt-plate": [
+    219
+   ],
+   "evt-date": [
+    227
+   ],
+   "evt-pont": [
+    232
+   ],
+   "evt-debut": [
+    244
+   ],
+   "evt-fin": [
+    248
+   ]
+  },
+  "dup_ids": {},
+  "dup_attrs": [],
+  "labels_no_for": [],
+  "labels_broken_for": [],
+  "labels_total": 7,
+  "ids_total": 7,
+  "aria": {},
+  "style_in_body": [
+   266
+  ],
+  "script_in_body": [
+   272
+  ],
+  "bad_nesting": [],
+  "amp_unencoded": [
+   {
+    "line": 9,
+    "tag": "div",
+    "attr": "x-data",
+    "n": 3,
+    "andand": 0,
+    "val": "{\n         viewDate: new Date(),\n         events: [],\n      "
+   }
+  ],
+  "php_blocks": 1,
+  "sha": "314a2d2cf0c0",
+  "bytes": 13145
+ },
+ {
+  "file": "comptoir_view.php",
+  "lines": 75,
+  "counts": {
+   "div": [
+    9,
+    9
+   ],
+   "span": [
+    3,
+    3
+   ],
+   "a": [
+    1,
+    1
+   ],
+   "p": [
+    5,
+    5
+   ],
+   "h3": [
+    3,
+    3
+   ]
+  },
+  "unbalanced": {},
+  "crossing": [],
+  "orphan": [],
+  "unclosed": [],
+  "ctrl_blocks": 0,
+  "ctrl_branches": 0,
+  "ctrl_unbalanced": [],
+  "ctrl_detail": [],
+  "fields": [],
+  "unlabelled": [],
+  "img": [],
+  "img_noalt": [],
+  "buttons": [],
+  "buttons_no_type": [],
+  "buttons_icon_only_no_name": [],
+  "buttons_icon_only_dynamic": [],
+  "buttons_in_form": [],
+  "buttons_no_type_in_form": [],
+  "buttons_no_type_outside_form": [],
+  "links": [
+   {
+    "line": 40,
+    "text": "Documentation commerciale Procédures, formulaires, tarifs et documents fournisse",
+    "href": "documents.php",
+    "name": null,
+    "dyn": false
+   }
+  ],
+  "links_no_text_no_name": [],
+  "links_javascript": [],
+  "div_click": [],
+  "headings": [
+   {
+    "line": 30,
+    "level": 3,
+    "text": "Logiciel de caisse",
+    "dyn": false
+   },
+   {
+    "line": 45,
+    "level": 3,
+    "text": "Documentation commerciale",
+    "dyn": false
+   },
+   {
+    "line": 61,
+    "level": 3,
+    "text": "Catalogue des pièces",
+    "dyn": false
+   }
+  ],
+  "ids": {},
+  "dup_ids": {},
+  "dup_attrs": [],
+  "labels_no_for": [],
+  "labels_broken_for": [],
+  "labels_total": 0,
+  "ids_total": 0,
+  "aria": {},
+  "style_in_body": [],
+  "script_in_body": [],
+  "bad_nesting": [],
+  "amp_unencoded": [],
+  "php_blocks": 1,
+  "sha": "5e7295b42871",
+  "bytes": 4141
+ },
+ {
+  "file": "atelier_view.php",
+  "lines": 74,
+  "counts": {
+   "div": [
+    7,
+    7
+   ],
+   "span": [
+    3,
+    3
+   ],
+   "a": [
+    2,
+    2
+   ],
+   "p": [
+    5,
+    5
+   ],
+   "h3": [
+    3,
+    3
+   ]
+  },
+  "unbalanced": {},
+  "crossing": [],
+  "orphan": [],
+  "unclosed": [],
+  "ctrl_blocks": 0,
+  "ctrl_branches": 0,
+  "ctrl_unbalanced": [],
+  "ctrl_detail": [],
+  "fields": [],
+  "unlabelled": [],
+  "img": [],
+  "img_noalt": [],
+  "buttons": [],
+  "buttons_no_type": [],
+  "buttons_icon_only_no_name": [],
+  "buttons_icon_only_dynamic": [],
+  "buttons_in_form": [],
+  "buttons_no_type_in_form": [],
+  "buttons_no_type_outside_form": [],
+  "links": [
+   {
+    "line": 23,
+    "text": "Agenda de l'atelier Rendez-vous de la semaine et charge de travail de l'équipe. ",
+    "href": "agenda.php",
+    "name": null,
+    "dyn": false
+   },
+   {
+    "line": 54,
+    "text": "Documentation technique Éclatés moteur, manuels d'atelier et fiches fournisseurs",
+    "href": "documents.php?dir=atelier",
+    "name": null,
+    "dyn": false
+   }
+  ],
+  "links_no_text_no_name": [],
+  "links_javascript": [],
+  "div_click": [],
+  "headings": [
+   {
+    "line": 28,
+    "level": 3,
+    "text": "Agenda de l'atelier",
+    "dyn": false
+   },
+   {
+    "line": 44,
+    "level": 3,
+    "text": "Ordres de réparation",
+    "dyn": false
+   },
+   {
+    "line": 59,
+    "level": 3,
+    "text": "Documentation technique",
+    "dyn": false
+   }
+  ],
+  "ids": {},
+  "dup_ids": {},
+  "dup_attrs": [],
+  "labels_no_for": [],
+  "labels_broken_for": [],
+  "labels_total": 0,
+  "ids_total": 0,
+  "aria": {},
+  "style_in_body": [],
+  "script_in_body": [],
+  "bad_nesting": [],
+  "amp_unencoded": [],
+  "php_blocks": 1,
+  "sha": "1b7082182175",
+  "bytes": 4217
+ },
+ {
+  "file": "profil_view.php",
+  "lines": 141,
+  "counts": {
+   "div": [
+    18,
+    18
+   ],
+   "span": [
+    4,
+    4
+   ],
+   "form": [
+    1,
+    1
+   ],
+   "a": [
+    1,
+    1
+   ],
+   "button": [
+    1,
+    1
+   ],
+   "p": [
+    7,
+    7
+   ],
+   "h2": [
+    2,
+    2
+   ],
+   "label": [
+    3,
+    3
+   ],
+   "dl": [
+    1,
+    1
+   ],
+   "dt": [
+    4,
+    4
+   ],
+   "dd": [
+    4,
+    4
+   ],
+   "input": [
+    4,
+    0
+   ]
+  },
+  "unbalanced": {},
+  "crossing": [],
+  "orphan": [],
+  "unclosed": [],
+  "ctrl_blocks": 4,
+  "ctrl_branches": 5,
+  "ctrl_unbalanced": [],
+  "ctrl_detail": [
+   {
+    "line": 22,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     3
+    ]
+   },
+   {
+    "line": 29,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     3
+    ]
+   },
+   {
+    "line": 83,
+    "name": "if",
+    "branches": 2,
+    "sizes": [
+     1,
+     1
+    ]
+   },
+   {
+    "line": 92,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     2
+    ]
+   }
+  ],
+  "fields": [
+   {
+    "line": 111,
+    "tag": "input",
+    "type": "password",
+    "name": "actuel",
+    "id": "actuel",
+    "labelled": true
+   },
+   {
+    "line": 117,
+    "tag": "input",
+    "type": "password",
+    "name": "nouveau",
+    "id": "nouveau",
+    "labelled": true
+   },
+   {
+    "line": 124,
+    "tag": "input",
+    "type": "password",
+    "name": "confirme",
+    "id": "confirme",
+    "labelled": true
+   }
+  ],
+  "unlabelled": [],
+  "img": [],
+  "img_noalt": [],
+  "buttons": [
+   {
+    "line": 128,
+    "type": "submit",
+    "text": "Enregistrer le nouveau mot de passe",
+    "name": null,
+    "xtext": null,
+    "dyn": false
+   }
+  ],
+  "buttons_no_type": [],
+  "buttons_icon_only_no_name": [],
+  "buttons_icon_only_dynamic": [],
+  "buttons_in_form": [
+   {
+    "line": 128,
+    "in_form": true,
+    "type": "submit"
+   }
+  ],
+  "buttons_no_type_in_form": [],
+  "buttons_no_type_outside_form": [],
+  "links": [
+   {
+    "line": 95,
+    "text": "Membres du staff",
+    "href": "admin-users.php",
+    "name": null,
+    "dyn": false
+   }
+  ],
+  "links_no_text_no_name": [],
+  "links_javascript": [],
+  "div_click": [],
+  "headings": [
+   {
+    "line": 41,
+    "level": 2,
+    "text": "Mes informations",
+    "dyn": false
+   },
+   {
+    "line": 103,
+    "level": 2,
+    "text": "Changer mon mot de passe",
+    "dyn": false
+   }
+  ],
+  "ids": {
+   "actuel": [
+    111
+   ],
+   "nouveau": [
+    117
+   ],
+   "confirme": [
+    124
+   ]
+  },
+  "dup_ids": {},
+  "dup_attrs": [],
+  "labels_no_for": [],
+  "labels_broken_for": [],
+  "labels_total": 3,
+  "ids_total": 3,
+  "aria": {},
+  "style_in_body": [],
+  "script_in_body": [],
+  "bad_nesting": [],
+  "amp_unencoded": [],
+  "php_blocks": 19,
+  "sha": "12c98253753a",
+  "bytes": 7360
+ },
+ {
+  "file": "login.php",
+  "lines": 211,
+  "counts": {
+   "div": [
+    11,
+    11
+   ],
+   "span": [
+    4,
+    4
+   ],
+   "header": [
+    1,
+    1
+   ],
+   "footer": [
+    1,
+    1
+   ],
+   "main": [
+    1,
+    1
+   ],
+   "form": [
+    1,
+    1
+   ],
+   "button": [
+    2,
+    2
+   ],
+   "p": [
+    6,
+    6
+   ],
+   "h1": [
+    1,
+    1
+   ],
+   "label": [
+    2,
+    2
+   ],
+   "input": [
+    2,
+    0
+   ]
+  },
+  "unbalanced": {},
+  "crossing": [],
+  "orphan": [],
+  "unclosed": [],
+  "ctrl_blocks": 3,
+  "ctrl_branches": 3,
+  "ctrl_unbalanced": [],
+  "ctrl_detail": [
+   {
+    "line": 146,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     3
+    ]
+   },
+   {
+    "line": 153,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     3
+    ]
+   },
+   {
+    "line": 162,
+    "name": "if",
+    "branches": 1,
+    "sizes": [
+     3
+    ]
+   }
+  ],
+  "fields": [
+   {
+    "line": 172,
+    "tag": "input",
+    "type": "text",
+    "name": "username",
+    "id": "username",
+    "labelled": true
+   },
+   {
+    "line": 178,
+    "tag": "input",
+    "type": "password",
+    "name": "password",
+    "id": "password",
+    "labelled": true
+   }
+  ],
+  "unlabelled": [],
+  "img": [],
+  "img_noalt": [],
+  "buttons": [
+   {
+    "line": 116,
+    "type": "button",
+    "text": "",
+    "name": "Changer de thème",
+    "xtext": null,
+    "dyn": false
+   },
+   {
+    "line": 182,
+    "type": "submit",
+    "text": "Se connecter",
+    "name": null,
+    "xtext": null,
+    "dyn": false
+   }
+  ],
+  "buttons_no_type": [],
+  "buttons_icon_only_no_name": [],
+  "buttons_icon_only_dynamic": [],
+  "buttons_in_form": [
+   {
+    "line": 116,
+    "in_form": false,
+    "type": "button"
+   },
+   {
+    "line": 182,
+    "in_form": true,
+    "type": "submit"
+   }
+  ],
+  "buttons_no_type_in_form": [],
+  "buttons_no_type_outside_form": [],
+  "links": [],
+  "links_no_text_no_name": [],
+  "links_javascript": [],
+  "div_click": [],
+  "headings": [
+   {
+    "line": 139,
+    "level": 1,
+    "text": "Connexion",
+    "dyn": false
+   }
+  ],
+  "ids": {
+   "username": [
+    172
+   ],
+   "password": [
+    178
+   ]
+  },
+  "dup_ids": {},
+  "dup_attrs": [],
+  "labels_no_for": [],
+  "labels_broken_for": [],
+  "labels_total": 2,
+  "ids_total": 2,
+  "aria": {
+   "aria-pressed": [
+    116
+   ],
+   "aria-label": [
+    116
+   ],
+   "aria-hidden": [
+    118,
+    126
+   ],
+   "autofocus": [
+    172
+   ]
+  },
+  "style_in_body": [],
+  "script_in_body": [
+   83,
+   93,
+   207
+  ],
+  "bad_nesting": [],
+  "amp_unencoded": [
+   {
+    "line": 97,
+    "tag": "link",
+    "attr": "href",
+    "n": 2,
+    "andand": 0,
+    "val": "https://fonts.googleapis.com/css2?family=Orbitron:wght@500;6"
+   }
+  ],
+  "php_blocks": 17,
+  "sha": "7f42894f52f5",
+  "bytes": 10635
+ },
+ {
+  "file": "error.php",
+  "lines": 137,
+  "counts": {
+   "div": [
+    6,
+    6
+   ],
+   "span": [
+    5,
+    5
+   ],
+   "header": [
+    1,
+    1
+   ],
+   "footer": [
+    1,
+    1
+   ],
+   "main": [
+    1,
+    1
+   ],
+   "a": [
+    2,
+    2
+   ],
+   "p": [
+    2,
+    2
+   ],
+   "h1": [
+    1,
+    1
+   ]
+  },
+  "unbalanced": {},
+  "crossing": [],
+  "orphan": [],
+  "unclosed": [],
+  "ctrl_blocks": 0,
+  "ctrl_branches": 0,
+  "ctrl_unbalanced": [],
+  "ctrl_detail": [],
+  "fields": [],
+  "unlabelled": [],
+  "img": [],
+  "img_noalt": [],
+  "buttons": [],
+  "buttons_no_type": [],
+  "buttons_icon_only_no_name": [],
+  "buttons_icon_only_dynamic": [],
+  "buttons_in_form": [],
+  "buttons_no_type_in_form": [],
+  "buttons_no_type_outside_form": [],
+  "links": [
+   {
+    "line": 114,
+    "text": "Accueil",
+    "href": "index.php",
+    "name": null,
+    "dyn": false
+   },
+   {
+    "line": 118,
+    "text": "Retour",
+    "href": "javascript:history.back()",
+    "name": null,
+    "dyn": false
+   }
+  ],
+  "links_no_text_no_name": [],
+  "links_javascript": [
+   {
+    "line": 118,
+    "href": "javascript:history.back()"
+   }
+  ],
+  "div_click": [],
+  "headings": [
+   {
+    "line": 105,
+    "level": 1,
+    "text": "",
+    "dyn": true
+   }
+  ],
+  "ids": {},
+  "dup_ids": {},
+  "dup_attrs": [],
+  "labels_no_for": [],
+  "labels_broken_for": [],
+  "labels_total": 0,
+  "ids_total": 0,
+  "aria": {},
+  "style_in_body": [],
+  "script_in_body": [
+   9,
+   63,
+   72,
+   133
+  ],
+  "bad_nesting": [],
+  "amp_unencoded": [
+   {
+    "line": 76,
+    "tag": "link",
+    "attr": "href",
+    "n": 2,
+    "andand": 0,
+    "val": "https://fonts.googleapis.com/css2?family=Orbitron:wght@500;6"
+   }
+  ],
+  "php_blocks": 16,
+  "sha": "f1bf0a3b8d00",
+  "bytes": 8119
+ }
+]

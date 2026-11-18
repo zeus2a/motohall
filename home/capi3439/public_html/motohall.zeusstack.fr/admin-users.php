@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     
     // Vérification CSRF
     if (!verify_csrf($_POST['csrf_token'] ?? '')) {
-        $error = "ALERTE SÉCURITÉ : Jeton CSRF invalide.";
+        $error = "Alerte de sécurité\xC2\xA0: jeton CSRF invalide.";
     } else {
         
         // --- AJOUT AGENT ---
@@ -49,9 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                     'nom'    => $nom,
                     'prenom' => $prenom
                 ]);
-                $success = "Membre '" . $username . "' activé sur le Node.";
+                $success = "Le compte «\xC2\xA0" . $username . "\xC2\xA0» a été créé.";
             } catch (Exception $e) {
-                $error = "Échec déploiement Membre : " . $e->getMessage();
+                $error = "Échec du déploiement du membre\xC2\xA0: " . $e->getMessage();
             }
         }
 
@@ -87,9 +87,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                 
                 $update = $pdo->prepare($sql);
                 $update->execute($params);
-                $success = "Profil de '" . $username . "' mis à jour avec succès.";
+                $success = "Le profil de «\xC2\xA0" . $username . "\xC2\xA0» a été mis à jour avec succès.";
             } catch (Exception $e) {
-                $error = "Échec de modification : " . $e->getMessage();
+                $error = "Échec de la modification\xC2\xA0: " . $e->getMessage();
             }
         }
     }
@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 // 3. Traitement des Actions (GET - Toggle Statut)
 if (isset($_GET['toggle'])) {
     if (!verify_csrf($_GET['csrf_token'] ?? '')) {
-        $error = "ALERTE SÉCURITÉ : Jeton CSRF invalide.";
+        $error = "Alerte de sécurité\xC2\xA0: jeton CSRF invalide.";
     } else {
         $id = (int)$_GET['toggle'];
         try {
@@ -106,20 +106,20 @@ if (isset($_GET['toggle'])) {
             header('Location: admin-users.php?success=statut_updated');
             exit;
         } catch (Exception $e) {
-            $error = "Erreur de base de données : " . $e->getMessage();
+            $error = "Erreur de base de données\xC2\xA0: " . $e->getMessage();
         }
     }
 }
 
 if (isset($_GET['success']) && $_GET['success'] === 'statut_updated') {
-    $success = "Statut de l'agent mis à jour avec succès.";
+    $success = "Statut du membre mis à jour avec succès.";
 }
 
 // 4. Récupération des Données
 $users = $pdo->query("SELECT id, username, nom, prenom, email, role, actif, date_creation FROM users ORDER BY role ASC, username ASC")->fetchAll();
 
 // 5. Rendu Layout
-$pageTitle = "Membres du staff";
+$pageTitle = "Membres du personnel";
 $pageView  = "admin_users_view";
 
 require_once ROOT_PATH . 'templates/layout_secure.php';

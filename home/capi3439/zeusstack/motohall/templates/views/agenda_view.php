@@ -77,7 +77,7 @@
                      alert(data.error);
                  }
              } catch(e) {
-                 alert('Erreur: ' + e);
+                 alert('Erreur\u00A0: ' + e);
              }
          },
          
@@ -111,9 +111,9 @@
                 <i data-lucide="calendar-clock" class="w-5 h-5 text-[#38bdf8]"></i>
             </div>
             <div>
-                <h2 class="font-display text-[1.15rem] font-semibold text-white">Planning de l'atelier</h2>
+                <h2 class="font-display text-[1.15rem] font-semibold text-white">Agenda</h2>
                 <p class="text-[0.82rem] text-slate-400 mt-0.5">
-                    Vue semaine — les rendez-vous se créent avec le bouton à droite.
+                    Vue par semaine. Créez un rendez-vous avec le bouton «&nbsp;Nouveau rendez-vous&nbsp;».
                 </p>
             </div>
         </div>
@@ -126,7 +126,7 @@
                     <i data-lucide="chevron-left" class="w-4 h-4"></i>
                 </button>
                 <div class="px-3 text-center text-[0.85rem] text-slate-200 min-w-[210px] tabulaire"
-                     x-text="weekDays[0].toLocaleDateString('fr-FR', {day:'numeric', month:'long'}) + ' — ' + weekDays[6].toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'})"></div>
+                     x-text="weekDays[0].toLocaleDateString('fr-FR', {day:'numeric', month:'long'}) + ' – ' + weekDays[6].toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'})"></div>
                 <button type="button" @click="nextWeek()"
                         class="p-2 rounded-[9px] text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
                         title="Semaine suivante">
@@ -196,7 +196,8 @@
 
                 <div class="carte-entete">
                     <h3 class="carte-titre">Nouveau rendez-vous</h3>
-                    <button type="button" @click="showModal = false" class="text-slate-500 hover:text-slate-300">
+                    <button type="button" @click="showModal = false" class="text-slate-500 hover:text-slate-300"
+                            aria-label="Fermer la fenêtre">
                         <i data-lucide="x" class="w-5 h-5"></i>
                     </button>
                 </div>
@@ -204,9 +205,9 @@
                 <form @submit.prevent="submitEvent" class="space-y-4">
 
                     <div>
-                        <label class="etiquette" for="evt-title">Objet de l'intervention</label>
+                        <label class="etiquette" for="evt-title">Objet de l’intervention</label>
                         <input type="text" id="evt-title" x-model="formData.title" required
-                               class="champ" placeholder="Ex. : remplacement pneu arrière">
+                               class="champ" placeholder="Ex.&nbsp;: remplacement du pneu arrière">
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">

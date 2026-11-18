@@ -1,0 +1,23 @@
+﻿role · texte / fond
+role · texte / carte
+role · texte-doux / carte
+role · texte-faible / carte
+role · accent / carte
+role · succes / carte
+role · alerte / carte
+role · danger / carte
+PONT text-slate-500
+PONT text-slate-600
+PONT text-white
+PONT text-slate-400
+PONT text-slate-300
+PONT titre-section
+PONT .meta
+PONT text-[0.72rem]
+PONT text-[10px]
+PONT text-emerald-400
+PONT text-red-400
+PONT text-[#38bdf8]
+COMPOSANT titre-page
+COMPOSANT panneau lateral
+COMPOSANT ariane

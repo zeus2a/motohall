@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 }
 
 // ROUTAGE VUE
-$pageTitle = "Agenda atelier";
+$pageTitle = "Agenda";
 $pageView  = "agenda_view";
 
 require_once ROOT_PATH . 'templates/layout_secure.php';

@@ -16,7 +16,7 @@
                 Manuels, procédures et formulaires, classés par service.
             </p>
         </div>
-        <button type="button" onclick="window.location.reload()" class="btn btn-neutre" title="Recharger la liste">
+        <button type="button" onclick="window.location.reload()" class="btn btn-neutre" title="Actualiser la liste">
             <i data-lucide="refresh-cw" class="w-4 h-4"></i>
             <span>Actualiser</span>
         </button>
@@ -33,7 +33,7 @@
                  this.loading = true;
                  try {
                      const response = await fetch(`?ajax_data=${encodeURIComponent(path)}`);
-                     if (!response.ok) throw new Error('Network Response Fail');
+                     if (!response.ok) throw new Error("Le serveur n’a pas répondu.");
                      const payload = await response.json();
                      if (payload.error) throw new Error(payload.error);
                      this.folders = payload.folders;
@@ -43,7 +43,7 @@
                      setTimeout(() => lucide.createIcons(), 50);
                  } catch(err) {
                      this.loading = false;
-                     alert('Erreur d\'accès au dossier : ' + err.message);
+                     alert('Impossible d’ouvrir le dossier\u00A0: ' + err.message);
                  }
              },
              get breadcrumbs() {
@@ -130,17 +130,23 @@
                     continue;
                 }
             ?>
+            <!-- role="button" + tabindex : sans eux, cette carte n'était
+                 atteignable qu'à la souris. La navigation de la Documentation
+                 était donc impossible au clavier (relevé du 19/10/2026). -->
             <div @click="openFolder('<?= htmlspecialchars($d['dossier'], ENT_QUOTES, 'UTF-8') ?>')"
+                 @keydown.enter.prevent="openFolder('<?= htmlspecialchars($d['dossier'], ENT_QUOTES, 'UTF-8') ?>')"
+                 @keydown.space.prevent="openFolder('<?= htmlspecialchars($d['dossier'], ENT_QUOTES, 'UTF-8') ?>')"
+                 role="button" tabindex="0"
                  class="carte cursor-pointer transition-colors duration-200 hover:border-[#38bdf8]/40">
                 <div class="w-10 h-10 rounded-[10px] bg-white/5 border border-white/10
                             flex items-center justify-center mb-4">
                     <i data-lucide="<?= htmlspecialchars($d['icone'], ENT_QUOTES, 'UTF-8') ?>"
                        class="w-5 h-5 text-[#38bdf8]"></i>
                 </div>
-                <h3 class="font-display text-[1rem] font-semibold text-white mb-1">
+                <h3 class="font-display text-[1.05rem] font-semibold text-white mb-1">
                     <?= htmlspecialchars($d['titre'], ENT_QUOTES, 'UTF-8') ?>
                 </h3>
-                <p class="text-[0.85rem] text-slate-400 leading-relaxed">
+                <p class="text-[0.92rem] text-slate-400 leading-relaxed">
                     <?= htmlspecialchars($d['texte'], ENT_QUOTES, 'UTF-8') ?>
                 </p>
             </div>
@@ -155,11 +161,14 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-4">
                     <template x-for="f in folders">
                         <div @click="openFolder(f.path)"
+                             @keydown.enter.prevent="openFolder(f.path)"
+                             @keydown.space.prevent="openFolder(f.path)"
+                             role="button" tabindex="0"
                              class="flex items-center gap-3 px-4 py-3 rounded-[12px] border border-white/10
                                     bg-white/[0.02] hover:bg-white/[0.05] hover:border-[#38bdf8]/40
                                     cursor-pointer transition-colors duration-200">
                             <i data-lucide="folder" class="w-5 h-5 text-[#38bdf8] shrink-0"></i>
-                            <span class="text-[0.88rem] text-slate-200 truncate" x-text="f.name"></span>
+                            <span class="text-[0.92rem] text-slate-200 truncate" x-text="f.name"></span>
                         </div>
                     </template>
                 </div>
@@ -173,14 +182,20 @@
                                     border border-white/10 bg-white/[0.02] hover:bg-white/[0.05]
                                     transition-colors duration-200">
                             <div class="flex items-center gap-3 min-w-0 cursor-pointer flex-1"
-                                 @click="$dispatch('open-viewer', { url: f.url, type: f.ext, name: f.name })">
+                                 role="button" tabindex="0"
+                                 @click="$dispatch('open-viewer', { url: f.url, type: f.ext, name: f.name })"
+                                 @keydown.enter.prevent="$dispatch('open-viewer', { url: f.url, type: f.ext, name: f.name })"
+                                 @keydown.space.prevent="$dispatch('open-viewer', { url: f.url, type: f.ext, name: f.name })">
                                 <i :data-lucide="getFileIcon(f.ext)" class="w-5 h-5 shrink-0" :class="getFileColor(f.ext)"></i>
                                 <div class="min-w-0">
-                                    <p class="text-[0.88rem] text-slate-200 truncate" x-text="f.name"></p>
-                                    <p class="text-[0.72rem] text-slate-500 uppercase" x-text="f.ext"></p>
+                                    <p class="text-[0.92rem] text-slate-200 truncate" x-text="f.name"></p>
+                                    <p class="text-[0.85rem] text-slate-500 uppercase" x-text="f.ext"></p>
                                 </div>
                             </div>
-                            <a :href="f.url" download
+                            <!-- &dl=1 : force le téléchargement. Sans lui, le
+                                 fichier s'afficherait dans l'onglet (c'est ce
+                                 que fait la visionneuse, avec f.url seule). -->
+                            <a :href="f.url + '&dl=1'" download
                                class="btn btn-neutre !px-3 shrink-0" title="Télécharger ce fichier">
                                 <i data-lucide="download" class="w-4 h-4"></i>
                             </a>
@@ -226,14 +241,15 @@
                         <h4 class="text-white font-display font-black uppercase tracking-widest flex items-center gap-3">
                             <span x-text="viewer.name"></span>
                         </h4>
-                        <p class="text-[10px] text-cyan-400/50 uppercase tracking-[0.4em] font-bold mt-1">Visionneuse de documents</p>
+                        <p class="text-[0.85rem] text-cyan-400/50 uppercase tracking-[0.4em] font-bold mt-1">Visionneuse de documents</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-4">
-                    <a :href="viewer.url" download class="px-6 py-4 rounded-xl bg-white/5 hover:bg-emerald-500/20 border border-white/5 hover:border-emerald-500/40 text-emerald-500/50 hover:text-emerald-400 transition-all font-black uppercase tracking-widest text-[10px] flex items-center gap-3">
-                        <i data-lucide="hard-drive-download" class="w-4 h-4"></i> Exporter
+                    <a :href="viewer.url" download class="px-6 py-4 rounded-xl bg-white/5 hover:bg-emerald-500/20 border border-white/5 hover:border-emerald-500/40 text-emerald-500/50 hover:text-emerald-400 transition-all font-black uppercase tracking-widest text-[0.85rem] flex items-center gap-3">
+                        <i data-lucide="hard-drive-download" class="w-4 h-4"></i> Télécharger
                     </a>
-                    <button @click="viewer.show = false" class="px-6 py-4 rounded-xl bg-red-500 hover:bg-red-400 text-black shadow-lg shadow-red-500/20 transition-all font-black uppercase tracking-widest text-[10px] flex items-center gap-3">
+                    <button type="button" @click="viewer.show = false" aria-label="Fermer la visionneuse"
+                            class="px-6 py-4 rounded-xl bg-red-500 hover:bg-red-400 text-black shadow-lg shadow-red-500/20 transition-all font-black uppercase tracking-widest text-[0.85rem] flex items-center gap-3">
                         <i data-lucide="x" class="w-4 h-4"></i> Fermer
                     </button>
                 </div>
@@ -251,7 +267,7 @@
                 
                 <!-- TYPE: IMAGE -->
                 <template x-if="['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(viewer.type)">
-                    <img :src="viewer.url" class="max-w-full max-h-[90vh] object-contain relative z-10 shadow-2xl rounded-2xl" alt="Visuel Sécurisé">
+                    <img :src="viewer.url" class="max-w-full max-h-[90vh] object-contain relative z-10 shadow-2xl rounded-2xl" alt="Aperçu du document">
                 </template>
                 
                 <!-- TYPE: INCONNU / EXTERNE (WORD, EXCEL, CSV, ZIP) -->
@@ -260,15 +276,13 @@
                         <div class="w-32 h-32 bg-amber-500/10 border border-amber-500/20 rounded-[2rem] flex items-center justify-center mx-auto mb-8 text-amber-400 shadow-[0_0_80px_rgba(245,158,11,0.2)]">
                             <i data-lucide="file-warning" class="w-16 h-16"></i>
                         </div>
-                        <h3 class="text-3xl font-display font-black text-white uppercase tracking-widest mb-6">Format Non-Visualisable</h3>
-                        <p class="text-[11px] text-white/40 leading-loose font-bold mb-10 w-4/5 mx-auto uppercase tracking-widest">Le système interne ne dispose pas des décodeurs pour ce type de fichier. L'ouverture via l'application de bureau dédiée (Excel, Word, Winrar) est obligatoire.</p>
+                        <h3 class="text-3xl font-display font-black text-white uppercase tracking-widest mb-6">Format non visualisable</h3>
+                        <p class="text-[11px] text-white/40 leading-loose font-bold mb-10 w-4/5 mx-auto uppercase tracking-widest">Le système interne ne dispose pas des décodeurs nécessaires pour ce type de fichier. L’ouverture par l’application de bureau dédiée (Excel, Word, WinRAR) est nécessaire.</p>
                         <a :href="viewer.url" download class="inline-flex glass px-10 py-5 rounded-[2rem] border-white/10 hover:border-amber-500 hover:bg-amber-500 hover:text-black font-display font-black uppercase text-xs tracking-[0.3em] transition-all gap-4 shadow-xl hover:shadow-[0_0_50px_rgba(245,158,11,0.4)]">
-                            <i data-lucide="download-cloud" class="w-5 h-5"></i> Extraire le Fichier
+                            <i data-lucide="download-cloud" class="w-5 h-5"></i> Télécharger le fichier
                         </a>
                     </div>
                 </template>
             </div>
         </div>
     </template>
-
-

@@ -1,0 +1,653 @@
+﻿php.exe : Unable to determine minimum PHP version supported by your project from composer.json: Failed to read file 
+"composer.json".
+Au caractère Ligne:1 : 352
++ ... -cs-fixer'; & $php $fixer fix --config="$base\psr12.php" --dry-run -- ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Unable to deter...composer.json".:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+If you need help while solving warnings, ask at https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/discussions/, we will 
+help you!
+
+PHP CS Fixer 3.95.27 Adalbertus by Fabien Potencier, Dariusz Ruminski and contributors.
+PHP runtime: 8.4.25
+Loaded config default from "C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\_travail\_audit_20261
+118\php-cs-fixer\psr12.php".
+Running analysis on 7 cores with 10 files per process.
+  0/30 [░░░░░░░░░░░░░░░░░░░░░░░░░░░░]   0%
+  1/30 [░░░░░░░░░░░░░░░░░░░░░░░░░░░░]   3%
+ 30/30 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
+
+   1) home\capi3439\public_html\motohall.zeusstack.fr\logout.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\logout.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\logout.php
+@@ -1,4 +1,5 @@
+ <?php
++
+ /**
+  * ═══════════════════════════════════════════════════════════════════════════
+  * LOGOUT.PHP v5.0 - LA SORTIE SÉCURISÉ AEGISS 2026
+@@ -11,9 +12,14 @@
+ $_SESSION = [];
+ if (ini_get("session.use_cookies")) {
+     $params = session_get_cookie_params();
+-    setcookie(session_name(), '', time() - 42000,
+-        $params["path"], $params["domain"],
+-        $params["secure"], $params["httponly"]
++    setcookie(
++        session_name(),
++        '',
++        time() - 42000,
++        $params["path"],
++        $params["domain"],
++        $params["secure"],
++        $params["httponly"]
+     );
+ }
+ session_destroy();
+
+      ----------- end diff -----------
+
+   2) home\capi3439\public_html\motohall.zeusstack.fr\profil.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\profil.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\profil.php
+@@ -1,4 +1,5 @@
+ <?php
++
+ /**
+  * ═══════════════════════════════════════════════════════════════════════════
+  * PROFIL.PHP — MON COMPTE
+
+      ----------- end diff -----------
+
+   3) home\capi3439\zeusstack\motohall\includes\config.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\includes\config.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\includes\config.php
+@@ -1,4 +1,5 @@
+ <?php
++
+ /**
+  * AEGIS CONFIGURATION - v4.6 (PERFORMANCE BOOST)
+  * Note : Utilisation de 127.0.0.1 pour eviter le lag DNS de Windows.
+@@ -21,4 +22,3 @@
+ date_default_timezone_set('Europe/Paris');
+ error_reporting(E_ALL);
+ ini_set('display_errors', 1);
+-?>
+
+      ----------- end diff -----------
+
+   4) home\capi3439\zeusstack\motohall\includes\_auth.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\includes\_auth.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\includes\_auth.php
+@@ -1,4 +1,5 @@
+ <?php
++
+ /**
+  * ═══════════════════════════════════════════════════════════════════════════
+  * _AUTH.PHP v5.0 - L'OPÉRATEUR DE SÉCURITÉ AEGISS 2026
+@@ -28,19 +29,21 @@
+ }
+ 
+ // 4. Utilitaires de Rôle (Standard Pro 2026)
+-function getRole() {
++function getRole()
++{
+     return $_SESSION['role_name'] ?? $_SESSION['role'] ?? 'GUEST';
+ }
+ 
+-function requireRole($authorizedRoles = []) {
++function requireRole($authorizedRoles = [])
++{
+     if (!isset($_SESSION['user_id'])) {
+         header('Location: login.php');
+         exit;
+     }
+-    
++
+     $currentRole = strtoupper(getRole());
+     $authorizedRoles = array_map('strtoupper', (array)$authorizedRoles);
+-    
++
+     if (!in_array($currentRole, $authorizedRoles)) {
+         header('Location: index.php?error=access_denied&role=' . $currentRole);
+         exit;
+
+      ----------- end diff -----------
+
+   5) home\capi3439\zeusstack\motohall\includes\_bootstrap.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\includes\_bootstrap.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\includes\_bootstrap.php
+@@ -1,4 +1,5 @@
+ <?php
++
+ /**
+  * ═══════════════════════════════════════════════════════════════════════════
+  * _BOOTSTRAP.PHP v5.0 - Le Cœur d'AEGISS 2026
+@@ -27,7 +28,9 @@
+ 
+ // 2. Optimisation Performance (Gzip)
+ if (!isset($_GET['ajax_list']) && !isset($_GET['fragment'])) {
+-    if (extension_loaded('zlib')) ob_start('ob_gzhandler');
++    if (extension_loaded('zlib')) {
++        ob_start('ob_gzhandler');
++    }
+ }
+ 
+ // 3. Configuration & Constantes
+@@ -60,18 +63,23 @@
+ /**
+  * Accesseur Global BDD
+  */
+-function getDB() {
++function getDB()
++{
+     global $pdo;
+     return $pdo;
+ }
+ 
+ // 4. Utilitaires de Sécurité Globaux
+-function clean($data) {
+-    if (is_array($data)) return array_map('clean', $data);
++function clean($data)
++{
++    if (is_array($data)) {
++        return array_map('clean', $data);
++    }
+     return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
+ }
+ 
+-function stop($message = "Accès refusé") {
++function stop($message = "Accès refusé")
++{
+     die($message);
+ }
+ 
+
+      ----------- end diff -----------
+
+   6) home\capi3439\zeusstack\motohall\includes\_functions.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\includes\_functions.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\includes\_functions.php
+@@ -1,4 +1,5 @@
+ <?php
++
+ /**
+  * ═══════════════════════════════════════════════════════════════════════════
+  * _FUNCTIONS.PHP v5.0 - LES UTILITAIRES MÉTIER AEGISS 2026
+@@ -8,7 +9,8 @@
+ /**
+  * Nettoyage des sorties (Alias de clean() pour compatibilité)
+  */
+-function escape($string) {
++function escape($string)
++{
+     return htmlspecialchars($string ?? '', ENT_QUOTES, 'UTF-8');
+ }
+ 
+@@ -15,8 +17,11 @@
+ /**
+  * Formatage de date standard (FR)
+  */
+-function formatDate($date, $format = 'd/m/Y H:i') {
+-    if (!$date) return 'N/A';
++function formatDate($date, $format = 'd/m/Y H:i')
++{
++    if (!$date) {
++        return 'N/A';
++    }
+     return date($format, strtotime($date));
+ }
+ 
+@@ -23,8 +28,11 @@
+ /**
+  * Récupération des données utilisateur complètes depuis BDD
+  */
+-function aegis_get_user($pdo) {
+-    if (!isset($_SESSION['user_id'])) return null;
++function aegis_get_user($pdo)
++{
++    if (!isset($_SESSION['user_id'])) {
++        return null;
++    }
+     $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+     $stmt->execute([$_SESSION['user_id']]);
+     return $stmt->fetch();
+@@ -33,7 +41,8 @@
+ /**
+  * Détermination de l'icône Lucide selon l'extension
+  */
+-function getFileIcon($filename) {
++function getFileIcon($filename)
++{
+     $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+     return match($ext) {
+         'pdf'               => 'file-text',
+@@ -48,7 +57,8 @@
+ /**
+  * Détermination de la couleur CSS (Tailwind) selon l'extension
+  */
+-function getFileColor($filename) {
++function getFileColor($filename)
++{
+     $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+     return match($ext) {
+         'pdf'               => '#ef4444', // Red 500
+
+      ----------- end diff -----------
+
+   7) home\capi3439\zeusstack\motohall\includes\_init.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\includes\_init.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\includes\_init.php
+@@ -1,4 +1,5 @@
+ <?php
++
+ /**
+  * ═══════════════════════════════════════════════════════════════════════════
+  * _INIT.PHP v5.0 - Le Gardien d'AEGISS 2026
+@@ -27,16 +28,19 @@
+     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+ }
+ 
+-function csrf() {
++function csrf()
++{
+     return $_SESSION['csrf_token'];
+ }
+ 
+-function verify_csrf($token) {
++function verify_csrf($token)
++{
+     return hash_equals($_SESSION['csrf_token'] ?? '', $token);
+ }
+ 
+ // 5. Audit Logging Simple
+-function log_system($action, $user = 'SYSTEM') {
++function log_system($action, $user = 'SYSTEM')
++{
+     $date = date('Y-m-d H:i:s');
+     $ip = $_SERVER['REMOTE_ADDR'] ?? 'UNKNOWN';
+     $log = "[$date] [$ip] [$user] $action\n";
+
+      ----------- end diff -----------
+
+   8) home\capi3439\zeusstack\motohall\templates\header_ui.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\header_ui.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\header_ui.php
+@@ -33,7 +33,7 @@
+                       . ($nomFam !== '' ? substr($nomFam, 0, 1) : ''));
+ 
+ $enFr   = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+-$moisFr = [1=>'janvier','février','mars','avril','mai','juin','juillet',
++$moisFr = [1 => 'janvier','février','mars','avril','mai','juin','juillet',
+            'août','septembre','octobre','novembre','décembre'];
+ // Le 1er du mois s'écrit « 1er octobre », pas « 1 octobre ».
+ $jourNum = (int)date('j');
+
+      ----------- end diff -----------
+
+   9) home\capi3439\zeusstack\motohall\templates\layout_secure.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\layout_secure.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\layout_secure.php
+@@ -12,8 +12,9 @@
+  * ═══════════════════════════════════════════════════════════════════════════
+  */
+ 
+-if (!isset($pageView))
++if (!isset($pageView)) {
+     stop("Erreur de rendu\xC2\xA0: fragment de vue manquant.");
++}
+ 
+ // MODE FRAGMENT (navigation instantanée) : on ne rend que la vue.
+ if (defined('IS_FRAGMENT') && IS_FRAGMENT) {
+
+      ----------- end diff -----------
+
+  10) home\capi3439\zeusstack\motohall\templates\views\admin_users_view.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\admin_users_view.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\admin_users_view.php
+@@ -227,7 +227,7 @@
+             $nomComplet = trim(($u['prenom'] ?? '') . ' ' . ($u['nom'] ?? ''));
+             $initiales  = strtoupper(substr((string)($u['prenom'] ?: $u['username']), 0, 1)
+                                    . substr((string)($u['nom'] ?? ''), 0, 1));
+-        ?>
++            ?>
+         <div class="carte flex flex-col">
+             <div class="flex items-start justify-between gap-3 mb-4">
+                 <div class="flex items-center gap-3 min-w-0">
+
+      ----------- end diff -----------
+
+  11) home\capi3439\zeusstack\motohall\templates\views\documents_view.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\documents_view.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\zeusstack\motohall\templates\views\documents_view.php
+@@ -124,12 +124,12 @@
+                     'roles'   => ['ADMIN', 'DIRECTEUR', 'VENDEUR', 'MECANICIEN'],
+                 ],
+             ];
+-            $roleCourant = strtoupper(getRole());
+-            foreach ($dossiersRacine as $d):
+-                if (!in_array($roleCourant, $d['roles'], true)) {
+-                    continue;
+-                }
+-            ?>
++$roleCourant = strtoupper(getRole());
++foreach ($dossiersRacine as $d):
++    if (!in_array($roleCourant, $d['roles'], true)) {
++        continue;
++    }
++    ?>
+             <!-- role="button" + tabindex : sans eux, cette carte n'était
+                  atteignable qu'à la souris. La navigation de la Documentation
+                  était donc impossible au clavier (relevé du 19/10/2026). -->
+
+      ----------- end diff -----------
+
+  12) home\capi3439\public_html\motohall.zeusstack.fr\admin-users.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\admin-users.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\admin-users.php
+@@ -1,4 +1,5 @@
+ <?php
++
+ /**
+  * ═══════════════════════════════════════════════════════════════════════════
+  * ADMIN-USERS.PHP v5.0 - LA CONSOLE AGENTS AEGISS 2026
+@@ -18,12 +19,12 @@
+ 
+ // 2. Traitement des Actions (POST)
+ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+-    
++
+     // Vérification CSRF
+     if (!verify_csrf($_POST['csrf_token'] ?? '')) {
+         $error = "Alerte de sécurité\xC2\xA0: jeton CSRF invalide.";
+     } else {
+-        
++
+         // --- AJOUT AGENT ---
+         if ($_POST['action'] === 'add') {
+             try {
+@@ -76,7 +77,7 @@
+                 ];
+ 
+                 $sql = "UPDATE users SET username = :user, role = :role, nom = :nom, prenom = :prenom, email = :email";
+-                
++
+                 // Si un nouveau mot de passe est saisi
+                 if (!empty($_POST['password'])) {
+                     $sql .= ", password = :pass";
+@@ -84,7 +85,7 @@
+                 }
+ 
+                 $sql .= " WHERE id = :id";
+-                
++
+                 $update = $pdo->prepare($sql);
+                 $update->execute($params);
+                 $success = "Le profil de «\xC2\xA0" . $username . "\xC2\xA0» a été mis à jour avec succès.";
+
+      ----------- end diff -----------
+
+  13) home\capi3439\public_html\motohall.zeusstack.fr\agenda.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\agenda.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\agenda.php
+@@ -1,4 +1,5 @@
+ <?php
++
+ /**
+  * ═══════════════════════════════════════════════════════════════════════════
+  * AGENDA.PHP v6.0 - LE MOTEUR NEXUS PLANNING AEGISS 2026
+@@ -16,14 +17,16 @@
+ 
+ // ACTION API: Récupération des rendez-vous en JSON
+ if (isset($_GET['ajax_data'])) {
+-    while (ob_get_level()) ob_end_clean(); // Nettoyage total des buffers
++    while (ob_get_level()) {
++        ob_end_clean();
++    } // Nettoyage total des buffers
+     error_reporting(0);
+     ini_set('display_errors', 0);
+     header('Content-Type: application/json; charset=utf-8');
+-    
++
+     try {
+         $db = getDB();
+-        
++
+         // Calcul robuste des dates (Lundi-Dimanche)
+         $today = new DateTime();
+         $monday = clone $today;
+@@ -33,11 +36,11 @@
+ 
+         $start = $_GET['start'] ?? $monday->format('Y-m-d');
+         $end = $_GET['end'] ?? $sunday->format('Y-m-d');
+-        
++
+         $stmt = $db->prepare("SELECT * FROM agenda_events WHERE event_date >= ? AND event_date <= ? ORDER BY event_date ASC, start_time ASC");
+         $stmt->execute([$start, $end]);
+         echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+-    } catch(Exception $e) {
++    } catch (Exception $e) {
+         echo json_encode(['error' => $e->getMessage()]);
+     }
+     exit;
+@@ -45,7 +48,9 @@
+ 
+ // ACTION API: Création d'un rendez-vous
+ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'add_event') {
+-    while (ob_get_level()) ob_end_clean();
++    while (ob_get_level()) {
++        ob_end_clean();
++    }
+     error_reporting(0);
+     ini_set('display_errors', 0);
+     header('Content-Type: application/json; charset=utf-8');
+@@ -65,7 +70,7 @@
+             $_SESSION['user_id'] ?? 0
+         ]);
+         echo json_encode(['success' => true]);
+-    } catch(Exception $e) {
++    } catch (Exception $e) {
+         echo json_encode(['error' => $e->getMessage()]);
+     }
+     exit;
+
+      ----------- end diff -----------
+
+  14) home\capi3439\public_html\motohall.zeusstack.fr\amorce.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\amorce.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\amorce.php
+@@ -1,4 +1,5 @@
+ <?php
++
+ /**
+  * ═══════════════════════════════════════════════════════════════════════════
+  * AMORCE.PHP — LE POINT D'ENTRÉE UNIQUE DU CODE
+
+      ----------- end diff -----------
+
+  15) home\capi3439\public_html\motohall.zeusstack.fr\atelier.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\atelier.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\atelier.php
+@@ -1,4 +1,5 @@
+ <?php
++
+ /**
+  * ═══════════════════════════════════════════════════════════════════════════
+  * ATELIER.PHP — ESPACE TECHNIQUE
+
+      ----------- end diff -----------
+
+  16) home\capi3439\public_html\motohall.zeusstack.fr\comptoir.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\comptoir.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\comptoir.php
+@@ -1,4 +1,5 @@
+ <?php
++
+ /**
+  * ═══════════════════════════════════════════════════════════════════════════
+  * COMPTOIR.PHP — ESPACE DE VENTE
+
+      ----------- end diff -----------
+
+  17) home\capi3439\public_html\motohall.zeusstack.fr\dashboard.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\dashboard.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\dashboard.php
+@@ -1,4 +1,5 @@
+ <?php
++
+ /**
+  * ═══════════════════════════════════════════════════════════════════════════
+  * DASHBOARD.PHP — TABLEAU DE BORD DE LA DIRECTION
+
+      ----------- end diff -----------
+
+  18) home\capi3439\public_html\motohall.zeusstack.fr\documents.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\documents.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\documents.php
+@@ -1,4 +1,5 @@
+ <?php
++
+ /**
+  * ═══════════════════════════════════════════════════════════════════════════
+  * DOCUMENTS.PHP v5.0 - LE CONTRÔLEUR DE LIBRAIRIE AEGISS 2026
+@@ -58,7 +59,7 @@
+     header('Content-Type: application/json; charset=utf-8');
+     $folder = $_GET['ajax_data'];
+     $clean_folder = preg_replace('/[^a-zA-Z0-9_\-\/]/', '', $folder);
+-    
++
+     // VERROU DE SÉCURITÉ DISTRICT DIRECTION
+     $is_authorized = in_array(strtoupper(getRole()), ['ADMIN', 'DIRECTEUR']);
+     if (stripos($folder, 'DIRECTION') !== false && !$is_authorized) {
+@@ -76,11 +77,11 @@
+ 
+     $entries = array_diff(scandir($full_path), ['.','..']);
+     $out = ['folders' => [], 'files' => []];
+-    
++
+     foreach ($entries as $entry) {
+         $path = $full_path . DIRECTORY_SEPARATOR . $entry;
+         $rel_path = ($folder ? $folder . '/' : '') . $entry;
+-        
++
+         if (is_dir($path)) {
+             $out['folders'][] = ['name' => $entry, 'path' => $rel_path];
+         } else {
+@@ -88,13 +89,13 @@
+             $url = $base_url . rawurlencode($rel_path);
+             $out['files'][] = [
+                 'name' => $entry,
+-                'path' => $rel_path, 
+-                'ext' => $ext, 
++                'path' => $rel_path,
++                'ext' => $ext,
+                 'url' => $url
+             ];
+         }
+     }
+-    
++
+     echo json_encode($out);
+     exit;
+ }
+@@ -146,7 +147,7 @@
+ 
+     $entries = array_diff(scandir($full_path), ['.','..']);
+     $html = '';
+-    
++
+     foreach ($entries as $entry) {
+         $path = $full_path . DIRECTORY_SEPARATOR . $entry;
+         $rel_path = ($folder ? $folder . '/' : '') . $entry;
+@@ -171,8 +172,12 @@
+         } else {
+             $url = $base_url . rawurlencode($rel_path);
+             $ext = strtolower(pathinfo($entry, PATHINFO_EXTENSION));
+-            $icon = match($ext) { 'pdf'=>'file-text', 'jpg','png','jpeg'=>'image', 'zip','rar'=>'archive', default=>'file' };
+-            $color = match($ext) { 'pdf'=>'text-red-400', 'zip','rar'=>'text-amber-400', default=>'text-cyan-400' };
++            $icon = match($ext) {
++                'pdf' => 'file-text', 'jpg','png','jpeg' => 'image', 'zip','rar' => 'archive', default => 'file'
++            };
++            $color = match($ext) {
++                'pdf' => 'text-red-400', 'zip','rar' => 'text-amber-400', default => 'text-cyan-400'
++            };
+ 
+             $safe_url = htmlspecialchars($url, ENT_QUOTES, 'UTF-8');
+             $safe_ext = htmlspecialchars($ext, ENT_QUOTES, 'UTF-8');
+@@ -192,7 +197,7 @@
+ 
+     // 2. SAUVEGARDE CACHE
+     file_put_contents($cache_file, $html);
+-    
++
+     echo $html;
+     exit();
+ }
+
+      ----------- end diff -----------
+
+  19) home\capi3439\public_html\motohall.zeusstack.fr\error.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\error.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\error.php
+@@ -19,7 +19,9 @@
+ //    ni SITE_NAME, ni la base de données. C'est pour cela que les constantes sont
+ //    définies ici si elles manquent — sans quoi la page d'erreur provoquait
+ //    elle-même une erreur 500 (constaté et corrigé le 20/09/2026).
+-if (!defined('SITE_NAME')) { define('SITE_NAME', 'MotoHall 2A'); }
++if (!defined('SITE_NAME')) {
++    define('SITE_NAME', 'MotoHall 2A');
++}
+ 
+ // !! LES CHEMINS DES FICHIERS SONT CALCULÉS, PAS ÉCRITS (ajouté le 21/09/2026).
+ //    Cette page est appelée pour N'IMPORTE QUELLE adresse du site
+
+      ----------- end diff -----------
+
+  20) home\capi3439\public_html\motohall.zeusstack.fr\fichier.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\fichier.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\fichier.php
+@@ -1,4 +1,5 @@
+ <?php
++
+ /**
+  * ═══════════════════════════════════════════════════════════════════════════
+  * FICHIER.PHP — LE SERVICE DE FICHIERS DE LA DOCUMENTATION
+
+      ----------- end diff -----------
+
+  21) home\capi3439\public_html\motohall.zeusstack.fr\index.php
+      ---------- begin diff ----------
+--- C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\index.php
++++ C:\zeus_dev\zeus_projets\deepseek-harness\sites-web\moto-hall_laravel\home\capi3439\public_html\motohall.zeusstack.fr\index.php
+@@ -1,4 +1,5 @@
+ <?php
++
+ /**
+  * ═══════════════════════════════════════════════════════════════════════════
+  * INDEX.PHP — PORTAIL DE L'INTRANET (page d'accueil du site)
+
+      ----------- end diff -----------
+
+
+Found 21 of 30 files that can be fixed in 1.434 seconds, 68.00 MB memory used

@@ -21,66 +21,34 @@
 require_once __DIR__ . '/amorce.php';
 
 $dir_documents = __DIR__ . '/documents/';
-$base_url = 'documents/';
 
 /**
- * Résout un dossier situé sous documents/ en TOLÉRANT LA CASSE.
+ * !! LES LIENS NE SONT PLUS DES ADRESSES DIRECTES (19/10/2026).
  *
- * !! POURQUOI CETTE FONCTION EXISTE (20/09/2026) : les pages envoyaient
- *    « ATELIER » alors que le dossier s'appelle « atelier ». Sur Windows la
- *    casse ne compte pas, donc cela fonctionnait sur le poste de Frédéric ;
- *    sur le serveur Linux, realpath() échouait et la page répondait
- *    « 400 Bad Request » — mesuré en ligne sur les trois dossiers racine.
- *    Plutôt que de dépendre de l'orthographe exacte de chaque lien, on résout
- *    ici le VRAI nom du dossier, segment par segment.
+ *    AVANT : $base_url = 'documents/' — donc les fichiers étaient servis par le
+ *    serveur web, sans que PHP n'entre dans le coup. Mesure du 19/10/2026,
+ *    depuis le serveur : /documents/direction/Finances/Bilan_Mars_2026.csv
+ *    répondait « 200 text/csv » À UN VISITEUR SANS AUCUNE CONNEXION. Aucun
+ *    contrôle de rôle ne pouvait s'appliquer, puisqu'aucun code ne s'exécutait.
  *
- * Sécurité : le résultat est TOUJOURS vérifié comme étant bien à l'intérieur
- * de documents/ (protection contre la remontée « ../ »).
+ *    MAINTENANT : tout passe par fichier.php, qui vérifie l'identification ET
+ *    le profil avant de servir. Le dossier documents/ est fermé par le
+ *    .htaccess, donc l'ancienne adresse ne répond plus.
+ */
+$base_url = 'fichier.php?f=';
+
+/**
+ * Résout un dossier situé sous documents/ (tolérance de casse, refus des
+ * remontées « ../ »).
+ *
+ * L'implémentation vit désormais dans le moteur (includes/_functions.php,
+ * fonction aegis_resoudre_dans), parce que fichier.php en a besoin aussi :
+ * deux copies de cette logique, c'est une faille le jour où on n'en corrige
+ * qu'une. Ce nom reste pour ne pas toucher aux appels existants.
  */
 function aegis_resoudre_dossier(string $racine, string $demande): ?string
 {
-    $racineReelle = realpath($racine);
-    if ($racineReelle === false) {
-        return null;
-    }
-
-    // Chemin direct (cas normal, et cas des sous-dossiers renvoyés par l'API).
-    $direct = realpath($racineReelle . DIRECTORY_SEPARATOR . $demande);
-    if ($direct !== false && strpos($direct, $racineReelle) === 0) {
-        return $direct;
-    }
-
-    // Sinon : on reconstruit le chemin segment par segment, en comparant sans
-    // tenir compte de la casse (et en refusant tout segment « .. »).
-    $chemin = $racineReelle;
-    foreach (explode('/', str_replace('\\', '/', $demande)) as $segment) {
-        $segment = trim($segment);
-        if ($segment === '' || $segment === '.') {
-            continue;
-        }
-        if ($segment === '..') {
-            return null; // remontée interdite
-        }
-
-        $trouve = null;
-        foreach (scandir($chemin) ?: [] as $entree) {
-            if ($entree === '.' || $entree === '..') {
-                continue;
-            }
-            if (strcasecmp($entree, $segment) === 0 && is_dir($chemin . DIRECTORY_SEPARATOR . $entree)) {
-                $trouve = $entree;
-                break;
-            }
-        }
-        if ($trouve === null) {
-            return null;
-        }
-        $chemin .= DIRECTORY_SEPARATOR . $trouve;
-    }
-
-    $resultat = realpath($chemin);
-
-    return ($resultat !== false && strpos($resultat, $racineReelle) === 0) ? $resultat : null;
+    return aegis_resoudre_dans($racine, $demande, 'dir');
 }
 
 /**
@@ -95,7 +63,7 @@ if (isset($_GET['ajax_data'])) {
     $is_authorized = in_array(strtoupper(getRole()), ['ADMIN', 'DIRECTEUR']);
     if (stripos($folder, 'DIRECTION') !== false && !$is_authorized) {
         http_response_code(403);
-        echo json_encode(['error' => 'Accès Refusé. Niveau de sécurité insuffisant.']);
+        echo json_encode(['error' => 'Accès refusé. Niveau de sécurité insuffisant.']);
         exit;
     }
 
@@ -117,7 +85,7 @@ if (isset($_GET['ajax_data'])) {
             $out['folders'][] = ['name' => $entry, 'path' => $rel_path];
         } else {
             $ext = strtolower(pathinfo($entry, PATHINFO_EXTENSION));
-            $url = $base_url . $rel_path;
+            $url = $base_url . rawurlencode($rel_path);
             $out['files'][] = [
                 'name' => $entry,
                 'path' => $rel_path, 
@@ -148,8 +116,8 @@ if (isset($_GET['ajax_list'])) {
         die("<li class='p-8 rounded-[2rem] bg-red-500/10 border border-red-500/20 text-red-500 flex flex-col items-center gap-4 animate-in zoom-in'>
                 <i data-lucide='shield-alert' class='w-12 h-12'></i>
                 <div class='text-center'>
-                    <p class='font-display font-black uppercase tracking-widest text-xs'>Accès Refusé</p>
-                    <p class='text-[10px] opacity-60 font-bold mt-1 uppercase tracking-tighter'>Niveau de sécurité insuffisant pour le District Direction.</p>
+                    <p class='font-display font-black uppercase tracking-widest text-xs'>Accès refusé</p>
+                    <p class='text-[10px] opacity-60 font-bold mt-1 uppercase tracking-tighter'>Niveau de sécurité insuffisant pour l’espace Direction.</p>
                 </div>
              </li>");
     }
@@ -182,33 +150,40 @@ if (isset($_GET['ajax_list'])) {
     foreach ($entries as $entry) {
         $path = $full_path . DIRECTORY_SEPARATOR . $entry;
         $rel_path = ($folder ? $folder . '/' : '') . $entry;
-        
+
+        // !! ÉCHAPPEMENT (19/10/2026). Le nom du fichier est écrit par un
+        //    utilisateur : il peut contenir une apostrophe, un guillemet ou une
+        //    balise. Il partait BRUT dans les attributs et dans le texte —
+        //    un nom de fichier pouvait donc casser la ligne, voire injecter du
+        //    code. On l'échappe UNE fois, ici, et les deux branches s'en servent.
+        $safe_entry = htmlspecialchars($entry, ENT_QUOTES, 'UTF-8');
+        $safe_rel   = htmlspecialchars($rel_path, ENT_QUOTES, 'UTF-8');
+
         if (is_dir($path)) {
-            $html .= "<li class='folder-node group' data-path='$rel_path'>
+            $html .= "<li class='folder-node group' data-path='$safe_rel'>
                 <div class='flex items-center gap-3 py-4 px-6 rounded-2xl bg-white/5 hover:bg-cyan-500/10 border border-white/5 cursor-pointer transition-all' @click='expandFolder(\$el)'>
                     <i data-lucide='folder' class='w-5 h-5 text-cyan-400 fill-cyan-400/10 group-hover:scale-110 transition-transform'></i>
-                    <span class='font-bold text-white/80 tracking-widest text-sm uppercase'>$entry</span>
+                    <span class='font-bold text-white/80 tracking-widest text-sm uppercase'>$safe_entry</span>
                     <i data-lucide='chevron-right' class='w-4 h-4 ml-auto opacity-20 transition-transform text-white'></i>
                 </div>
                 <ul class='ml-10 mt-3 border-l border-white/5 pl-8 hidden space-y-2' data-content></ul>
             </li>";
         } else {
-            $url = $base_url . $rel_path;
+            $url = $base_url . rawurlencode($rel_path);
             $ext = strtolower(pathinfo($entry, PATHINFO_EXTENSION));
             $icon = match($ext) { 'pdf'=>'file-text', 'jpg','png','jpeg'=>'image', 'zip','rar'=>'archive', default=>'file' };
             $color = match($ext) { 'pdf'=>'text-red-400', 'zip','rar'=>'text-amber-400', default=>'text-cyan-400' };
-            
+
             $safe_url = htmlspecialchars($url, ENT_QUOTES, 'UTF-8');
             $safe_ext = htmlspecialchars($ext, ENT_QUOTES, 'UTF-8');
-            $safe_entry = htmlspecialchars($entry, ENT_QUOTES, 'UTF-8');
-            
+
             $html .= "<li class='flex items-center justify-between group py-4 px-6 rounded-2xl bg-white/[0.02] hover:bg-white/5 border border-white/5 transition-all'>
                 <div class='flex items-center gap-3 w-full cursor-pointer' @click.prevent=\"\$dispatch('open-viewer', { url: '$safe_url', type: '$safe_ext', name: '$safe_entry' })\">
                     <i data-lucide='$icon' class='w-4 h-4 opacity-50' style='color:$color'></i>
-                    <span class='text-xs font-bold text-white/60 uppercase tracking-widest group-hover:text-cyan-400 transition-colors line-clamp-1'>$entry</span>
+                    <span class='text-xs font-bold text-white/60 uppercase tracking-widest group-hover:text-cyan-400 transition-colors line-clamp-1'>$safe_entry</span>
                 </div>
                 <!-- BOUTON DE SECOURS : TELECHARGEMENT FORCE -->
-                <a href='$url' download class='p-2 rounded-xl bg-white/5 hover:bg-emerald-500/20 text-white/20 hover:text-emerald-400 transition-all ml-4' title='Télécharger'>
+                <a href='$safe_url&amp;dl=1' download class='p-2 rounded-xl bg-white/5 hover:bg-emerald-500/20 text-white/20 hover:text-emerald-400 transition-all ml-4' title='Télécharger'>
                     <i data-lucide='download' class='w-4 h-4'></i>
                 </a>
             </li>";

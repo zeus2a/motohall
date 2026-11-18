@@ -14,7 +14,7 @@
 <div class="apparition space-y-6">
 
     <p class="text-[0.9rem] text-slate-400 max-w-2xl">
-        Espace technique : planning des interventions, ordres de réparation et documentation atelier.
+        Atelier&nbsp;: planning des interventions, ordres de réparation et documentation de l’atelier.
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -25,12 +25,12 @@
                         justify-center mb-4">
                 <i data-lucide="calendar-days" class="w-5 h-5 text-[#38bdf8]"></i>
             </div>
-            <h3 class="font-display text-[1rem] font-semibold text-white mb-2">Agenda de l'atelier</h3>
+            <h3 class="font-display text-[1rem] font-semibold text-white mb-2">Agenda de l’atelier</h3>
             <p class="text-[0.87rem] text-slate-400 leading-relaxed mb-5">
-                Rendez-vous de la semaine et charge de travail de l'équipe.
+                Rendez-vous de la semaine et charge de travail de l’équipe.
             </p>
             <span class="mt-auto inline-flex items-center gap-2 text-[0.83rem] font-semibold text-[#38bdf8]">
-                Ouvrir le planning
+                Ouvrir l’agenda
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </span>
         </a>
@@ -58,16 +58,16 @@
             </div>
             <h3 class="font-display text-[1rem] font-semibold text-white mb-2">Documentation technique</h3>
             <p class="text-[0.87rem] text-slate-400 leading-relaxed mb-5">
-                Éclatés moteur, manuels d'atelier et fiches fournisseurs.
+                Éclatés moteur, manuels d’atelier et fiches fournisseurs.
             </p>
             <span class="mt-auto inline-flex items-center gap-2 text-[0.83rem] font-semibold text-[#38bdf8]">
-                Ouvrir la librairie
+                Ouvrir la documentation
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </span>
         </a>
     </div>
 
     <p class="text-[0.78rem] text-slate-500 pt-2">
-        Les documents de l'atelier sont rangés par type : guides, manuels, procédures et formulaires.
+        Les documents de l’atelier sont rangés par type&nbsp;: guides, manuels, procédures et formulaires.
     </p>
 </div>

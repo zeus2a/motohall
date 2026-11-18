@@ -40,7 +40,7 @@ function vuJs($texte): string
     <!-- ─── EN-TÊTE ────────────────────────────────────────────────────── -->
     <div class="flex flex-wrap items-center justify-between gap-4">
         <div>
-            <h2 class="font-display text-[1.15rem] font-semibold text-white">Comptes du personnel</h2>
+            <h2 class="font-display text-[1.15rem] font-semibold text-white">Membres du personnel</h2>
             <p class="text-[0.85rem] text-slate-400 mt-1">
                 Créez les comptes, ajustez les droits et activez ou désactivez un accès.
             </p>
@@ -48,7 +48,7 @@ function vuJs($texte): string
 
         <div class="flex items-center gap-3">
             <span class="badge"><?= count($users) ?> compte<?= count($users) > 1 ? 's' : '' ?></span>
-            <button @click="$dispatch('open-modal-add')" class="btn btn-accent">
+            <button type="button" @click="$dispatch('open-modal-add')" class="btn btn-accent">
                 <i data-lucide="user-plus" class="w-4 h-4"></i>
                 <span>Nouveau membre</span>
             </button>
@@ -80,7 +80,8 @@ function vuJs($texte): string
             <div @click.away="modalAdd = false" class="carte w-full max-w-lg my-8 apparition">
                 <div class="carte-entete">
                     <h3 class="carte-titre">Nouveau membre</h3>
-                    <button @click="modalAdd = false" class="text-slate-500 hover:text-slate-300">
+                    <button type="button" @click="modalAdd = false" class="text-slate-500 hover:text-slate-300"
+                            aria-label="Fermer la fenêtre">
                         <i data-lucide="x" class="w-5 h-5"></i>
                     </button>
                 </div>
@@ -90,7 +91,7 @@ function vuJs($texte): string
                     <input type="hidden" name="csrf_token" value="<?= vu(csrf()) ?>">
 
                     <div>
-                        <label class="etiquette" for="add-username">Identifiant de connexion</label>
+                        <label class="etiquette" for="add-username">Identifiant</label>
                         <input type="text" id="add-username" name="username" required
                                class="champ" placeholder="prenom.nom" autocomplete="off">
                     </div>
@@ -116,15 +117,15 @@ function vuJs($texte): string
                         <input type="password" id="add-password" name="password" required
                                class="champ" autocomplete="new-password">
                         <p class="mt-1.5 text-[0.75rem] text-slate-500">
-                            Il sera enregistré sous forme chiffrée : personne ne pourra le relire.
+                            Il sera enregistré sous forme hachée&nbsp;: personne ne pourra le relire.
                         </p>
                     </div>
 
                     <div>
-                        <label class="etiquette" for="add-role">Niveau d'accès</label>
+                        <label class="etiquette" for="add-role">Rôle</label>
                         <select id="add-role" name="role" required class="champ">
-                            <option value="VENDEUR">Vendeur — magasin</option>
-                            <option value="MECANICIEN">Mécanicien — atelier</option>
+                            <option value="VENDEUR">Vendeur</option>
+                            <option value="MECANICIEN">Mécanicien</option>
                             <option value="DIRECTEUR">Direction</option>
                             <option value="ADMIN">Administrateur</option>
                         </select>
@@ -156,7 +157,8 @@ function vuJs($texte): string
             <div @click.away="modalEdit = false" class="carte w-full max-w-lg my-8 apparition">
                 <div class="carte-entete">
                     <h3 class="carte-titre">Modifier le membre</h3>
-                    <button @click="modalEdit = false" class="text-slate-500 hover:text-slate-300">
+                    <button type="button" @click="modalEdit = false" class="text-slate-500 hover:text-slate-300"
+                            aria-label="Fermer la fenêtre">
                         <i data-lucide="x" class="w-5 h-5"></i>
                     </button>
                 </div>
@@ -167,36 +169,36 @@ function vuJs($texte): string
                     <input type="hidden" name="user_id" :value="u.id">
 
                     <div>
-                        <label class="etiquette">Identifiant de connexion</label>
-                        <input type="text" name="username" required class="champ" :value="u.username">
+                        <label class="etiquette" for="edit-username">Identifiant</label>
+                        <input type="text" id="edit-username" name="username" required class="champ" :value="u.username">
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="etiquette">Prénom</label>
-                            <input type="text" name="prenom" class="champ" :value="u.prenom">
+                            <label class="etiquette" for="edit-prenom">Prénom</label>
+                            <input type="text" id="edit-prenom" name="prenom" class="champ" :value="u.prenom">
                         </div>
                         <div>
-                            <label class="etiquette">Nom</label>
-                            <input type="text" name="nom" class="champ" :value="u.nom">
+                            <label class="etiquette" for="edit-nom">Nom</label>
+                            <input type="text" id="edit-nom" name="nom" class="champ" :value="u.nom">
                         </div>
                     </div>
 
                     <div>
-                        <label class="etiquette">Adresse e-mail <span class="faible">(facultatif)</span></label>
-                        <input type="email" name="email" class="champ" :value="u.email">
+                        <label class="etiquette" for="edit-email">Adresse e-mail <span class="faible">(facultatif)</span></label>
+                        <input type="email" id="edit-email" name="email" class="champ" :value="u.email">
                     </div>
 
                     <div>
-                        <label class="etiquette">Nouveau mot de passe <span class="faible">(laisser vide pour ne pas changer)</span></label>
-                        <input type="password" name="password" class="champ" autocomplete="new-password">
+                        <label class="etiquette" for="edit-password">Nouveau mot de passe <span class="faible">(laisser vide pour ne pas changer)</span></label>
+                        <input type="password" id="edit-password" name="password" class="champ" autocomplete="new-password">
                     </div>
 
                     <div>
-                        <label class="etiquette">Niveau d'accès</label>
-                        <select name="role" required class="champ" :value="u.role">
-                            <option value="VENDEUR">Vendeur — magasin</option>
-                            <option value="MECANICIEN">Mécanicien — atelier</option>
+                        <label class="etiquette" for="edit-role">Rôle</label>
+                        <select id="edit-role" name="role" required class="champ" :value="u.role">
+                            <option value="VENDEUR">Vendeur</option>
+                            <option value="MECANICIEN">Mécanicien</option>
                             <option value="DIRECTEUR">Direction</option>
                             <option value="ADMIN">Administrateur</option>
                         </select>
@@ -267,7 +269,7 @@ function vuJs($texte): string
 
                 <div class="flex gap-2">
                     <button type="button"
-                            @click="showConfirm('<?= $u['actif'] ? 'Désactiver' : 'Réactiver' ?> ce compte ?', () => { window.location.href = '?toggle=<?= (int)$u['id'] ?>&csrf_token=<?= vu(csrf()) ?>' })"
+                            @click="showConfirm('<?= $u['actif'] ? 'Désactiver' : 'Réactiver' ?> ce compte\u00A0?', () => { window.location.href = '?toggle=<?= (int)$u['id'] ?>&csrf_token=<?= vu(csrf()) ?>' })"
                             class="btn btn-neutre !px-3"
                             title="<?= $u['actif'] ? 'Désactiver ce compte' : 'Réactiver ce compte' ?>">
                         <i data-lucide="<?= $u['actif'] ? 'user-x' : 'user-check' ?>" class="w-4 h-4"></i>
@@ -282,7 +284,7 @@ function vuJs($texte): string
                                 email: <?= vuJs($u['email'] ?? '') ?>,
                                 role: <?= vuJs($u['role']) ?>
                             })"
-                            class="btn btn-neutre !px-3" title="Modifier ce compte">
+                            class="btn btn-neutre !px-3" title="Modifier ce membre">
                         <i data-lucide="pencil" class="w-4 h-4"></i>
                     </button>
                 </div>

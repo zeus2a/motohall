@@ -1,7 +1,8 @@
 # MotoHall 2A — CARNET DU PROJET
 
 > À lire en premier quand on reprend ce projet. Les sections les plus récentes
-> sont en haut. Dernière mise à jour : **20 septembre 2026**.
+> sont en haut. Dernière mise à jour : **19 octobre 2026** (reprise visuelle et
+> indexation, §14).
 
 ## 1. Où est quoi
 
@@ -861,6 +862,407 @@ le témoin de sauvegarde, la création des comptes, l'échappement des virgules 
 comparateur de miroir (chemins `./` contre `public_html/`). **Chaque fois, la cause était la
 même : deux écritures différentes pour la même chose.** La règle qui en sort : *quand un contrôle
 maison annonce un échec, on va lire à la source avant de le croire — et avant de le rapporter.*
+
+## 14. REPRISE DU 19/10/2026 — PLUS INDEXABLE, ET DEUX THÈMES
+
+### 14 bis. Ce qui a été demandé, et ce qui a été mesuré
+
+Demande de Frédéric : « il faut le contrôler et l'améliorer, il ne doit pas être
+indexable (outil de travail en ligne pour la concession), corriger les coquilles
+visuelles et les mauvais contrastes qui le rendent illisible, prévoir un mode
+clair et un mode sombre, et plus gros. »
+
+| Ce qui a été mesuré | Avant (19/10, 16 h) | Après (19/10, 19 h) |
+|---|---|---|
+| Indexable par un moteur | **oui** — `robots.txt` **404**, aucune `meta robots`, aucun `X-Robots-Tag` | **non** — trois verrous (14 ter) |
+| En-têtes de sécurité | **2 / 6** | **7 / 7** |
+| Deux adresses pour la même page | **oui** — `www.` servait le même contenu, **même SHA-256** | **non** — `www` renvoie **301** |
+| Couples texte/fond | 261, dont **60 échecs AA** et **38 bloquants** | 23 mesurés **sur les pixels réels**, **0 échec** |
+| Pire contraste du site | **1,60:1** (`index_view.php:185`) | **5,93:1** (le plus faible, en clair) |
+| Police à la racine | **15 px** | **17 px** (+13,3 %) |
+| Plus petit texte porteur d'information | **11,7 px** | **14,45 px** (+23,5 %) |
+| Tailles de police dans les vues | **23** | **5 marches** |
+| Éléments sous 14 px | **191** (dont 176 porteurs d'information) | **0** |
+| Mode clair | **inexistant** | **oui**, avec bascule |
+| `aegis.css` | 20 272 o | 40 099 o |
+
+### 14 ter. L'INDEXATION : TROIS VERROUS, ET IL EN FAUT TROIS
+
+Chacun peut être contourné seul, c'est mesuré.
+
+1. **`robots.txt`** à la racine — 1 793 o, une entrée nominative par robot
+   (Google, Bing, Yandex, Ahrefs, Semrush, GPTBot, ClaudeBot, PerplexityBot…).
+   *Mesure : `/robots.txt` → **200**, `text/plain`. C'était **404** avant.*
+2. **`X-Robots-Tag`** dans le `.htaccess`, en `Header always set` — posé sur
+   **toutes** les réponses, y compris les fichiers non HTML.
+   *Mesure : l'en-tête part sur `/`, sur `/login.php` et sur une **404** — c'était
+   le point à vérifier en premier, `error.php` ne passant pas par PHP.*
+3. **`<meta name="robots">`** dans les pages — coque de l'intranet, portail,
+   connexion, page d'erreur.
+
+*Mesure en ligne : les **8 pages** connectées portent `content="noindex…"`, et la
+404 aussi.*
+
+### 14 quater. LES DEUX THÈMES
+
+**Une couleur ne s'écrit plus jamais en dur : elle se nomme par son rôle.** Deux
+jeux de valeurs (`:root` sombre, `[data-theme="clair"]`), un seul jeu de règles.
+Le thème est porté par l'attribut `data-theme` sur `<html>`.
+
+**La bascule** (`assets/js/theme.js`, 4 677 o) est dans le `<head>` **sans
+`defer`** : elle doit poser l'attribut *avant* que le navigateur peigne la page,
+sinon une personne qui travaille en clair voit un éclair sombre à chaque page.
+Trois règles, dans l'ordre : choix mémorisé, puis réglage du système, puis sombre.
+
+**Le pont de thème** (section 4 de `aegis.css`) traduit les classes écrites en dur
+en septembre (`text-slate-500`, `bg-white/5`, `text-emerald-400`…) vers les rôles.
+Les 8 vues n'ont donc **pas** été réécrites : elles portent la logique Alpine, et
+le risque aurait été plus grand que le gain.
+⚠️ **Technique, et elle compte :** le pont utilise `[class~="…"]` et non
+`[class*="…"]`. `*=` attrape aussi `hover:bg-white/5` et écraserait le survol ;
+`~=` ne prend que la classe exacte.
+
+### 14 quinquies. LES PREUVES, ET COMMENT LES REFAIRE
+
+**Le contrôle qui compte est une planche de mesure, pas une opinion.**
+`_travail/_audit_20261019/apercu/sortie/preuve_sombre.html` (+ `preuve_clair.html`)
+est une page de lignes de 64 px ; on la photographie avec Chrome sans interface,
+puis `mesurer_planche.py` lit **chaque bande à sa position** et calcule le ratio
+WCAG entre le fond et la couleur posée dessus.
+
+    chrome --headless=new --window-size=1000,1600 --screenshot=preuve.png preuve_sombre.html
+    python mesurer_planche.py preuve-sombre.png preuve-clair.png
+
+**Résultat : 23 couples × 2 thèmes, 0 échec.** Le plus faible est l'accent en clair
+à **5,93:1** (exigence 4,5). Les rôles vont de 9,27:1 à 18,25:1.
+
+**La sonde** (`sortie/sonde.html`) répond à l'autre question — « le texte est-il
+vraiment plus gros ? ». `--dump-dom` après exécution du JavaScript donne les
+valeurs **réellement calculées** par le navigateur :
+
+    RACINE=17px   CORPS=17px
+    text-[0.72rem]  10,8 px avant  ->  14,45 px   (+34 %)
+    text-[10px]     10,0 px avant  ->  14,45 px   (+45 %)
+    .titre-section  10,8 px avant  ->  14,45 px
+    text-slate-500  #64748b avant  ->  rgb(147,163,189) = --texte-faible
+    text-slate-600  #475569 avant  ->  rgb(147,163,189)
+
+⚠️ **C'est la sonde qui a tranché, pas le script d'analyse statique.** Le script
+`audit_contraste.py` résout les classes Tailwind vers **leur couleur d'origine** :
+il ne voit pas le pont et annonce 44 échecs AA qui n'existent plus dans le
+navigateur. **Faux rouge** — le neuvième de ce projet, même cause que les autres :
+deux écritures différentes pour la même chose.
+
+### 14 sexies. LES COQUILLES VISUELLES ET LES TEXTES
+
+- **23 tailles de police ramenées à 5 marches** (14,45 / 15,64 / 17 / 19 / 25,5 px).
+  **Plus aucun texte sous 14 px.**
+- `opacity-60` du portail visiteur : mesuré, il donnait **3,28:1**. À 75 %, encore
+  **4,41:1** — sous le seuil. Porté à **85 %** → **5,26:1**. Un chiffre, pas un goût.
+- Textes **techniquement faux** : le mot de passe annoncé « sous forme **chiffrée** »
+  alors qu'il est **haché** (2 endroits) ; « Membre … activé sur le Node »
+  → « Le compte … a été créé ».
+- Libellés alignés sur le portail : `Espace de vente` → **Comptoir**,
+  `Espace technique` → **Atelier** (le menu et les cartes nommaient deux fois
+  différemment le même endroit).
+- « Ouvrir la librairie » (faux ami de *library*) → « Ouvrir la documentation ».
+- « Extraire le Fichier » et « Exporter » téléchargeaient le **même** fichier
+  → « Télécharger le fichier » et « Télécharger ».
+- Message d'erreur en anglais (`Network Response Fail`) → en français.
+- « District Direction » → « l'espace Direction ». Le 1er du mois s'écrit **1er**.
+- `error.php` : `href="javascript:history.back()"` devenu un vrai bouton.
+
+**Accessibilité (relevé du même jour) :** 6 champs sans étiquette réparés dans
+« Modifier le membre » (6 `id` + 6 `for`) ; 3 boutons-icônes dotés d'un
+`aria-label` ; 3 `<div @click>` de la Documentation rendus utilisables au clavier
+(`role="button"`, `tabindex="0"`, Entrée et Espace) ; le titre de page est
+maintenant un vrai `<h1>` (8 pages sur 10 n'en avaient aucun).
+
+### 14 septies. ⚠️ TROIS ERREURS QUE J'AI FAITES, ET CE QU'ELLES COÛTENT
+
+1. **PowerShell déroule les tableaux imbriqués.** Un script de remplacement écrit
+   `@{ fichier = @(@('avant','apres')) }` : PowerShell en fait un tableau de
+   **deux chaînes**, donc `$paire[0]` vaut le premier **caractère** et non le
+   motif. Résultat : `Replace('s','o')` sur des fichiers entiers — **neuf fichiers
+   corrompus**. Réparés depuis le serveur et depuis git.
+   **La règle : un remplacement de texte se fait avec l'outil d'édition, un
+   fichier à la fois — jamais dans une boucle.**
+
+2. **La sortie de `ssh_o2switch.py` contient une ligne de compte rendu.** En
+   récupérant quatre fichiers par `cat`, cette ligne `-- code de sortie : 0` s'est
+   retrouvée **à la fin des fichiers**, déployée, et **affichée en clair au milieu
+   des pages**. Vue sur une capture d'écran, pas par un contrôle. Réparé
+   (`retirer_ligne_parasite.py`, égalité stricte sur la ligne entière) puis
+   **vérifié sur le serveur : `grep -c` rend 0**.
+   **La règle : toute sortie d'outil redirigée vers un fichier doit être filtrée,
+   et son contenu relu avant envoi.**
+
+3. **Le HTTP 429 d'o2switch ressemble à une panne du site.** Une capture « non
+   stylée » m'a fait croire que `aegis.css` ne s'appliquait plus ; la feuille était
+   **octet pour octet identique** (sha `a7259959…`, 40 099 o). La vraie cause :
+   **TigerProtect** a coupé mes requêtes en rafale.
+   **La règle : espacer les mesures, et comparer l'empreinte du fichier avant de
+   conclure à une panne de rendu.**
+
+### 14 octies. LA FAILLE DES DOCUMENTS — FERMÉE LE 19/10/2026
+
+**Ce qui a été mesuré, depuis le serveur lui-même** (et non depuis le poste) :
+
+    /documents/direction/Finances/Bilan_Mars_2026.csv   ->  200  text/csv  41 o
+
+C'est-à-dire : **le dossier Direction se téléchargeait sans aucune connexion.**
+Pas besoin de compte, pas besoin d'appartenir au personnel — il suffisait de
+connaître l'adresse. Les fichiers sont des témoins de 41 octets aujourd'hui ;
+le lendemain d'un vrai dépôt, c'était une fuite.
+
+**Pourquoi ce n'était pas un oubli de contrôle :** les liens de téléchargement
+étaient des **adresses directes** (`documents/…`), donc servies par le serveur
+web. Aucun code PHP ne s'exécutait : aucun contrôle de rôle ne *pouvait*
+s'appliquer, aussi bien écrit soit-il.
+
+**Ce qui a été fait.**
+
+| Pièce | Rôle |
+|---|---|
+| **`fichier.php`** (nouveau, à la racine) | le seul chemin d'accès aux documents : vérifie l'identification, puis le profil, puis sert le fichier |
+| `includes/_functions.php` | nouvelle fonction **`aegis_resoudre_dans()`** — la résolution tolérante à la casse, partagée (elle vivait dans `documents.php`, en double) |
+| `documents.php` | `$base_url` passe de `documents/` à **`fichier.php?f=`** ; les chemins sont encodés ; le nom de fichier est échappé une seule fois (il partait **brut** dans les attributs) |
+| `documents_view.php` | le bouton de téléchargement ajoute **`&dl=1`** (téléchargement forcé) ; la visionneuse garde l'adresse simple (affichage) |
+| `.htaccess` | **`RewriteRule ^documents(/|$) - [F,L]`** : l'ancienne adresse ne répond plus du tout |
+
+**Les preuves, toutes obtenues sur le serveur.**
+
+| Contrôle | Résultat |
+|---|---|
+| Ancienne adresse directe, 2 fichiers | **403** *(était 200)* |
+| `fichier.php` sans connexion, 3 cas | **403** |
+| Traversées `../` et `/etc/passwd` | **406** (bloquées avant même PHP) |
+| `aegis_resoudre_dans()` — 14 cas éprouvés | **14 / 14** (dont `../`, remontée encodée, absolu, dossier demandé comme fichier) |
+| ADMIN → fichier Direction | **200**, contenu exact, `text/csv` |
+| DIRECTEUR → fichier Direction | **200** |
+| VENDEUR → fichier Direction | **403 « cet espace ne fait pas partie de votre profil »** |
+| MECANICIEN → fichier Direction | **403** |
+| VENDEUR / MECANICIEN → fichier Atelier | **200** |
+| MECANICIEN → fichier Magasin | **200** |
+| `&dl=1` | `Content-Disposition: attachment; filename="Moteur_KTM.txt"; filename*=UTF-8''Moteur_KTM.txt` (les deux formes : les noms accentués passent) |
+| Les 8 pages, connecté | **200** partout |
+| Liens produits par l'API et par l'ancien `ajax_list` | `fichier.php?f=atelier%2FGuides%2FMoteur_KTM.txt` et `…&amp;dl=1` |
+
+⚠️ **Deux pièges de méthode rencontrés, et ils resserviront :**
+1. **`session_id()` de PHP refuse le caractère `_`** (« Session ID is too long
+   or contains illegal characters »). Un identifiant de session fabriqué pour un
+   test doit être **alphanumérique**. Avec un `_`, `session_start()` échoue
+   *silencieusement* (il renvoie `false`) et le test rend un faux « non connecté ».
+2. **Le dossier de sessions du serveur (`/opt/alt/php84/var/lib/php/session`)
+   n'est pas accessible** au compte. Pour éprouver un rôle, on ne peut pas
+   modifier le fichier de session : il faut en fabriquer une **dans un dossier à
+   soi**, avec `-d session.save_path=…`, et la donner à lire au vrai `fichier.php`
+   par `session_id()` **avant** de l'inclure. C'est cette méthode qui a produit
+   le tableau ci-dessus.
+
+### 14 nonies. CE QUI RESTE OUVERT (dit franchement)
+
+1. **Aucune CSP.** Mesuré : Alpine.js évalue ses expressions avec `new Function()`,
+   donc une CSP correcte devrait contenir `'unsafe-eval'` — ce qui la vide de son
+   intérêt ; sans elle, la navigation et les fenêtres cesseraient de fonctionner.
+   À reprendre le jour où Alpine sera compilé en version « CSP build ». La décision
+   est écrite dans le `.htaccess`, à l'endroit où la règle manque.
+2. **La compilation Tailwind produit 36 830 o et non 68 402 o.** Mesuré : la
+   feuille plus petite couvre **exactement les mêmes classes utilisées** (159
+   orphelines des deux côtés, les mêmes) ; les 478 classes d'écart sont des
+   utilitaires que **personne n'utilise**. Aucun impact visuel, mais l'écart n'est
+   pas expliqué. **Ne pas recompiler sans avoir relu cette ligne.**
+3. **Le script d'audit de contraste donne un faux rouge** sur ce site depuis
+   l'arrivée du pont de thème (14 quinquies).
+4. **Reste de la relecture française** (`RAPPORT_TEXTES.md`, 83 points) : non
+   appliqués — les apostrophes typographiques (**zéro** dans tout le projet), les
+   espaces insécables avant `: ; ?`, et l'écran d'agenda qui porte encore
+   **quatre** noms différents.
+5. **`includes/_bootstrap.php:48`** affiche un texte fautif si la base tombe :
+   « ALERTE SYSTÈME : Connexion BDD impossible. Contactez Zeus Admin. »
+   Non touché (c'est le fichier qui porte la configuration).
+6. **`error_log` est sur le serveur.** Il est maintenant bloqué par une règle
+   nominative (`^error_log$`), parce que `\.log$` ne l'attrape pas — il n'a pas de point.
+
+### 14 decies. COMMENT REFAIRE LES MESURES
+
+| Quoi | Où |
+|---|---|
+| Palettes (2 thèmes, 44 couples) | `_travail\_audit_20261019\valider_palette.py` |
+| Contrastes **sur les pixels réels** | `mesurer_planche.py` + les deux `preuve_*.png` |
+| Tailles réellement calculées | `sortie\sonde.html` + `chrome --dump-dom` |
+| Aperçus de tous les écrans | `apercu\fabriquer_apercus.php <scenario>` |
+| Résolution des chemins de documents (14 cas) | `tester_resolution.php` |
+| Les 4 rapports de sous-agents | `RAPPORT_CONTRASTE.md`, `RAPPORT_TEXTES.md`, `RAPPORT_STRUCTURE.md`, `RAPPORT_EXPLOITATION.md` |
+
+**⚠️ MESURER DEPUIS LE SERVEUR, PAS DEPUIS LE POSTE.** o2switch coupe les
+rafales de requêtes (TigerProtect, **HTTP 429**) : une série de captures ou de
+`curl` depuis le poste rend des pages **incomplètes**, et l'on croit à une panne
+de style. Depuis le serveur, aucune limite :
+
+    curl -k -sS -o /dev/null -w "%{http_code}\n" \
+      -H "Host: motohall.zeusstack.fr" https://127.0.0.1/documents.php
+
+C'est cette commande qui a permis de mesurer la faille des documents, puis de
+vérifier sa fermeture.
+
+**Captures d'écran :** `_travail\_audit_20261019\apercu\captures\`.
+
+**Retour arrière des 16 fichiers touchés :**
+`_travail\_backups\avant_refonte_visuelle_20261019\` — versions d'avant la
+reprise, octet pour octet (dont le `.htaccess` d'origine, 423 o). Le serveur garde
+en plus ses propres copies dans `~/_sauvegardes_zeus/sorties_de_public/`.
+⚠️ `fichier.php` est une **création** : le retour arrière consiste à le supprimer
+ET à retirer la règle `^documents(/|$)` du `.htaccess`, faute de quoi la
+documentation ne serait plus accessible du tout.
+
+### 14 undecies. LA CSP, POSÉE APRÈS AVOIR ÉTÉ ÉPROUVÉE (19/10/2026)
+
+**Ce qui bloquait, et la décision prise.** Alpine.js évalue ses expressions avec
+`new Function()`. Sans `'unsafe-eval'`, toute la navigation, les fenêtres et les
+notifications cessent de fonctionner. On concède donc `'unsafe-eval'` — et
+**rien d'autre**. Ce qui reste fermé :
+
+| Directive | Ce qu'elle empêche |
+|---|---|
+| `default-src 'self'` | tout script, style, image ou police venant d'un autre domaine — le vecteur n° 1 d'une injection `<script src=…>` |
+| `object-src 'none'` | les greffons (Flash, applet, objet embarqué) |
+| `base-uri 'self'` | le détournement de toutes les adresses relatives par une balise `<base>` |
+| `form-action 'self'` | l'envoi des saisies vers un domaine extérieur |
+| `frame-ancestors 'self'` | la mise en cadre chez quelqu'un d'autre (détournement de clic) |
+| `connect-src 'self'` | les `fetch()` hors du site |
+
+**Ce qui reste ouvert, dit franchement :** du code **déjà présent dans la page**
+peut s'exécuter. La protection porte sur l'entrée de code extérieur. Pour fermer
+complètement, il faudrait réécrire les expressions Alpine en version « CSP
+build » — chantier lourd, à décider séparément.
+
+**⚠️ DEUX RÉSULTATS FAUX AVANT LE BON — ET ILS SONT INSTRUCTIFS.**
+
+1. **Premier essai : faux VERT.** La page a été rendue en `file://` avec la CSP
+   en `<meta http-equiv>`. L'horloge d'Alpine affichait l'heure → « ça passe ».
+   **Faux** : un document `file://` a une origine *opaque*, `'self'` n'y désigne
+   rien, et Chrome n'applique pas les mêmes règles. La politique n'était pas en
+   vigueur. **Règle : une CSP ne s'éprouve qu'en HTTP, avec un vrai en-tête.**
+
+2. **Deuxième essai : faux ROUGE.** En HTTP, Alpine ne démarrait plus — mais le
+   journal du navigateur (`--enable-logging=stderr`) a montré la vraie cause :
+   *« Refused to execute script … because its MIME type ('text/plain') is not
+   executable »*. Mon **serveur d'épreuve** renvoyait `text/plain`, parce que son
+   contrôle de confinement `realpath()` refusait le lien vers `assets/`.
+   La CSP n'y était pour rien. **Règle : avant d'accuser une politique de
+   sécurité, lire ce que le navigateur dit qu'il refuse.**
+
+3. **Le bon protocole.** Serveur PHP local (`server_csp.php`), en-tête CSP réel,
+   mêmes fichiers qu'en production. Témoin retenu : `<span x-text="time">` —
+   s'il affiche une heure, Alpine tourne ; s'il reste `--:--:--`, Alpine est mort.
+   Mesure binaire, impossible à interpréter de travers.
+
+     SANS CSP : horloge = 19:12:26   x-show masqué = oui   téléporté = oui
+     AVEC CSP : horloge = 19:13:21   x-show masqué = oui   téléporté = oui
+     >>> CSP VALIDE
+
+**Contrôles faits sur le serveur, sans limiteur**, après déploiement :
+
+| Contrôle | Résultat |
+|---|---|
+| En-tête `Content-Security-Policy` | présent, **une seule fois** |
+| `theme.js`, `alpine.min.js`, `lucide.min.js` | **200**, `application/javascript` |
+| `aegis.css`, `tailwind.css` | **200**, `text/css` |
+| `fonts.googleapis.com` | **200** |
+| Ordre du `<head>` | theme.js → tailwind → aegis → alpine → lucide |
+| Les 8 pages, connecté | **200** |
+| `fichier.php` ADMIN sur Direction | **200** |
+
+### 14 duodecies. LA QUESTION DES DEUX FEUILLES TAILWIND — CLOSE
+
+Elle traînait : la compilation produit **36 830 o**, le fichier en ligne en fait
+**68 402**. Manquait-il des classes ?
+
+**Mesure décisive, sur le HTML RÉELLEMENT SERVI** (pas sur les sources, comme
+les contrôles précédents) : on extrait chaque jeton de classe de la page, et on
+le cherche dans la feuille.
+
+    avec la feuille de 68 402 o : 149 classes utilisées, 45 « non définies »
+    avec la feuille de 36 830 o : 149 classes utilisées, 45 « non définies »
+
+**Les deux listes sont identiques.** Les 45 sont du bruit d'extraction : des
+fragments d'expressions Alpine (`'notif--erreur'`, `success`) et des classes
+échappées que mon extracteur ne reconnaissait pas — vérifié une par une :
+`38bdf8`, `bg-white\/\[0\.01\]`, `bg-red-500\/10`, `border-white\/5`,
+`border-red-500\/20` sont **toutes définies** dans la feuille.
+
+**Conclusion : les 478 classes d'écart sont des utilitaires que personne
+n'utilise.** La feuille est plus grosse que nécessaire, voilà tout. Aucune
+action requise, et il n'y a plus de raison d'hésiter à recompiler.
+
+### 14 terdecies. LE MESSAGE DE PANNE DE BASE
+
+`includes/_bootstrap.php:48` affichait, en cas de base injoignable :
+« ALERTE SYSTÈME : Connexion BDD impossible. Contactez Zeus Admin. »
+Des majuscules qui font peur, « BDD » que personne ne comprend, et un
+« Zeus Admin » qui n'existe pas dans l'entreprise. Remplacé par une phrase
+utile, avec le **statut HTTP 503** qui convient (le service est indisponible,
+ce n'est pas une erreur du visiteur).
+
+### 14 quaterdecies. LA RELECTURE FRANÇAISE, APPLIQUÉE (19/10/2026)
+
+Des 83 corrections relevées dans `RAPPORT_TEXTES.md`, **82 étaient applicables**
+et le sont. La 83e (`amorce.php`) est hors du périmètre relu.
+
+**Ce qui a changé dans l'interface :**
+- vocabulaire unifié — Comptoir, Atelier, Agenda, Documentation, **Membres du
+  personnel**, Mon compte, Rôle, Statut, Identifiant, **Télécharger**, Actualiser ;
+- messages **techniquement faux** corrigés (« chiffrée » → « hachée »,
+  « activé sur le Node », « District Direction », l'erreur en anglais) ;
+- apostrophes typographiques (’) dans le texte affiché ;
+- espaces insécables avant `:` `;` `?` et à l'intérieur des guillemets « » ;
+- « 1er » le premier du mois.
+
+**Une seule ligne retirée** : la date en double sur l'accueil (`index_view.php`) —
+le badge de rôle reste, la date est déjà dans l'en-tête. Réversible en une ligne.
+
+**⚠️ COMMENT LES INSÉCABLES ONT ÉTÉ POSÉES — et pourquoi ça compte.**
+Un caractère insécable ne se voit pas à l'écran : mal posé, il s'affiche
+littéralement en `\xC2\xA0` et le texte devient laid sans qu'on comprenne
+pourquoi. Trois écritures ont donc été employées, **chacune dans un contexte qui
+les interprète** :
+
+| Contexte | Écriture | Pourquoi ça marche |
+|---|---|---|
+| HTML et attributs | `&nbsp;` (16) | le navigateur décode l'entité |
+| chaîne PHP **à guillemets doubles** | `"\xC2\xA0"` (11) | PHP interprète l'échappement |
+| expression JavaScript d'Alpine | `\u00A0` (3) | Alpine évalue l'expression, JS interprète |
+
+⚠️ **Ce qui serait faux et qui n'a pas été fait** : `\xC2\xA0` dans une chaîne
+PHP à **guillemets simples** — PHP ne l'interprète pas et afficherait les
+caractères `\`, `x`, `C`, `2`… en clair.
+
+**Vérifié sur le serveur, après déploiement :**
+
+| Contrôle | Résultat |
+|---|---|
+| Les 8 pages | **200** |
+| `\xC2` littéral dans le HTML servi | **0** |
+| `\u00A0` littéral dans le HTML servi | **0** |
+| double encodage `&amp;nbsp;` | **0** |
+| vraies insécables (octets) | présentes |
+| « Membres du personnel », « Télécharger », « Comptoir », « hachée » | **9 / 3 / 10 / 2** occurrences en ligne |
+| `php -l` sur **30 fichiers PHP** | **0 échec** |
+| `structure_check.php` sur **14 gabarits** | **0 échec**, `div` équilibrés |
+
+**Contrôle indépendant :** les 30 fichiers ont été revérifiés ici, pas seulement
+par l'agent qui les a modifiés — c'est la règle de ce projet, et elle a déjà
+évité neuf fichiers corrompus plus tôt dans la journée.
+
+**Laissés de côté, sans y toucher** (les 15 points « à arbitrer » du rapport) :
+bouton « Retour » muet si l'historique est vide, « Les accès ci-dessous s'ouvrent
+sans mot de passe », `?error=` jamais affiché par `dashboard.php`, valeurs
+« Pont 1 (Service Rapide) », deux titres par défaut, « Vous êtes bien
+déconnecté », `alert(data.error)` brut, « des O.R. », les majuscules CSS
+`uppercase`, et deux ou trois formulations de goût. Ils attendent un arbitrage,
+pas une correction.
+
 
 
 
