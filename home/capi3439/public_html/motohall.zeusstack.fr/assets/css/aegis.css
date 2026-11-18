@@ -201,6 +201,55 @@
 }
 
 /* ===========================================================================
+   0. LES POLICES — SERVIES PAR LE SITE, PLUS PAR GOOGLE
+   ---------------------------------------------------------------------------
+   AVANT (jusqu'au 18/11/2026) : Orbitron pour les titres, Rajdhani pour le
+   texte, chargées depuis fonts.googleapis.com.
+
+   POURQUOI ÇA CHANGE, ET CE N'ÉTAIT PAS QU'UNE QUESTION DE GOÛT :
+   1. Orbitron est un lettrage « techno », dessiné pour des affiches. Posé sur
+      un titre de page, il fait écran d'arcade, pas outil de travail.
+   2. Rajdhani est une CONDENSÉE : ses fûts sont fins, et sur un fond sombre
+      elle « maigrit » encore. C'est une bonne part de la sensation de
+      contraste insuffisant qu'on reprochait au site — alors que les couleurs,
+      elles, étaient conformes (mesurées à 7,9:1).
+   3. Surtout : les polices venaient d'un serveur extérieur. Si Google est
+      bloqué (réseau d'entreprise, filtrage, panne), le navigateur retombe sur
+      une police système — et là, l'aspect change du tout au tout, sans que
+      rien ne le signale.
+
+   MAINTENANT : INTER, en deux fichiers WOFF2 DANS LE SITE (48 Ko + 85 Ko,
+   chargés séparément selon les caractères réellement utilisés). Inter est
+   dessinée pour les interfaces : fûts plus épais, chiffres tabulaires,
+   accents nets à petite taille. Une seule famille pour les deux rôles ; la
+   hiérarchie se fait par la GRAISSE et l'INTERLETTRAGE.
+
+   Conséquence mesurable : le site ne dépend plus d'aucun domaine extérieur.
+   =========================================================================== */
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("../fonts/inter-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                   U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                   U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("../fonts/inter-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+                   U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF,
+                   U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ===========================================================================
    3. BASE ET ÉCHELLE TYPOGRAPHIQUE
    ---------------------------------------------------------------------------
    CINQ MARCHES, ET RIEN D'AUTRE :
@@ -220,6 +269,12 @@
     --t-courant:    1rem;
     --t-sous-titre: 1.12rem;
     --t-titre:      1.5rem;
+
+    /* Les deux rôles de police. Une seule famille aujourd'hui, mais DEUX
+       variables : le jour où l'on veut une vraie police de titrage, c'est une
+       ligne à changer, pas trente. */
+    --police-texte: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    --police-titre: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
 }
 
 html {
@@ -231,7 +286,7 @@ html {
 
 body {
     margin: 0;
-    font-family: 'Rajdhani', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-family: var(--police-texte);
     font-size: var(--t-courant);
     line-height: 1.55;
     background-color: var(--fond);
@@ -246,10 +301,13 @@ a { color: inherit; text-decoration: none; }
 
 /* Titres : Orbitron, jamais en italique, sans espacement forcé. */
 .font-display {
-    font-family: 'Orbitron', system-ui, sans-serif;
-    font-weight: 600;
+    font-family: var(--police-titre);
+    font-weight: 700;
     font-style: normal;
-    letter-spacing: 0.005em;
+    /* Inter n'a pas besoin d'être « espacée » pour faire titre : c'est même
+       l'inverse. Un interlettrage légèrement négatif resserre les grands
+       corps et évite l'effet « lettres séparées » des polices techniques. */
+    letter-spacing: -0.015em;
 }
 
 .tabulaire { font-variant-numeric: tabular-nums; }
@@ -544,7 +602,7 @@ a.carte:hover {
 }
 
 .carte-titre {
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--police-titre);
     font-size: var(--t-sous-titre);
     font-weight: 600;
     color: var(--texte);
@@ -555,7 +613,7 @@ a.carte:hover {
    =========================================================================== */
 
 .titre-page {
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--police-titre);
     font-size: var(--t-titre);
     font-weight: 600;
     color: var(--texte);
@@ -782,7 +840,7 @@ a.carte:hover {
    =========================================================================== */
 
 .kpi-valeur {
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--police-titre);
     font-size: 2rem;
     font-weight: 600;
     color: var(--texte);
@@ -1005,7 +1063,7 @@ a.carte:hover {
     border-radius: 10px;
     background: var(--accent-plein);
     color: var(--accent-plein-texte);
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--police-titre);
     font-weight: 700;
 }
 
@@ -1120,3 +1178,191 @@ a.carte:hover {
     body { background: #fff !important; color: #000 !important; }
     .carte { border: 1px solid #999 !important; box-shadow: none !important; }
 }
+
+/* ===========================================================================
+   21. LA PAGE DE CONNEXION (18/11/2026)
+   ---------------------------------------------------------------------------
+   C'est la seule page que voit un visiteur qui n'est pas encore entré. Elle
+   remplace l'ancien « portail public » qui énumérait les services de
+   l'entreprise — autrement dit la carte du bâtiment, affichée à la rue.
+
+   PRINCIPE : un fond dessiné (une roue monumentale, voir
+   assets/img/fond-connexion.svg), et au centre UNE carte, une seule. Rien
+   d'autre à lire, rien d'autre à apprendre.
+   =========================================================================== */
+
+.connexion {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background: var(--fond);
+    overflow: hidden;
+}
+
+/* Le fond. Il est posé en pseudo-élément pour rester FIXE au défilement et
+   ne jamais participer à la mise en page. */
+.connexion::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: url("../img/fond-connexion.svg") center / cover no-repeat var(--fond);
+}
+
+/* En thème clair, un dessin sombre derrière une page claire serait sale.
+   On le remplace par une lumière douce : même intention, autre valeur. */
+[data-theme="clair"] .connexion::before {
+    background:
+        radial-gradient(1200px 700px at 78% 18%, rgba(3, 105, 161, 0.10), transparent 62%),
+        radial-gradient(900px 600px at 12% 88%, rgba(3, 105, 161, 0.07), transparent 60%),
+        var(--fond);
+}
+
+.connexion > * { position: relative; z-index: 1; }
+
+/* --- L'en-tête : la marque à gauche, le thème à droite ------------------- */
+
+.connexion-entete {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 28px;
+    flex-shrink: 0;
+}
+
+.connexion-marque {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.connexion-marque svg { width: 38px; height: 38px; flex-shrink: 0; }
+
+.connexion-marque__nom {
+    font-family: var(--police-titre);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    color: var(--texte);
+}
+
+.connexion-marque__role {
+    font-size: var(--t-micro);
+    color: var(--texte-faible);
+    line-height: 1.2;
+}
+
+/* --- Le centre ------------------------------------------------------------ */
+
+.connexion-centre {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 20px 48px;
+}
+
+.connexion-carte {
+    width: 100%;
+    max-width: 420px;
+    padding: 32px 30px 26px;
+    border-radius: 20px;
+    border: 1px solid var(--bordure);
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    backdrop-filter: blur(18px) saturate(120%);
+    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    box-shadow: 0 32px 80px -32px rgba(2, 6, 23, 0.85);
+    animation: apparition 260ms ease-out both;
+}
+
+/* Repli pour les navigateurs sans color-mix : la carte reste opaque. */
+@supports not (background: color-mix(in srgb, red 50%, blue)) {
+    .connexion-carte { background: var(--surface); }
+}
+
+[data-theme="clair"] .connexion-carte {
+    box-shadow: 0 24px 60px -30px rgba(12, 21, 38, 0.28);
+}
+
+.connexion-titre {
+    font-family: var(--police-titre);
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--texte);
+    margin: 0 0 6px;
+}
+
+.connexion-accroche {
+    font-size: var(--t-petit);
+    color: var(--texte-doux);
+    margin: 0 0 22px;
+    line-height: 1.5;
+}
+
+/* --- Le message (erreur, information) ------------------------------------ */
+
+.connexion-alerte {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 11px 14px;
+    margin-bottom: 18px;
+    border-radius: var(--r);
+    font-size: var(--t-petit);
+    line-height: 1.45;
+    border: 1px solid var(--danger-bordure);
+    background: var(--danger-doux);
+    color: var(--danger);
+}
+
+.connexion-alerte--info {
+    border-color: var(--accent-bordure);
+    background: var(--accent-doux);
+    color: var(--accent);
+}
+
+.connexion-alerte svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
+
+/* --- Le formulaire -------------------------------------------------------- */
+
+.connexion-champ { margin-bottom: 16px; }
+
+.connexion-champ .champ { background: var(--champ-fond); }
+
+.connexion-note {
+    margin: 18px 0 0;
+    font-size: var(--t-micro);
+    color: var(--texte-faible);
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* --- Le pied -------------------------------------------------------------- */
+
+.connexion-pied {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 16px 28px 22px;
+    font-size: var(--t-micro);
+    color: var(--texte-faible);
+}
+
+.connexion-pied strong { font-weight: 600; color: var(--texte-doux); }
+
+@media (max-width: 560px) {
+    .connexion-entete, .connexion-pied { padding-left: 18px; padding-right: 18px; }
+    .connexion-carte { padding: 26px 20px 22px; border-radius: 16px; }
+    .connexion-titre { font-size: 1.4rem; }
+}
+

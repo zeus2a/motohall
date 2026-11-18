@@ -1,5 +1,5 @@
 /* FICHIER FABRIQUÉ AUTOMATIQUEMENT — NE PAS MODIFIER À LA MAIN.
-   Produit par fabriquer.mjs le 2026-10-19T16:15:43.316Z.
+   Produit par fabriquer.mjs le 2026-11-18T11:57:05.839Z.
    Le chemin ci-dessous est calculé : c'est une obligation de Tailwind v4. */
 
 @import "tailwindcss";
@@ -14,6 +14,6 @@
     --color-accent-400: #38bdf8;
     --color-accent-500: #0ea5e9;
     --color-accent-600: #0284c7;
-    --font-sans: Rajdhani, sans-serif;
-    --font-display: Orbitron, sans-serif;
+    --font-sans: Inter, system-ui, sans-serif;
+    --font-display: Inter, system-ui, sans-serif;
 }

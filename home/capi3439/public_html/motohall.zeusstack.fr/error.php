@@ -70,9 +70,8 @@ $e = $errors[$code] ?? ['titre' => 'Erreur', 'texte' => 'Une anomalie est surven
          !! Les feuilles passent AVANT les scripts (19/10/2026) : Lucide pèse
             442 Ko et bloque l'analyse du document.
       -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Polices : DANS LE SITE (voir aegis.css). Plus aucun serveur extérieur. -->
+    <link rel="preload" href="<?= htmlspecialchars($base, ENT_QUOTES, 'UTF-8') ?>assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 
     <link rel="stylesheet" href="<?= htmlspecialchars($base, ENT_QUOTES, 'UTF-8') ?>assets/css/tailwind.css?v=20260921">
     <link rel="stylesheet" href="<?= htmlspecialchars($base, ENT_QUOTES, 'UTF-8') ?>assets/css/aegis.css?v=20261019">

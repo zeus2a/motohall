@@ -65,6 +65,64 @@ Compte **capi3439**, base `capi3439_motohall`. Identifiants lus dans
 
 ## 5. LES TROIS PREMIERES CHOSES A FAIRE ICI
 
-1. Lire `_travail\REPRISE.md` en entier.
+1. Lire `_travail\REPRISE.md` en entier, puis `_travail\JOURNAL.md` (l'etat, fichier par fichier).
 2. Compter les tables de `capi3439_motohall` avant de toucher au SQL.
-3. Ecrire ce qu'on a fait dans `REPRISE.md`, avec le chiffre.
+3. Ecrire ce qu'on a fait dans `REPRISE.md` **et** `JOURNAL.md`, avec le chiffre.
+
+---
+
+## 6. LA REGLE DE TRAVAIL (18/11/2026 — demande de Frederic)
+
+> « versionning des pages de code pour toujours etre a jour, toujours faire une
+> copie avant de corriger ou modifier le code d'un fichier, et un suivi des
+> choses faites, manifest ou autre. »
+
+Trois gestes, dans cet ordre, pour **chaque** fichier touche. Aucun ne remplace
+les autres.
+
+### 6.1. La copie AVANT de toucher
+
+    & 'C:\zeus_dev\zeus_env\php\php.exe' `
+      '_travail\outils_chantier\avant_de_modifier.php' <fichier> [<fichier> ...]
+
+Cree `_travail\_backups\avant_modif_<date>_<heure>\` en gardant l'arborescence,
+**avec un `_MANIFESTE.txt`** qui dit quoi remettre et ou. Le script **refuse** un
+fichier inexistant et un chemin hors du projet : une faute de frappe ne doit pas
+donner l'illusion d'etre protege.
+
+### 6.2. Le point de retour git
+
+Le dossier est un depot git. Il **ne doit JAMAIS partir sur un service en ligne**
+(il contient les identifiants de la base). A la fin de chaque intervention :
+
+    git add -A
+    git commit -m "<ce qui change, et pourquoi>"
+    git tag v<date>-<objet>
+
+Etiquettes existantes : `v2026.10.19-reprise`.
+
+### 6.3. La ligne au journal
+
+`_travail\JOURNAL.md`, section de l'intervention : le fichier, ce qui a change,
+**le controle reellement effectue** (pas « ca a l'air bon » : `php -l`, le
+controle de structure, une mesure), et si c'est en ligne.
+
+### 6.4. Et le controle, toujours
+
+- `& 'C:\zeus_dev\zeus_env\php\php.exe' -l <fichier>` -> « No syntax errors ».
+- Pour un gabarit, en plus :
+  `& 'C:\zeus_dev\zeus_env\php\php.exe' 'C:\Users\Zeus\AppData\Roaming\dsh-desktop\harness\skills\verifier-structure-html\scripts\structure_check.php' <fichier>`
+  -> `>>> OK`, `div` equilibre.
+- **Un fichier modifie sans controle n'existe pas** : il n'est ni dans le journal,
+  ni deploye.
+
+### 6.5. Les outils d'analyse, qui sont installes
+
+    PHP          : C:\zeus_dev\zeus_env\php\php.exe
+    PHPStan      : C:\zeus_dev\zeus_env\php-tools\vendor\phpstan\phpstan\phpstan.phar
+    PHP-CS-Fixer : C:\zeus_dev\zeus_env\php-tools\vendor\bin\php-cs-fixer
+    Rector       : C:\zeus_dev\zeus_env\php-tools\vendor\bin\rector
+
+⚠️ **Jamais de `--fix` sur ce projet** : les gabarits melangent PHP, HTML et
+expressions Alpine.js ; un reformatage aveugle casse une expression ou un `?>`.
+Le `--dry-run` sert a **voir**, pas a appliquer.

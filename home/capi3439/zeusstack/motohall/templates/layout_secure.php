@@ -55,12 +55,16 @@ $baseAssets = rtrim(str_replace('\\', '/', dirname((string)($_SERVER['SCRIPT_NAM
       -->
     <script src="<?= htmlspecialchars($baseAssets, ENT_QUOTES, 'UTF-8') ?>assets/js/theme.js?v=20261019"></script>
 
-    <!-- ─── POLICES ─────────────────────────────────────────────────────────
-         Seule ressource encore servie de l'extérieur.
-      -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- ─── POLICES : PLUS AUCUN SERVEUR EXTÉRIEUR (18/11/2026) ─────────────
+         AVANT : trois balises vers fonts.googleapis.com / fonts.gstatic.com.
+         Deux conséquences : la page attendait un domaine tiers pour se peindre
+         (DNS + TLS de plus, sur un réseau parfois filtré), et si ce domaine
+         était bloqué le navigateur retombait sur une police système — l'aspect
+         changeait alors du tout au tout sans que rien ne le signale.
+         MAINTENANT : le fichier est DANS LE SITE (assets/fonts/, 48 Ko) et
+         déclaré dans aegis.css. Le préchargement le fait arriver en même temps
+         que la feuille : plus de clignotement de police. -->
+    <link rel="preload" href="<?= htmlspecialchars($baseAssets, ENT_QUOTES, 'UTF-8') ?>assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- !! L'ORDRE DU <head> A ÉTÉ CORRIGÉ LE 19/10/2026, ET C'EST UN VRAI
          DÉFAUT QUI A ÉTÉ VU À L'ÉCRAN. Les deux feuilles de style étaient

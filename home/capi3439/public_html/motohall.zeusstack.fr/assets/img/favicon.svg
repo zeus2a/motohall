@@ -1,19 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  MotoHall 2A — favicon
+  Redessiné le 18/11/2026. L'ancien était un carré bleu avec les lettres « MH » :
+  lisible, mais il ne disait rien du métier et ressemblait à un logo d'éditeur
+  de logiciel.
+
+  CELUI-CI DESSINE UNE ROUE. Trois raisons :
+    1. une roue se reconnaît à 16 px, ce qu'un lettrage ne fait pas ;
+    2. elle dit le métier — une concession moto — sans un mot ;
+    3. le fond sombre et la jante claire tiennent aussi bien dans une barre
+       d'onglets claire que sombre, ce que le carré bleu ne faisait pas.
+
+  Les traits sont DESSINÉS (cercles et segments), pas écrits avec une police :
+  un favicon ne peut pas compter sur une police chargée depuis Internet.
+  Couleurs prises au thème : #0f172a (la surface sombre) et #38bdf8 (l'accent).
+-->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="MotoHall 2A">
-  <!--
-    Favicon MotoHall 2A — créé le 20/09/2026.
-    Les lettres M et H sont DESSINÉES (traits), pas écrites avec une police :
-    un favicon ne peut pas compter sur une police chargée depuis Internet, et
-    un texte sans police s'affiche de travers.
-    Couleurs de la charte : accent #38bdf8, encre #04121c.
-  -->
-  <rect width="64" height="64" rx="14" fill="#38bdf8"/>
-  <g fill="none" stroke="#04121c" stroke-width="6"
-     stroke-linecap="round" stroke-linejoin="round">
-    <!-- M -->
-    <path d="M10 45 V20 L20 33 L30 20 V45"/>
-    <!-- H -->
-    <path d="M38 20 V45"/>
-    <path d="M54 20 V45"/>
-    <path d="M38 32.5 H54"/>
-  </g>
+    <title>MotoHall 2A</title>
+
+    <!-- La plaque de fond, arrondie comme les cartes du site. -->
+    <rect x="0" y="0" width="64" height="64" rx="14" fill="#0f172a"/>
+    <!-- Un liseré intérieur : sans lui, la plaque se confond avec une barre
+         d'onglets sombre. -->
+    <rect x="1" y="1" width="62" height="62" rx="13" fill="none"
+          stroke="#38bdf8" stroke-opacity="0.35" stroke-width="2"/>
+
+    <g fill="none" stroke="#38bdf8" stroke-linecap="round">
+        <!-- Le pneu : un anneau épais. À 16 px, c'est la forme qui reste. -->
+        <circle cx="32" cy="32" r="18" stroke-width="6.5"/>
+        <!-- La jante : un second cercle plus fin, qui donne la profondeur. -->
+        <circle cx="32" cy="32" r="11" stroke-width="2.5" stroke-opacity="0.75"/>
+        <!-- Quatre rayons. Quatre et non cinq : à 16 px, cinq se collent. -->
+        <path d="M32 21 V13" stroke-width="4.5"/>
+        <path d="M32 43 V51" stroke-width="4.5"/>
+        <path d="M21 32 H13" stroke-width="4.5"/>
+        <path d="M43 32 H51" stroke-width="4.5"/>
+    </g>
+
+    <!-- Le moyeu, plein : c'est le point qui « fixe » la roue. -->
+    <circle cx="32" cy="32" r="5" fill="#38bdf8"/>
 </svg>

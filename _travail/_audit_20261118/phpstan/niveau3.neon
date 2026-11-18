@@ -1,5 +1,0 @@
-includes:
-    - base.neon
-
-parameters:
-    level: 3

@@ -17,3 +17,24 @@ _travail/_audit_*/apercu/sortie_site/
 _travail/_audit_*/apercu/captures/
 _travail/_audit_*/_corpus_relecture/
 _travail/_audit_*/phpstan/*.cache
+
+# --- Ajout du 18/11/2026 : le fichier de configuration ne se versionne PAS ---
+# Il porte l'hote, le nom de la base et le mot de passe. Ici c'est la config
+# d'ESSAI (base locale, mot de passe vide), mais sur le serveur c'est celle de
+# production. En le sortant du depot, on garantit qu'aucune version publiee ne
+# pourra le contenir — quel que soit le jour où quelqu'un y mettra un secret.
+# Le modele a recopier est `config.example.php`.
+home/capi3439/zeusstack/motohall/includes/config.php
+home/capi3439/zeusstack/motohall/includes/config.local.php
+
+# Les jetons et cles, quels qu'ils soient.
+.env
+.env.*
+*.pem
+*.key
+
+# --- 18/11/2026 : LES AUDITS NE SORTENT PAS DU POSTE ---
+# Les dossiers _audit_* contiennent des rapports qui decrivent, fichier par ligne,
+# les failles trouvees et comment les exploiter, et des instantanes complets du
+# code (dont config.php). C'est un plan d'attaque, pas du code.
+_travail/_audit_*/

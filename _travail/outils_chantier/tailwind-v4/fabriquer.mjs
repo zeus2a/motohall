@@ -83,8 +83,8 @@ const feuilleEntree = `/* FICHIER FABRIQUÉ AUTOMATIQUEMENT — NE PAS MODIFIER 
     --color-accent-400: #38bdf8;
     --color-accent-500: #0ea5e9;
     --color-accent-600: #0284c7;
-    --font-sans: Rajdhani, sans-serif;
-    --font-display: Orbitron, sans-serif;
+    --font-sans: Inter, system-ui, sans-serif;
+    --font-display: Inter, system-ui, sans-serif;
 }
 `;
 

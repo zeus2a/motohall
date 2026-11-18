@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  MotoHall 2A. Fond de la page de connexion. Cree le 18/11/2026.
+
+  POURQUOI UN DESSIN ET PAS UNE PHOTO
+  Une photo de hall aurait demande un photographe, des droits, et 800 Ko a
+  telecharger avant la premiere frappe. Ce fichier pese 4 Ko, reste net sur un
+  ecran 4K comme sur une borne tactile, et il est DANS le site.
+
+  CE QU'IL MONTRE
+  Une roue monumentale, a moitie hors du cadre, comme un detail de moto vu de
+  tres pres. C'est le motif du favicon : le site a une marque, pas un habillage.
+
+  ATTENTION : un commentaire XML ne peut pas contenir deux tirets qui se
+  suivent. La premiere version de ce fichier avait des lignes de separation en
+  tirets, et le dessin ne s'affichait pas du tout. Ne pas en remettre.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"
+     width="1920" height="1080" preserveAspectRatio="xMidYMid slice">
+
+    <defs>
+        <radialGradient id="lueur" cx="52%" cy="38%" r="78%">
+            <stop offset="0%"   stop-color="#12233c"/>
+            <stop offset="52%"  stop-color="#0a1526"/>
+            <stop offset="100%" stop-color="#020617"/>
+        </radialGradient>
+
+        <radialGradient id="rasante" cx="18%" cy="8%" r="58%">
+            <stop offset="0%"   stop-color="#38bdf8" stop-opacity="0.16"/>
+            <stop offset="60%"  stop-color="#38bdf8" stop-opacity="0.03"/>
+            <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+        </radialGradient>
+
+        <linearGradient id="sol" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="60%"  stop-color="#020617" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#020617" stop-opacity="0.85"/>
+        </linearGradient>
+
+        <radialGradient id="vignette" cx="50%" cy="50%" r="72%">
+            <stop offset="55%"  stop-color="#000000" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0.55"/>
+        </radialGradient>
+
+        <linearGradient id="jante" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%"   stop-color="#7dd3fc" stop-opacity="0.55"/>
+            <stop offset="55%"  stop-color="#38bdf8" stop-opacity="0.28"/>
+            <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0.10"/>
+        </linearGradient>
+    </defs>
+
+    <rect width="1920" height="1080" fill="url(#lueur)"/>
+    <rect width="1920" height="1080" fill="url(#rasante)"/>
+
+    <g fill="none" stroke="url(#jante)" stroke-linecap="round">
+        <circle cx="1560" cy="560" r="620" stroke-width="34"/>
+        <circle cx="1560" cy="560" r="470" stroke-width="10"/>
+        <circle cx="1560" cy="560" r="452" stroke-width="3" stroke-opacity="0.5"/>
+        <circle cx="1560" cy="560" r="120" stroke-width="8"/>
+        <circle cx="1560" cy="560" r="96"  stroke-width="2.5" stroke-opacity="0.6"/>
+    </g>
+
+    <g stroke="#38bdf8" stroke-opacity="0.13" stroke-width="5" stroke-linecap="round">
+        <line x1="1560" y1="560" x2="1560" y2="-60"/>
+        <line x1="1560" y1="560" x2="2090" y2="230"/>
+        <line x1="1560" y1="560" x2="2090" y2="900"/>
+        <line x1="1560" y1="560" x2="1560" y2="1180"/>
+        <line x1="1560" y1="560" x2="1030" y2="230"/>
+    </g>
+
+    <path d="M 1560 60 A 500 500 0 0 1 2050 470"
+          fill="none" stroke="#e2e8f0" stroke-opacity="0.08" stroke-width="2"/>
+
+    <rect width="1920" height="1080" fill="url(#sol)"/>
+    <rect width="1920" height="1080" fill="url(#vignette)"/>
+</svg>
